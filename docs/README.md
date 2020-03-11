@@ -1,4 +1,4 @@
-## COVID-19 Outbreak in South America
+## Outbreak Measurement
 
 You can use the [editor on GitHub](https://github.com/bgonzalezbustamante/COVID-19-South-America/edit/master/docs/README.md) to maintain and preview the content for your website in Markdown files.
 
