@@ -1,0 +1,27 @@
+# Changelog
+All notable changes to "COVID-19 Outbreak in South America" will be documented in this file.
+
+## [Unreleased]
+
+## [0.3.0] - 2020-03-12
+### Added
+- Release of 20200310_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ).
+- Incidence analysis by country.
+- Estimation of R by country.
+- Shields.io badges in SVG.
+### Changed
+- Corrections GitHub page.
+
+## [0.2.0] - 2020-03-11
+### Added
+- Data collection.
+- GitHub repository.
+- GitHub page powered by Jekyll.
+- OSF project (DOI: 10.17605/OSF.IO/6FM7X).
+- OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
+- License CC-BY Attribution 4.0 International at GitHub repository.
+- Changelog in TXT format at GitHub repository.
+
+## [0.1.0] - 2020-03-10
+### Added
+- Case selection and identification of information sources.
