@@ -19,6 +19,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - R Estimation by country (WIP).
 ### Changed
 - Modify .gitignore at GitHub repository.
+- Corrections GitHub page (WIP).
 
 ## [0.2.0] - 2020-03-11
 ### Added
