@@ -1,37 +1,19 @@
-## Outbreak in South America
+## Epidemic in South America
 
-You can use the [editor on GitHub](https://github.com/bgonzalezbustamante/COVID-19-South-America/edit/master/docs/README.md) to maintain and preview the content for your website in Markdown files.
+This is a measurement of COVID-19 coronavirus outbreak -a pandemic- in South America, specifically, the epidemic curve based on incidence over time and estimated Ro. The countries reviewed are as follows: Argentina (ARG), Bolivia (BOL), Brazil (BRA), Chile (CHL), Colombia (COL), Ecuador (ECU), Paraguay (PRY), Peru (PER), Uruguay (URY), and Venezuela (VEN). Furthermore, the United Kingdom (GBR), Spain (ESP), and Italy (ITA) are computed for comparative purposes.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+We gather data from the following sources of public information: National Health Service of the United Kingdom, Ministerio de Sanidad of Spain, Dipartimento della Protezione Civile of Italy, Ministerio de Salud of Argentina, Ministerio de Salud del Estado Plurinacional of Bolivia, Ministério da Saúde of Brazil, Ministerio de Salud of Chile, Ministerio de Salud Pública y Protección Social of Colombia, Ministerio de Salud Pública of Ecuador, Ministerio de Salud Pública y Bienestar Social of Paraguay, Ministerio de Salud of Peru, Ministerio de Salud Pública of Uruguay, and Ministerio del Poder Popular para la Salud of Venezuela.
 
-### Markdown
+The charts and estimations are updated after the close of the day in Greenwich Mean Time. The materials can be downloaded from the OSF-Project (DOI: [10.17605/OSF.IO/6FM7X](http://doi.org/10.17605/OSF.IO/6FM7X)). This site will be updated continuously. 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+*Last updated: 12 March 2020, 00.17 GMT.*
 
-```markdown
-Syntax highlighted code block
+### How to download and cite this dataset?
 
-# Header 1
-## Header 2
-### Header 3
+González-Bustamante, B. (2020). COVID-19 Pandemic in South America Datasets. DOI: [10.17605/OSF.IO/3QRMZ](http://doi.org/10.17605/OSF.IO/3QRMZ)
 
-- Bulleted
-- List
+### About Me
 
-1. Numbered
-2. List
+I am a Probationer Research Student (PRS) in the DPhil in Politics programme in the [Department of Politics and International Relations](https://www.politics.ox.ac.uk/) and [St Hilda's College](https://www.sthildas.ox.ac.uk/) at the [University of Oxford](http://www.ox.ac.uk/), United Kingdom. Furthermore, I am an Instructor in the Department of Public Administration and Policy at the Faculty of Economics and Management at the Universidad de Santiago, where I have been working since 2014. 
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/bgonzalezbustamante/COVID-19-South-America/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and weâ€™ll help you sort it out.
+Further details on my [website at the University of Oxford](http://users.ox.ac.uk/~shil5311/).
