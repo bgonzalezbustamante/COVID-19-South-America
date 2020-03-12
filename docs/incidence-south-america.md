@@ -1,6 +1,6 @@
 ## Incidence in South America
 
-![Daily Incidence](/docs/images/20200311_incidence_south_america.jpeg)
+![Daily Incidence](docs/images/20200311_incidence_south_america.jpeg)
 
 ### How to Download and Cite This Dataset?
 
