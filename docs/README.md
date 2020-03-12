@@ -4,7 +4,7 @@
 
 This is a measurement of COVID-19 coronavirus outbreak -a pandemic- in South America, specifically, the epidemic curve based on incidence in the region (i.e. epicurve stratified by country, [see figure](incidence-south-america.md)), as well as estimated R -rho- and the serial interval distribution by country. The countries reviewed are as follows: Argentina (ARG), Bolivia (BOL), Brazil (BRA), Chile (CHL), Colombia (COL), Ecuador (ECU), Paraguay (PRY), Peru (PER), Uruguay (URY), and Venezuela (VEN).<sup id="a1">[1](#f1)</sup>
 
-Furthermore, the United Kingdom (GBR), Spain (ESP), and Italy (ITA) are computed for comparative purposes (see epicurve stratified by country).<sup id="a2">[2](#f2)</sup>
+Furthermore, the United Kingdom (GBR), Spain (ESP), and Italy (ITA) are computed for comparative purposes ([see epicurve stratified by country](incidence-europe.md)).<sup id="a2">[2](#f2)</sup>
 
 The charts and estimations are updated after the close of the day in Greenwich Mean Time. The materials can be downloaded from the **OSF-Project** (DOI: [10.17605/OSF.IO/6FM7X](http://doi.org/10.17605/OSF.IO/6FM7X)). This site will be updated continuously, see [changelog](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/changelog.txt).
 
