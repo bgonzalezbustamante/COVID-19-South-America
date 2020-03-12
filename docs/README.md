@@ -8,7 +8,7 @@ The charts and estimations are updated after the close of the day in Greenwich M
 
 *Last updated: 12 March 2020, 00.17 GMT.*
 
-### How to download and cite this dataset?
+### How to Download and Cite This Dataset?
 
 González-Bustamante, B. (2020). COVID-19 Pandemic in South America Datasets. DOI: [10.17605/OSF.IO/3QRMZ](http://doi.org/10.17605/OSF.IO/3QRMZ)
 
