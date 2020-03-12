@@ -1,6 +1,8 @@
 ## Incidence in South America
 
-[![Daily Incidence](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200311_incidence_south_america.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200311_incidence_south_america.png)
+[![Daily Incidence](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200311/20200311_incidence_south_america.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200311/20200311_incidence_south_america.png)
+
+<small>Note: The epicurve shows new infections over the period.</small>
 
 ### How to Download and Cite This Dataset?
 
