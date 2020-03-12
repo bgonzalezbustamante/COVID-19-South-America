@@ -5,11 +5,11 @@ All notable changes to "COVID-19 Outbreak in South America" will be documented i
 
 ## [0.3.0] - 2020-03-12
 ### Added
+- Shields.io badges in SVG.
 - Release of 20200310_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ).
 - Release of 20200311_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ).
 - Incidence analysis by country.
 - Estimation of R by country.
-- Shields.io badges in SVG.
 ### Changed
 - Modify .gitignore at GitHub repository. 
 
