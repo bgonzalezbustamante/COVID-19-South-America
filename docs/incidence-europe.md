@@ -1,6 +1,6 @@
 ## Incidence in Spain, the United Kingdom, and Italy
 
-[![Daily Incidence](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200311_incidence_south_america.jpeg)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200311_incidence_europe.png)
+[![Daily Incidence](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200311_incidence_europe.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200311_incidence_europe.png)
 
 ### How to Download and Cite This Dataset?
 
