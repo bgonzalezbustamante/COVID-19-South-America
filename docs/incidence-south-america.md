@@ -1,6 +1,6 @@
 ## Incidence in South America
 
-![Daily Incidence](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/docs/images/20200311_incidence_south_america.jpeg)
+![Daily Incidence](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200311_incidence_south_america.jpeg)
 
 ### How to Download and Cite This Dataset?
 
