@@ -1,4 +1,4 @@
-## Epidemic in South America
+## Coronavirus Epidemic in South America
 
 This is a measurement of COVID-19 coronavirus outbreak -a pandemic- in South America, specifically, the epidemic curve based on incidence over time and estimated Ro. The countries reviewed are as follows: Argentina (ARG), Bolivia (BOL), Brazil (BRA), Chile (CHL), Colombia (COL), Ecuador (ECU), Paraguay (PRY), Peru (PER), Uruguay (URY), and Venezuela (VEN). Furthermore, the United Kingdom (GBR), Spain (ESP), and Italy (ITA) are computed for comparative purposes.
 
