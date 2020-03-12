@@ -10,6 +10,8 @@ All notable changes to "COVID-19 Outbreak in South America" will be documented i
 - Incidence analysis by country.
 - Estimation of R by country.
 - Shields.io badges in SVG.
+### Changed
+- Modify .gitignore at GitHub repository. 
 
 ## [0.2.0] - 2020-03-11
 ### Added
