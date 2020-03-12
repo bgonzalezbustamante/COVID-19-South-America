@@ -14,12 +14,12 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Added
 - Shields.io badges in SVG.
 - Incidence analysis and epidemic curves stratified by country.
-- R and serial interval distribution estimations by country (WIP).
-- Release of 20200310_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ) (WIP).
-- Release of 20200311_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ) (WIP).
+- R and serial interval distribution estimations by country.
+- Release of 20200310_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ).
+- Release of 20200311_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ).
 ### Changed
 - Modify .gitignore at GitHub repository.
-- Corrections GitHub page (WIP).
+- Corrections GitHub page.
 
 ## [0.2.0] - 2020-03-11
 ### Added
