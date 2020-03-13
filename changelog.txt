@@ -15,11 +15,11 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ## [1.1.0] - 2020-03-13
 ### Added
 - Release of 20200312_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ).
-- R estimation in detail (WIP).
+- R estimation in detail.
 ### Changed
 - Corrections GitHub page.
-- Update of incidence analysis and epidemic curves stratified (WIP).
-- R and serial interval distribution estimations by country updated (WIP).
+- Update of incidence analysis and epidemic curves stratified.
+- R and serial interval distribution estimations by country updated.
 
 ## [1.0.0] - 2020-03-12
 ### Added
