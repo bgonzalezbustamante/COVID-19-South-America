@@ -3,12 +3,18 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [1.0.1] - TBC
+## [1.1.1] - TBC
+### Added
+- R estimation in detail.
 ### Changed
 - Update of incidence analysis and epidemic curves stratified by country.
 - R and serial interval distribution estimations by country updated.
 
 ## [Released]
+
+## [1.0.1] - 2020-03-13
+### Changed
+- Corrections GitHub page.
 
 ## [1.0.0] - 2020-03-12
 ### Added
