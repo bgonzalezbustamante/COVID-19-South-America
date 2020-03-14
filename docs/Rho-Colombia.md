@@ -11,4 +11,4 @@ See the Visualisation COVID-19 component of the **OSF-Project** (DOI: [10.17605/
 
 ### How to Download and Cite This Dataset?
 
-González-Bustamante, B. (2020). COVID-19 Pandemic in South America Datasets. DOI: [10.17605/OSF.IO/3QRMZ](http://doi.org/10.17605/OSF.IO/3QRMZ)
+González-Bustamante, B. (2020). *COVID-19 Pandemic in South America Datasets*. DOI: [10.17605/OSF.IO/3QRMZ](http://doi.org/10.17605/OSF.IO/3QRMZ)
