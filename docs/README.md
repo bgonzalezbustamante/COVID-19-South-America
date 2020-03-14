@@ -1,4 +1,4 @@
-## Coronavirus Epidemic in South America
+## Coronavirus Pandemic in South America
 
 [![version](https://img.shields.io/badge/version-v1.1.0-blue.svg)](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/changelog.txt) [![latestupdate](https://img.shields.io/badge/latest%20data%20update-2020--03--12-orange.svg)](http://doi.org/10.17605/OSF.IO/3QRMZ) [![cases](https://img.shields.io/badge/cases-271-yellow.svg)](https://bgonzalezbustamante.github.io/COVID-19-South-America/Incidence-South-America.html) [![CC](https://img.shields.io/badge/license-CC--BY--4.0-black)](https://creativecommons.org/licenses/by/4.0/) [![DOI](https://img.shields.io/badge/DOI-10.17605%2FOSF.IO%2F6FM7X-blue)](http://doi.org/10.17605/OSF.IO/6FM7X) [![R](https://img.shields.io/badge/Made%20with-R%20v3.6.1-1f425f.svg)](https://cran.r-project.org/) [![Jekyll](https://img.shields.io/badge/Made%20with-Jekyll-1f425f.svg)](https://jekyllrb.com/)
 
