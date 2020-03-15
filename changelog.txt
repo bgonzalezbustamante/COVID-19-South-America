@@ -3,14 +3,23 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [1.2.0] - 2020-03-16
+## [1.2.2] - TBC
 ### Added
-- Release of 20200315_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ).
+- Release of 202003XX_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ).
+- R estimations considering uncertainty on the serial interval distribution.
 ### Changed
 - Update of incidence analysis and epidemic curves stratified.
-- R and serial interval distribution estimations by country updated.
+- Update of R and serial interval distribution estimations by country.
+
+## [1.1.2] - 2020-03-15
+### Changed
+- Slice South American period data to improve the R estimations (WIP).
 
 ## [Released]
+
+## [1.1.1] - 2020-03-14
+### Changed
+- Corrections GitHub page.
 
 ## [1.1.0] - 2020-03-13
 ### Added
@@ -19,7 +28,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Changed
 - Corrections GitHub page.
 - Update of incidence analysis and epidemic curves stratified.
-- R and serial interval distribution estimations by country updated.
+- Update of R and serial interval distribution estimations by country.
 
 ## [1.0.0] - 2020-03-12
 ### Added
@@ -34,7 +43,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [0.2.0] - 2020-03-11
 ### Added
-- Data collection.
+- Data scraping.
 - GitHub repository.
 - GitHub page powered by Jekyll.
 - OSF project (DOI: 10.17605/OSF.IO/6FM7X).
@@ -46,4 +55,4 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [0.1.0] - 2020-03-10
 ### Added
-- Case selection and identification of information sources.
+- Cases selection and identification of information sources.
