@@ -3,17 +3,18 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [1.2.2] - TBC
-### Added
-- Release of 202003XX_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ).
-- R estimations considering uncertainty on the serial interval distribution.
+## [1.1.3] - TBC
 ### Changed
 - Update of incidence analysis and epidemic curves stratified.
 - Update of R and serial interval distribution estimations by country.
+- Dataset update (DOI: 10.17605/OSF.IO/3QRMZ).
 
 ## [1.1.2] - 2020-03-15
 ### Changed
 - Slice South American period data to improve the R estimations (WIP).
+- Update of incidence analysis and epidemic curves stratified (WIP).
+- Update of R and serial interval distribution estimations by country (WIP).
+- Dataset update (DOI: 10.17605/OSF.IO/3QRMZ) (WIP).
 
 ## [Released]
 
@@ -23,8 +24,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [1.1.0] - 2020-03-13
 ### Added
-- Release of 20200312_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ).
-- R estimation in detail.
+- R estimations in detail.
 ### Changed
 - Corrections GitHub page.
 - Update of incidence analysis and epidemic curves stratified.
@@ -35,8 +35,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Shields.io badges in SVG.
 - Incidence analysis and epidemic curves stratified.
 - R and serial interval distribution estimations by country.
-- Release of 20200310_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ).
-- Release of 20200311_covid19 dataset (DOI: 10.17605/OSF.IO/3QRMZ).
+- Dataset release (DOI: 10.17605/OSF.IO/3QRMZ).
 ### Changed
 - Modify .gitignore at GitHub repository.
 - Corrections GitHub page.
