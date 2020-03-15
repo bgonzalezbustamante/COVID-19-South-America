@@ -8,7 +8,7 @@
 
 [![Growth](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200314/projections/20200314_growth_UK.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200314/projections/20200314_growth_UK.png)
 <small>Source: Compiled using data from González-Bustamante (2020). DOI: [10.17605/OSF.IO/3QRMZ](http://doi.org/10.17605/OSF.IO/3QRMZ)</small> <br />
-<small>Note: The average number of secondary cases is calculated using a maximum-likelihood estimate of R based on the model of [Cori et al. (2013)](https://doi.org/10.1093/aje/kwt133) and the previous serial interval values. After that, 1,000 futures epicurves are simulated from the current data until the next two weeks to compare observed and predicted values.</small>
+<small>Note: The average number of secondary cases is calculated using a maximum-likelihood estimate of R based on the model of [Cori *et al.* (2013)](https://doi.org/10.1093/aje/kwt133) and the previous serial interval values. After that, 1,000 futures epicurves are simulated from the current data until the next two weeks to compare observed and predicted values.</small>
 
 [![Projection](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200314/projections/20200314_proj_UK.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200314/projections/20200314_proj_UK.png)
 <small>Source: Compiled using data from González-Bustamante (2020). DOI: [10.17605/OSF.IO/3QRMZ](http://doi.org/10.17605/OSF.IO/3QRMZ)</small> <br />
