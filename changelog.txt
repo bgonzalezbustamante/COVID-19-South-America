@@ -11,9 +11,9 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [1.1.2] - 2020-03-15
 ### Changed
-- Slice South American period data to improve the R estimations (WIP).
-- Update of incidence analysis and epidemic curves stratified (WIP).
-- Update of R and serial interval distribution estimations by country (WIP).
+- Slice South American period data to improve the R estimations.
+- Update of incidence analysis and epidemic curves stratified.
+- Update of R and serial interval distribution estimations by country.
 - Dataset update (DOI: 10.17605/OSF.IO/3QRMZ) (WIP).
 
 ## [Released]
