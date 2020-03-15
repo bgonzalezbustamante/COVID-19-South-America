@@ -2,7 +2,18 @@
 
 [![version](https://img.shields.io/badge/version-v1.1.2-blue.svg)](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/changelog.txt) [![latestupdate](https://img.shields.io/badge/latest%20data%20update-2020--03--14-orange.svg)](http://doi.org/10.17605/OSF.IO/3QRMZ) [![cases](https://img.shields.io/badge/cases-405-yellow.svg)](https://bgonzalezbustamante.github.io/COVID-19-South-America/Incidence-South-America.html) [![CC](https://img.shields.io/badge/license-CC--BY--4.0-black)](https://creativecommons.org/licenses/by/4.0/) [![DOI](https://img.shields.io/badge/DOI-10.17605%2FOSF.IO%2F6FM7X-blue)](http://doi.org/10.17605/OSF.IO/6FM7X) [![R](https://img.shields.io/badge/Made%20with-R%20v3.6.1-1f425f.svg)](https://cran.r-project.org/) [![Jekyll](https://img.shields.io/badge/Made%20with-Jekyll-1f425f.svg)](https://jekyllrb.com/)
 
-This is a measurement of COVID-19 coronavirus outbreak -a pandemic- in South America, specifically, the epidemic curve based on the incidence in the region ([see epicurve stratified by country](Incidence-South-America.md)), as well as the estimated R and the explored serial interval (SI) distribution by case.<sup id="a1">[1](#f1)</sup> The countries reviewed are as follows: [Argentina](Argentina.md) (ARG), [Bolivia](Bolivia.md) (BOL), [Brazil](Brazil.md) (BRA), [Chile](Chile.md) (CHL), [Colombia](Colombia.md) (COL), [Ecuador](Ecuador.md) (ECU), [Paraguay](Paraguay.md) (PRY), [Peru](Peru.md) (PER), [Uruguay](Uruguay.md) (URY), and [Venezuela](Venezuela.md) (VEN).
+This is a measurement of COVID-19 coronavirus outbreak -a pandemic- in South America, specifically, the epidemic curve based on the incidence in the region ([see epicurve stratified by country](Incidence-South-America.md)), as well as the estimated R and the explored serial interval (SI) distribution by case.<sup id="a1">[1](#f1)</sup> The countries reviewed are as follows: 
+
+- [Argentina](Argentina.md) (ARG), 
+- [Bolivia](Bolivia.md) (BOL),
+- [Brazil](Brazil.md) (BRA),
+- [Chile](Chile.md) (CHL),
+- [Colombia](Colombia.md) (COL),
+- [Ecuador](Ecuador.md) (ECU),
+- [Paraguay](Paraguay.md) (PRY),
+- [Peru](Peru.md) (PER),
+- [Uruguay](Uruguay.md) (URY), and 
+- [Venezuela](Venezuela.md) (VEN).
 
 Moreover, [Spain](Spain.md) (ESP), the [United Kingdom](United-Kingdom.md) (GBR), and [Italy](Italy.md) (ITA) are computed for comparative purposes ([see epicurve stratified by country](Incidence-Europe.md)).<sup id="a2">[2](#f2)</sup>
 
