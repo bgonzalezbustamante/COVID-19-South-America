@@ -9,7 +9,13 @@
 
 [![Growth](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200314/projections/20200314_growth_UK.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200314/projections/20200314_growth_UK.png)
 
+<small>Source: Compiled using data from González-Bustamante (2020). DOI: [10.17605/OSF.IO/3QRMZ](http://doi.org/10.17605/OSF.IO/3QRMZ)</small> <br />
+<small>Note: The average number of secondary cases is calculated using a maximum-likelihood estimate of R based on the model of [Cori et al. (2013)](https://doi.org/10.1093/aje/kwt133) and the previous serial interval values. After that, 1,000 futures epicurves are simulated from the current data until the next two weeks to compare observed and predicted values.</small>
+
 [![Projection](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200314/projections/20200314_proj_UK.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200314/projections/20200314_proj_UK.png)
+
+<small>Source: Compiled using data from González-Bustamante (2020). DOI: [10.17605/OSF.IO/3QRMZ](http://doi.org/10.17605/OSF.IO/3QRMZ)</small> <br />
+<small>Note: The predicted cumulative incidence is estimated from the current data until the following 30 days with 1,000 simulated epicurves based on the previous maximum-likelihood estimation and the serial interval values. When the epidemic reaches a peak, a log-linear model should be estimated to measure the decay-phase adequately.</small>
 
 ### Were You Looking for Previous Figures?
 
