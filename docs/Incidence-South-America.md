@@ -1,6 +1,6 @@
 ## Incidence in South America
 
-[![Incidence](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200314/20200314_incidence_south_america.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200314/20200314_incidence_south_america.png)
+[![Incidence](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200315/20200315_incidence_south_america.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200315/20200315_incidence_south_america.png)
 <small>Source: Compiled using data from González-Bustamante (2020). DOI: [10.17605/OSF.IO/3QRMZ](http://doi.org/10.17605/OSF.IO/3QRMZ)</small> <br />
 <small>Note: The epicurve shows new infections over the period.</small>
 
