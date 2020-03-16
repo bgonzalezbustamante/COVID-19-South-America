@@ -1,6 +1,6 @@
 ## Incidence in Spain, the United Kingdom, and Italy
 
-[![Incidence](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200314/20200314_incidence_europe.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200314/20200314_incidence_europe.png)
+[![Incidence](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200315/20200315_incidence_europe.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/20200315/20200315_incidence_europe.png)
 <small>Source: Compiled using data from González-Bustamante (2020). DOI: [10.17605/OSF.IO/3QRMZ](http://doi.org/10.17605/OSF.IO/3QRMZ)</small> <br />
 <small>Note: The epicurve shows new infections over the period.</small>
 
