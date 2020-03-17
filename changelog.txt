@@ -3,7 +3,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [2.2.3] - TBC
+## [2.2.3] - 2020-03-18 (expected)
 ### Changed
 - Update of incidence analysis and epidemic curves stratified.
 - Update of R and serial interval distribution estimations by country.
@@ -13,9 +13,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.2.2] - 2020-03-17
 ### Added
-- Connection to the Johns Hopkins University CSSE database.
+- Connection to the Johns Hopkins University CSSE COVID-19 Dataset.
 ### Changed
 - Update of badges.
+- Corrections GitHub page.
 ### Removed
 - OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
 
