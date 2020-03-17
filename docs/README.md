@@ -2,7 +2,7 @@
 
 [![version](https://img.shields.io/badge/version-v2.2.2-blue.svg)](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/changelog.txt) [![latestupdate](https://img.shields.io/badge/latest%20data%20update-2020--03--15-orange.svg)](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series) [![CC](https://img.shields.io/badge/license-CC--BY--4.0-black)](https://creativecommons.org/licenses/by/4.0/) [![DOI](https://img.shields.io/badge/DOI-10.17605%2FOSF.IO%2F6FM7X-blue)](http://doi.org/10.17605/OSF.IO/6FM7X) [![R](https://img.shields.io/badge/Made%20with-R%20v3.6.1-1f425f.svg)](https://cran.r-project.org/) [![Jekyll](https://img.shields.io/badge/Made%20with-Jekyll-1f425f.svg)](https://jekyllrb.com/)
 
-This is a measurement of COVID-19 coronavirus outbreak -a pandemic- in South America, specifically, the epidemic curve based on the incidence in the region ([see epicurve stratified by country](Incidence-South-America.md)). Furthermore, estimated R, explored serial interval (SI) distribution, and future incidence simulations are fitted by case.<sup id="a1">[1](#f1)</sup> The countries reviewed are as follows: 
+This is a measurement of COVID-19 coronavirus outbreak -a pandemic- in South America, specifically, the epidemic curve based on the incidence in the region [(see epicurve stratified by country)](Incidence-South-America.md). Furthermore, estimated R, explored serial interval (SI) distribution, and future incidence simulations are fitted by case.<sup id="a1">[1](#f1)</sup> The countries reviewed are as follows: 
 
 - [Argentina](Argentina.md) (ARG), 
 - [Bolivia](Bolivia.md) (BOL),
@@ -15,9 +15,9 @@ This is a measurement of COVID-19 coronavirus outbreak -a pandemic- in South Ame
 - [Uruguay](Uruguay.md) (URY), and 
 - [Venezuela](Venezuela.md) (VEN).
 
-Moreover, [Spain](Spain.md) (ESP), the [United Kingdom](United-Kingdom.md) (GBR), and [Italy](Italy.md) (ITA) are computed for comparative purposes ([see epicurve stratified by country](Incidence-Europe.md)).<sup id="a2">[2](#f2)</sup>
+Moreover, [Spain](Spain.md) (ESP), the [United Kingdom](United-Kingdom.md) (GBR), and [Italy](Italy.md) (ITA) are computed for comparative purposes [(see epicurve stratified by country](Incidence-Europe.md).<sup id="a2">[2](#f2)</sup>
 
-The charts and estimations are updated after the close of the day in Greenwich Mean Time based on the [Johns Hopkins University CSSE COVID-19 Dataset](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series). The materials can be downloaded from the **OSF-Project** (DOI: [10.17605/OSF.IO/6FM7X](http://doi.org/10.17605/OSF.IO/6FM7X)). This site will be updated on a regular basis, see the [changelog](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/changelog.txt).
+The charts and estimations are updated after the close of the day in Greenwich Mean Time based on the **Johns Hopkins University CSSE COVID-19 Dataset** [(see repository)](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series). The materials can be downloaded from the **OSF-Project** (DOI: [10.17605/OSF.IO/6FM7X](http://doi.org/10.17605/OSF.IO/6FM7X)). This site will be updated on a regular basis, see the [changelog](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/changelog.txt).
 
 ### About Me
 
