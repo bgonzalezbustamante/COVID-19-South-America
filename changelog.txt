@@ -3,22 +3,30 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [1.2.3] - TBC
+## [2.2.3] - TBC
 ### Changed
 - Update of incidence analysis and epidemic curves stratified.
 - Update of R and serial interval distribution estimations by country.
 - Update of epidemic trajectories and future incidence simulations.
-- Dataset update (DOI: 10.17605/OSF.IO/3QRMZ).
 
 ## [Released]
 
+## [2.2.2] - 2020-03-17
+### Added
+- Connection to the Johns Hopkins University CSSE database.
+### Changed
+- Update of badges.
+### Removed
+- OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
+
 ## [1.2.2] - 2020-03-16
-## Added
+### Added
 - Epidemic trajectories and future incidence simulations.
 ### Changed
 - Update of incidence analysis and epidemic curves stratified.
 - Update of R and serial interval distribution estimations by country.
-- Dataset update (DOI: 10.17605/OSF.IO/3QRMZ).
+### Deprecated
+- OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
 
 ## [1.1.2] - 2020-03-15
 ### Changed
@@ -43,7 +51,6 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Shields.io badges in SVG.
 - Incidence analysis and epidemic curves stratified.
 - R and serial interval distribution estimations by country.
-- Dataset release (DOI: 10.17605/OSF.IO/3QRMZ).
 ### Changed
 - Modify .gitignore at GitHub repository.
 - Corrections GitHub page.
@@ -55,6 +62,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - GitHub page powered by Jekyll.
 - OSF project (DOI: 10.17605/OSF.IO/6FM7X).
 - OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
+- OSF visualisation component (DOI: 10.17605/OSF.IO/Y6C7Z).
 - License CC-BY Attribution 4.0 International at GitHub repository.
 - Changelog in TXT format at GitHub repository.
 ### Changed
