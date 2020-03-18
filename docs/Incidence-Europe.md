@@ -2,7 +2,7 @@
 
 [![Incidence](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Figures/incidence_europe.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Figures/incidence_europe.png)
 <small>Source: Compiled using data from the [Johns Hopkins University CSSE COVID-19 Dataset](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series).</small> <br />
-<small>Note: The epicurve shows new infections over the period.</small>
+<small>Note: The United Kingdom except for Channel Islands, Gibraltar, and the Cayman Islands. The epicurve shows new infections over the period.</small>
 
 ### Were You Looking for Previous Figures?
 
