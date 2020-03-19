@@ -3,13 +3,15 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [2.2.3] - 2020-03-18 (expected)
-### Changed
-- Update of incidence analysis and epidemic curves stratified.
-- Update of R and serial interval distribution estimations by country.
-- Update of epidemic trajectories and future incidence simulations.
+## [2.3.3] - TBC
+### Added
+- Log-incidence models considering the decay-phase.
 
 ## [Released]
+
+## [2.2.3] - 2020-03-18
+### Changed
+- Revision of upgrade versioning.
 
 ## [2.2.2] - 2020-03-17
 ### Added
@@ -23,17 +25,12 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ## [1.2.2] - 2020-03-16
 ### Added
 - Epidemic trajectories and future incidence simulations.
-### Changed
-- Update of incidence analysis and epidemic curves stratified.
-- Update of R and serial interval distribution estimations by country.
 ### Deprecated
 - OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
 
 ## [1.1.2] - 2020-03-15
 ### Changed
 - Slice South American period data to improve the R estimations.
-- Update of incidence analysis and epidemic curves stratified.
-- Update of R and serial interval distribution estimations by country.
 
 ## [1.1.1] - 2020-03-14
 ### Changed
@@ -44,8 +41,6 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - R estimations in detail.
 ### Changed
 - Corrections GitHub page.
-- Update of incidence analysis and epidemic curves stratified.
-- Update of R and serial interval distribution estimations by country.
 
 ## [1.0.0] - 2020-03-12
 ### Added
@@ -53,7 +48,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Incidence analysis and epidemic curves stratified.
 - R and serial interval distribution estimations by country.
 ### Changed
-- Modify .gitignore at GitHub repository.
+- Modify .gitignore file at GitHub repository.
 - Corrections GitHub page.
 
 ## [0.2.0] - 2020-03-11
