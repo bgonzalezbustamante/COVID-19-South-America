@@ -3,11 +3,16 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [2.3.3] - TBC
+## [2.3.4] - TBC
 ### Added
 - Log-incidence models considering the decay-phase.
 
 ## [Released]
+
+## [2.2.4] - 2020-03-19
+### Changed
+- Corrections GitHub page.
+- Figures subtitles.
 
 ## [2.2.3] - 2020-03-18
 ### Changed
