@@ -6,7 +6,13 @@
 
 ## Epidemic Trajectory and Future Incidence Simulation
 
-It is necessary to wait for more data.
+[![Growth](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Projections/growth_PRY.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Projections/growth_PRY.png)
+<small>Source: Compiled using data from the [Johns Hopkins University CSSE COVID-19 Dataset](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series).</small> <br />
+<small>Note: The average number of secondary cases is calculated using a maximum-likelihood estimate of R based on the model of [Cori *et al.* (2013)](https://doi.org/10.1093/aje/kwt133) and the previous serial interval values. After that, 1,000 futures epicurves are simulated from the five days before the current peak, which is not necessarily the real growth-phase peak, to the next two weeks to compare observed and predicted values.</small>
+
+[![Projection](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Projections/proj_PRY.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Projections/proj_PRY.png)
+<small>Source: Compiled using data from the [Johns Hopkins University CSSE COVID-19 Dataset](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series).</small> <br />
+<small>Note: The predicted cumulative incidence is estimated from the current peak to the following 30-days with 1,000 simulated epicurves per day based on the previous maximum-likelihood estimation and serial interval values. When the epidemic reaches a real peak, a log-linear model should be estimated to measure the decay-phase adequately.</small>
 
 ### Were You Looking for Previous Figures?
 
