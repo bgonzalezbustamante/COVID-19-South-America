@@ -2,6 +2,7 @@
 
 ## Johns Hopkins University CSSE COVID-19 Dataset Scraper
 ## R version 3.6.1 (2019-07-05) -- "Action of the Toes"
+## Date: March 2020
 ## Bastián González-Bustamante
 ## University of Oxford
 ## E-mail: bastian.gonzalezbustamante@politics.ox.ac.uk
