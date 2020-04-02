@@ -6,7 +6,7 @@
 
 ## Epidemic Trajectory and Future Incidence Simulation
 
-[![Growth](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Projections/peak_ESP.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Projections/peak_ESP.png)
+[![Peak](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Projections/peak_ESP.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Projections/peak_ESP.png)
 <small>Source: Compiled using data from the [Johns Hopkins University CSSE COVID-19 Dataset](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series).</small> <br />
 <small>Note: The average of secondary cases is calculated based on the R indicator and its posterior coefficient of variation. The R daily decay rate, on the one hand, is obtained from the second component of a log-incidence regression over the period, while the first component is used to fit the growth-phase. On the other hand, the posterior coefficient of variation of the R indicator is elaborated with a parametric serial interval based the [Li *et al.* (2020)](https://www.nejm.org/doi/full/10.1056/NEJMoa2001316) values. After that, 1,000 futures epicurves are simulated from the five days after the current peak to the next two weeks in order to compare observed and predicted values ([see figure](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Projections/decay_ESP.png)).</small>
 
