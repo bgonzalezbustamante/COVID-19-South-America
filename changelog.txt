@@ -5,7 +5,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.3.7] - 2020-04-03
 ### Changed
-- Corrections GitHub page.
+- Update of badges.
 
 ## [2.3.6] - 2020-04-01
 ### Added
