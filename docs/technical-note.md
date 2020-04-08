@@ -7,3 +7,7 @@ It is possible to observe in certain instances some significant changes between 
 - In medium phases, the first component of a log-incidence model is used to obtain the R daily growth rate. Although this generally increases the projections significantly; it is a more reliable method for intermediate-advanced stages. 
 
 - Finally, when the epidemic reaches a peak, the R daily decay rate is obtained from the second component of the log-incidence regression over the period, which shows a significant decrease in the projections and denotes the decay in the epidemic.
+
+### Were You Looking for Previous Figures?
+
+See the Visualisation COVID-19 component of the **OSF-Project** (DOI: [10.17605/OSF.IO/Y6C7Z](http://doi.org/10.17605/OSF.IO/Y6C7Z))
