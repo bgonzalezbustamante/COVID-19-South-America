@@ -12,7 +12,7 @@
 
 [![Projection](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Projections/proj_ITA.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Projections/proj_ITA.png)
 <small>Source: Compiled using data from the [Johns Hopkins University CSSE COVID-19 Dataset](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series).</small> <br />
-<small>Note: The predicted cumulative incidence of new cases is estimated from the current peak to the following 30-days with 1,000 simulated epicurves per day based on the previous estimation.</small>
+<small>Note: The predicted cumulative incidence of new cases is estimated from the current peak to the following 30-days with 1,000 simulated epicurves per day based on the previous estimation. For further details, see the [technical note](technical-note.md).</small>
 
 ### Were You Looking for Previous Figures?
 
