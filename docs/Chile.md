@@ -12,7 +12,7 @@
 
 [![Projection](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Projections/proj_CHL.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Projections/proj_CHL.png)
 <small>Source: Compiled using data from the [Johns Hopkins University CSSE COVID-19 Dataset](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series).</small> <br />
-<small>Note: The predicted cumulative incidence of new cases is estimated from the current peak to the following 30-days with 1,000 simulated epicurves per day based on the previous estimation. When the epidemic peak is confirmed, the R daily decay rate of the log-incidence model should be used to measure the decay-phase adequately. It is relevant to note this will decrease the projections significantly.</small>
+<small>Note: The predicted cumulative incidence of new cases is estimated from the current peak to the following 30-days with 1,000 simulated epicurves per day based on the previous estimation. When the epidemic peak is confirmed, the R daily decay rate of the log-incidence model should be used to measure the decay-phase adequately. It is relevant to note this will decrease the projections significantly. For further details, see the [technical note](technical-note.md).</small>
 
 ### Were You Looking for Previous Figures?
 
