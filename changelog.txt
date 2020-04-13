@@ -3,6 +3,12 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
+## [2.5.7] - 2020-04-13
+### Added
+- Possible peaks in growth-phase cases.
+### Changed
+- Corrections GitHub page.
+
 ## [2.4.7] - 2020-04-08
 ### Added
 - Technical note.
