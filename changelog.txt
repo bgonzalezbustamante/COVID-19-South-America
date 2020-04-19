@@ -3,6 +3,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
+## [2.5.9] - 2020-04-19
+### Changed
+- Update of badges.
+
 ## [2.5.8] - 2020-04-15
 ### Changed
 - Further details in the technical note.
