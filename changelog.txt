@@ -15,6 +15,8 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Changed
 - Logarithmic scale in projections.
 - Projections subtitles.
+### Changed
+- Minor typesetting corrections in the changelog.
 
 ## [2.5.9] - 2020-04-19
 ### Changed
@@ -99,7 +101,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Incidence analysis and epidemic curves stratified.
 - R and serial interval distribution estimations by country.
 ### Changed
-- Modify .gitignore file at GitHub repository.
+- Modify .gitignore file on GitHub repository.
 - Corrections GitHub page.
 
 ## [0.2.0] - 2020-03-11
@@ -110,8 +112,8 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - OSF project (DOI: 10.17605/OSF.IO/6FM7X).
 - OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
 - OSF visualisation component (DOI: 10.17605/OSF.IO/Y6C7Z).
-- License CC-BY Attribution 4.0 International at GitHub repository.
-- Changelog in TXT format at GitHub repository.
+- License CC-BY Attribution 4.0 International on GitHub repository.
+- Changelog in TXT format on GitHub repository.
 ### Changed
 - Corrections GitHub page.
 
