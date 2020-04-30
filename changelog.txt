@@ -7,6 +7,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Added
 - Early projections vs. observed data.
 - Oxford COVID-19 Government Response Tracker.
+- Burden Index.
 
 ## [Released]
 
