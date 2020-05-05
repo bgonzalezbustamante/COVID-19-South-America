@@ -9,6 +9,11 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Oxford COVID-19 Government Response Tracker.
 - Burden Index.
 
+## [2.6.11] - 2020-05-05
+### Changed
+- Logarithmic scale in daily incidence.
+- Plots labels.
+
 ## [Released]
 
 ## [2.5.10] - 2020-04-20
