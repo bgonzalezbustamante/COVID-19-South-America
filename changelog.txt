@@ -11,6 +11,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
+## [2.6.12] - 2020-05-12
+### Deprecated
+- Updating on a regular basis.
+
 ## [2.6.11] - 2020-05-05
 ### Changed
 - Logarithmic scale in daily incidence.
