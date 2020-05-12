@@ -2,7 +2,7 @@
 
 [![version](https://img.shields.io/badge/version-v2.6.12-blue.svg)](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/changelog.txt) [![latestupdate](https://img.shields.io/badge/latest%20data%20update-2020--05--04-orange.svg)](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series) [![DOI](https://img.shields.io/badge/DOI-10.17605%2FOSF.IO%2F6FM7X-blue)](http://doi.org/10.17605/OSF.IO/6FM7X) [![CC](https://img.shields.io/badge/license-CC--BY--4.0-black)](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/LICENSE.txt) [![R](https://img.shields.io/badge/Made%20with-R%20v3.6.1-1f425f.svg)](https://cran.r-project.org/) [![Jekyll](https://img.shields.io/badge/Made%20with-Jekyll-1f425f.svg)](https://jekyllrb.com/)
 
-> **This project will be deprecated since mid-May waiting for the peer-review outcomes of a paper focused on early projections and governmental responses to COVID-19 epidemic in South America**.
+> This project will be deprecated since mid-May waiting for the peer-review outcomes of a paper focused on early projections and governmental responses to COVID-19 epidemic in South America.
 
 This is a measurement of COVID-19 coronavirus outbreak -a pandemic- in South America, specifically, the epidemic curve based on the incidence in the region [(see epicurve stratified by country)](Incidence-South-America.md). Furthermore, estimated R, explored serial interval (SI) distribution, and future incidence simulations are fitted by case.<sup id="a1">[1](#f1)</sup> The countries reviewed are as follows: 
 
