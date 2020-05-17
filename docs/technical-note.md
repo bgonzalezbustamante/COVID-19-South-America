@@ -1,5 +1,7 @@
 ## Technical Note
 
+> This project was deprecated in mid-May 2020 waiting for the peer-review outcome of a paper focused on early projections and governmental responses to COVID-19 epidemic in South America.
+
 It is possible to observe in certain instances some significant changes between projections in short time lapses. This is because of the models that have been used. In these estimations, three models have been fitted. 
 
 - First, in earlier stages, the average number of secondary cases have been calculated using a maximum likelihood-estimations of R based in a parametric serial interval with a Gamma distribution. For example, [Paraguay](Paraguay.md), [Uruguay](Uruguay.md), and [Venezuela](Venezuela.md).
