@@ -3,7 +3,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [2.7.13] - TBC
+## [2.8.13] - TBC
 ### Changed
 - Early projections vs. observed data.
 - Oxford COVID-19 Government Response Tracker.
@@ -16,6 +16,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Burden Index.
 
 ## [Released]
+
+## [2.8.12] - 2020-05-20
+### Added
+- Oxford COVID-19 Government Response Tracker data backup.
 
 ## [2.7.12] - 2020-05-17
 ### Removed
