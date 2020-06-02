@@ -3,11 +3,16 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [2.8.13] - TBC
+## [2.9.13] - 2020-05-24
+### Added
+- Stratified, pooled Cox Proportional Hazards Models for suppression interventions.
+- Early evolution of the pandemic in South America descriptives.
+
+## [2.8.13] - 2020-05-23
 ### Changed
-- Early projections vs. observed data.
-- Oxford COVID-19 Government Response Tracker.
-- Burden Index.
+- Early projections vs. observed data corrections.
+- Oxford COVID-19 Government Response Tracker corrections.
+- Burden Index corrections.
 
 ## [2.6.10] - 2020-04-21
 ### Added
@@ -17,10 +22,21 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
-## [2.8.12] - 2020-05-20
+## [2.11.13] - 2020-06-02
 ### Added
-- Oxford COVID-19 Government Response Tracker Dataset backup.
-- Johns Hopkins University CSSE COVID-19 Dataset backup.
+- Preprint at private OSF component.
+### Changed
+- Minor typesetting corrections in the changelog.
+
+## [2.10.13] - 2020-05-31
+### Added
+- Our World in Data Dataset backup at GitHub.
+- V-Dem Core v10 Dataset backup at OSF.
+
+## [2.8.12] - 2020-05-31
+### Added
+- Oxford COVID-19 Government Response Tracker Dataset backup at GitHub.
+- Johns Hopkins University CSSE COVID-19 Dataset backup at GitHub.
 
 ## [2.7.12] - 2020-05-17
 ### Removed
@@ -125,7 +141,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Incidence analysis and epidemic curves stratified.
 - R and serial interval distribution estimations by country.
 ### Changed
-- Modify .gitignore file on GitHub repository.
+- Modify .gitignore file at GitHub repository.
 - Corrections GitHub page.
 
 ## [0.2.0] - 2020-03-11
@@ -136,8 +152,8 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - OSF project (DOI: 10.17605/OSF.IO/6FM7X).
 - OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
 - OSF visualisation component (DOI: 10.17605/OSF.IO/Y6C7Z).
-- License CC-BY Attribution 4.0 International on GitHub repository.
-- Changelog in TXT format on GitHub repository.
+- License CC-BY Attribution 4.0 International at GitHub repository.
+- Changelog in TXT format at GitHub repository.
 ### Changed
 - Corrections GitHub page.
 
