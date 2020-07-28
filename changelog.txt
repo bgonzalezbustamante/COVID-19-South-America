@@ -3,6 +3,14 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
+## [2.13.17] - TBC
+### Added
+- Replication File: Demonstration for R at GitHub.
+
+## [2.12.14] - 2020-07-15
+### Added
+- New stratified, pooled model.
+
 ## [2.9.13] - 2020-05-24
 ### Added
 - Stratified, pooled Cox Proportional Hazards Models for suppression interventions.
@@ -22,9 +30,27 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
+## [2.12.17] - 2020-07-28
+### Changed
+- Minor typesetting corrections in the changelog.
+
+## [2.12.16] - 2020-07-20
+### Changed
+- AM revised at private OSF component.
+
+## [2.12.15] - 2020-07-16
+### Changed
+- AM revised based on the revision comments at private OSF component.
+- Replication File: Demonstration for R at private OSF component.
+
+## [2.11.14] - 2020-07-13
+### Changed
+- Accepted Manuscript (AM) after the peer review process at private OSF component.
+
 ## [2.11.13] - 2020-06-02
 ### Added
 - Preprint at private OSF component.
+- Replication File: Demonstration for R at private OSF component.
 ### Changed
 - Minor typesetting corrections in the changelog.
 
@@ -33,7 +59,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Our World in Data Dataset backup at GitHub.
 - V-Dem Core v10 Dataset backup at OSF.
 
-## [2.8.12] - 2020-05-31
+## [2.8.12] - 2020-05-20
 ### Added
 - Oxford COVID-19 Government Response Tracker Dataset backup at GitHub.
 - Johns Hopkins University CSSE COVID-19 Dataset backup at GitHub.
