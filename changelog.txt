@@ -6,6 +6,8 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ## [2.13.17] - TBC
 ### Added
 - Replication File: Demonstration for R at GitHub.
+### Changed
+- Reorganisation between old public repository and paper analysis.
 
 ## [2.12.14] - 2020-07-15
 ### Added
