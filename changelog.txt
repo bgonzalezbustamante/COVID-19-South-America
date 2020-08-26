@@ -173,7 +173,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [1.0.0] - 2020-03-12
 ### Added
-- Shields.io badges in SVG.
+- Badges in SVG.
 - Incidence analysis and epidemic curves stratified.
 - R and serial interval distribution estimations by country.
 ### Changed
