@@ -1,6 +1,6 @@
 ## Technical Note
 
-> This project was deprecated in mid-May 2020 waiting for the peer-review outcome of a paper focused on early projections and governmental responses to COVID-19 epidemic in South America.
+> This online monitor was deprecated in mid-May 2020 to focus on a paper which evaluates early projections and governmental responses to COVID-19 epidemic in South America. This paper will be published in *World Development* journal. See its [demonstration for R](Early-Responses.md).
 
 It is possible to observe in certain instances some significant changes between projections in short time lapses. This is because of the models that have been used. In these estimations, three models have been fitted. 
 
