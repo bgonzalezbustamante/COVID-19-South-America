@@ -2,7 +2,7 @@
 
 This is the demonstration for R of the forthcoming paper in *World Development* journal. This article analyses the evolution of COVD-19 and early government response to the pandemic in eight South American countries. To this aim, the article explores indicators which impacted on the early government response of governments of implementing restrictive policies of social distancing associated with a suppression strategy. The pressure on the health systems is evaluated with early projections of the growth-phase of the epidemic, which is incorporated as an indicator in the analysis of early interventions based on Cox proportional hazards models.
 
-- [Johns Hopkins CSSE COVID-19 Dataset Scraper](../demonstration-R/CSSE-Scraper.md)
+- [Johns Hopkins CSSE COVID-19 Dataset Scraper](/demonstration-R/CSSE-Scraper.md)
 - Oxford Government Responses Tracker Scraper (forthcoming)
 - Data Analysis Precoding (forthcoming)
 - Descriptive Analysis Code (forthcoming)
