@@ -1,8 +1,6 @@
 ## COVID-19 in South America
 
-This was an online monitor of COVID-19 coronavirus outbreak -a pandemic- in South America deployed on GitHub between March 2020 and mid-May 2020, which presented epidemic curves, estimated R, explored serial interval distribution, and future incidence simulations by each country during that period. This data and some of these analyses were the basis for the abovementioned paper.
-
-This is a measurement of COVID-19 coronavirus outbreak -a pandemic- in South America, specifically, the epidemic curve based on the incidence in the region [(see epicurve stratified by country)](Incidence-South-America.md). Furthermore, estimated R, explored serial interval (SI) distribution, and future incidence simulations are fitted by case.<sup id="a1">[1](#f1)</sup> The countries reviewed are as follows: 
+This was an online monitor of COVID-19 coronavirus outbreak -a pandemic- in South America deployed on GitHub between March 2020 and mid-May 2020, which presented the epidemic curves based on the incidence in the region [(see epicurve stratified by country)](Incidence-South-America.md). Furthermore, estimated R, explored serial interval (SI) distribution, and future incidence simulations are fitted by case.<sup id="a1">[1](#f1)</sup> The countries reviewed are as follows: 
 
 - [Argentina](Argentina.md) (ARG), 
 - [Bolivia](Bolivia.md) (BOL),
@@ -20,7 +18,6 @@ Moreover, [Spain](Spain.md) (ESP), the [United Kingdom](United-Kingdom.md) (GBR)
 The charts and estimations are updated after the close of the day in Greenwich Mean Time based on the **Johns Hopkins University CSSE COVID-19 Dataset** [(see repository)](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series). 
 
 The materials can be downloaded from the **OSF-Project** (DOI: [10.17605/OSF.IO/6FM7X](http://doi.org/10.17605/OSF.IO/6FM7X)). This site will be updated on a regular basis, see the [changelog](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/changelog.txt).
-
 
 ### Notes
 
