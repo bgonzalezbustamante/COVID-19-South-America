@@ -21,6 +21,12 @@ The charts and estimations are updated after the close of the day in Greenwich M
 
 The materials can be downloaded from the **OSF-Project** (DOI: [10.17605/OSF.IO/6FM7X](http://doi.org/10.17605/OSF.IO/6FM7X)). This site will be updated on a regular basis, see the [changelog](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/changelog.txt).
 
+### About Me
+
+I am a PRS in the DPhil in Politics programme in the [Department of Politics and International Relations](https://www.politics.ox.ac.uk/) and [St Hilda's College](https://www.sthildas.ox.ac.uk/) at the [University of Oxford](http://www.ox.ac.uk/), United Kingdom. Furthermore, I am an Instructor in the Department of Public Administration and Policy at the Faculty of Economics and Management at the Universidad de Santiago, where I have been working since 2014. 
+
+Further details on my [website at the University of Oxford](http://users.ox.ac.uk/~shil5311/) or my [landing page](https://bgonzalezbustamante.com/).
+
 ### Notes
 
 1.  <small id="f1"> R is specifically the effective reproduction number (R<sub>e</sub>), which is calculated on a daily incidence basis. Therefore, it allows us to measure the public health systems response (see [Cori *et al*., 2013](https://dx.doi.org/10.1093%2Faje%2Fkwt133); see also [Thomson *et al.*, 2019](https://doi.org/10.1016/j.epidem.2019.100356)). On the other hand, SI is the time interval between the symptoms in each case and the onset of them in secondary cases because of transmission. Finally, the projections are 1,000 future incidence simulations by case using maximum-likelihood estimations or log-incidence models, depending on the stage of the growth phase. For further details, see the [technical note](technical-note.md). </small> [↩](#a1)
