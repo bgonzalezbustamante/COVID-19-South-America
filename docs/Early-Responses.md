@@ -4,7 +4,7 @@ This is the demonstration for R of the forthcoming paper in *World Development* 
 
 The chunks of the code are presented below. It is also possible to revise the full replication file (171 pages) in PDF (forthcoming).
 
-- [Johns Hopkins CSSE COVID-19 Dataset Scraper](demonstration-R/CSSE-Scraper.md)
+- [Johns Hopkins CSSE COVID-19 Dataset scraper](demonstration-R/CSSE-Scraper.md)
 - Oxford Government Responses Tracker scraper (forthcoming)
 - Data analysis precoding (forthcoming)
 - Descriptive analysis code (forthcoming)
