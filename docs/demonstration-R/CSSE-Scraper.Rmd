@@ -1,7 +1,6 @@
 ---
 title: "Johns Hopkins CSSE COVID-19 Dataset Scraper"
 author: "Bastián González-Bustamante"
-date: "15-07-2020"
 output: github_document
 ---
 
