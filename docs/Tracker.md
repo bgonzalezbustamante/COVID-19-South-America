@@ -1,10 +1,10 @@
-## COVID-19 in South America
+## COVID-19 in South America Tracker
 
 [![Update](https://img.shields.io/badge/latest%20data%20update-2020--05--16-orange.svg)](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series)
 
-> This online monitor was deprecated in mid-May 2020 to focus on a paper which evaluates early projections and governmental responses to COVID-19 epidemic in South America. This paper will be published in *World Development* journal. See its [demonstration for R](Early-Responses.md).
+> This online tracker was deprecated in mid-May 2020 to focus on a paper which evaluates early projections and governmental responses to COVID-19 epidemic in South America. This paper will be published in *World Development* journal. See its [demonstration for R](Early-Responses.md).
 
-This was an online monitor of COVID-19 coronavirus outbreak -a pandemic- in South America deployed on GitHub between March 2020 and mid-May 2020, which presented the epidemic curves based on the incidence in the region [(see epicurve stratified by country)](Incidence-South-America.md). Furthermore, estimated R, explored serial interval (SI) distribution, and future incidence simulations are fitted by case.<sup id="a1">[1](#f1)</sup> The countries reviewed are as follows: 
+This was an online tracker of COVID-19 coronavirus outbreak -a pandemic- in South America deployed on GitHub between March 2020 and mid-May 2020, which presented the epidemic curves based on the incidence in the region [(see epicurve stratified by country)](Incidence-South-America.md). Furthermore, estimated R, explored serial interval (SI) distribution, and future incidence simulations are fitted by case.<sup id="a1">[1](#f1)</sup> The countries reviewed are as follows: 
 
 - [Argentina](Argentina.md) (ARG), 
 - [Bolivia](Bolivia.md) (BOL),
