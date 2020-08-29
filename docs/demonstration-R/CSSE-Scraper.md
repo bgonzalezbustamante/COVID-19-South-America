@@ -1,4 +1,4 @@
-Johns Hopkins CSSE COVID-19 Dataset Scraper
+Johns Hopkins CSSE COVID-19 Dataset scraper
 ================
 Bastián González-Bustamante
 
