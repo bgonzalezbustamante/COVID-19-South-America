@@ -33,6 +33,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ## [3.0.0] - 2020-08-29
 ### Added
 - Early responeses and demonstration for R section.
+- Johns Hopkins CSSE COVID-19 Dataset scraper.
 ### Changed
 - Reorganisation between old online monitor and paper analysis.
 
