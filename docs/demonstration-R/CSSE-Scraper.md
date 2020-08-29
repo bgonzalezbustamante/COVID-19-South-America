@@ -1,7 +1,6 @@
 Johns Hopkins CSSE COVID-19 Dataset Scraper
 ================
 Bastián González-Bustamante
-15-07-2020
 
 ### Precoding
 
