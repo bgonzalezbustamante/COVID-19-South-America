@@ -3,11 +3,9 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [3.0.0] - TBC
+## [3.1.0] - TBC
 ### Added
 - Replication File: Demonstration for R at GitHub.
-### Changed
-- Reorganisation between old public repository and paper analysis.
 
 ## [2.12.14] - 2020-07-15
 ### Added
@@ -31,6 +29,12 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Burden Index.
 
 ## [Released]
+
+## [3.0.0] - 2020-08-29
+### Added
+- Early responeses and demonstration for R section.
+### Changed
+- Reorganisation between old online monitor and paper analysis.
 
 ## [2.12.19] - 2020-08-26
 ### Changed
