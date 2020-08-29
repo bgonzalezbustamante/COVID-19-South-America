@@ -4,7 +4,7 @@
 
 - [Early Government Responses to COVID-19 in South America.](Early-Responses.md) This is the demonstration for R of the forthcoming paper in *World Development* journal. This article analyses the evolution of COVD-19 and early government response to the pandemic in eight South American countries. To this aim, the article explores indicators which impacted on the early government response of governments of implementing restrictive policies of social distancing associated with a suppression strategy. The pressure on the health systems is evaluated with early projections of the growth-phase of the epidemic, which is incorporated as an indicator in the analysis of early interventions based on Cox proportional hazards models.
 
-- [COVID-19 in South America.](Monitor.md) This was an online monitor of COVID-19 coronavirus outbreak in South America deployed on GitHub between March 2020 and mid-May 2020, which presented epidemic curves, estimated R, explored serial interval distribution, and future incidence simulations by each country during that period. This data and some of these analyses were the basis for the abovementioned paper.
+- [COVID-19 in South America Tracker.](Tracker.md) This was an online tracker of COVID-19 coronavirus outbreak in South America deployed on GitHub between March 2020 and mid-May 2020, which presented epidemic curves, estimated R, explored serial interval distribution, and future incidence simulations by each country during that period. This data and some of these analyses were the basis for the abovementioned paper.
 
 ### About Me
 
