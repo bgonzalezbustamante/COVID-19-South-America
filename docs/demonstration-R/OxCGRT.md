@@ -2,6 +2,16 @@ Oxford Government Responses Tracker Scraper
 ================
 Bastián González-Bustamante
 
+  - [Precoding](#precoding)
+  - [Argentina Responses](#argentina-responses)
+  - [Bolivia Responses](#bolivia-responses)
+  - [Brazil Responses](#brazil-responses)
+  - [Chile Responses](#chile-responses)
+  - [Colombia Responses](#colombia-responses)
+  - [Paraguay Responses](#paraguay-responses)
+  - [Peru Responses](#peru-responses)
+  - [Uruguay Responses](#uruguay-responses)
+
 ### Precoding
 
 ``` r
