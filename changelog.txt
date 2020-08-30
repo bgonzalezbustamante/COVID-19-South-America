@@ -3,32 +3,35 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [3.1.0] - TBC
+## [3.2.0] - TBC
 ### Added
 - Replication File: Demonstration for R at GitHub.
-
-## [2.12.14] - 2020-07-15
-### Added
-- New stratified, pooled model.
-
-## [2.9.13] - 2020-05-24
-### Added
-- Stratified, pooled Cox Proportional Hazards Models for suppression interventions.
-- Early evolution of the pandemic in South America descriptives.
-
-## [2.8.13] - 2020-05-23
-### Changed
-- Early projections vs. observed data corrections.
-- Oxford COVID-19 Government Response Tracker corrections.
-- Burden Index corrections.
-
-## [2.6.10] - 2020-04-21
-### Added
-- Early projections vs. observed data.
-- Oxford COVID-19 Government Response Tracker.
-- Burden Index.
+- Early projections precoding.
+- Early projections Argentina code.
+- Early projections Bolivia code.
+- Early projections Brazil code.
+- Early projections Chile code.
+- Early projections Colombia code.
+- Early projections Paraguay code.
+- Early projections Peru code.
+- Early projections Uruguay code.
+- Parametric Re estimations Argentina code.
+- Parametric Re estimations Bolivia code.
+- Parametric Re estimations Brazil code.
+- Parametric Re estimations Chile code.
+- Parametric Re estimations Colombia code.
+- Parametric Re estimations Paraguay code.
+- Parametric Re estimations Peru code.
+- Parametric Re estimations Uruguay code.
+- Proportional Hazards models code.
+- Descriptives per people code.
 
 ## [Released]
+
+## [3.1.0] - 2020-08-30
+### Added
+- Oxford Government Responses Tracker scraper.
+- Descriptive analysis code.
 
 ## [3.0.0] - 2020-08-29
 ### Added
@@ -58,6 +61,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - AM revised based on the revision comments at private OSF component.
 - Replication File: Demonstration for R at private OSF component.
 
+## [2.12.14] - 2020-07-15
+### Added
+- New stratified, pooled model.
+
 ## [2.11.14] - 2020-07-13
 ### Changed
 - Accepted Manuscript (AM) after the peer review process at private OSF component.
@@ -73,6 +80,17 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Added
 - Our World in Data Dataset backup at GitHub.
 - V-Dem Core v10 Dataset backup at OSF.
+
+## [2.9.13] - 2020-05-24
+### Added
+- Stratified, pooled Cox Proportional Hazards Models for suppression interventions.
+- Early evolution of the pandemic in South America descriptives.
+
+## [2.8.13] - 2020-05-23
+### Changed
+- Early projections vs. observed data corrections.
+- Oxford COVID-19 Government Response Tracker corrections.
+- Burden Index corrections.
 
 ## [2.8.12] - 2020-05-20
 ### Added
@@ -91,6 +109,12 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Changed
 - Logarithmic scale in daily incidence.
 - Plots labels.
+
+## [2.6.10] - 2020-04-21
+### Added
+- Early projections vs. observed data.
+- Oxford COVID-19 Government Response Tracker.
+- Burden Index.
 
 ## [2.5.10] - 2020-04-20
 ### Changed
