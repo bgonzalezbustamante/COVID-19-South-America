@@ -2,6 +2,11 @@ Johns Hopkins CSSE COVID-19 Dataset Scraper
 ================
 Bastián González-Bustamante
 
+  - [Precoding](#precoding)
+  - [COVID-19 Cases Scraper](#covid-19-cases-scraper)
+  - [COVID-19 Deaths Scraper](#covid-19-deaths-scraper)
+  - [COVID-19 Recovered Scraper](#covid-19-recovered-scraper)
+
 ### Precoding
 
 ``` r
