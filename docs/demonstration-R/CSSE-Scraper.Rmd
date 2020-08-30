@@ -1,7 +1,9 @@
 ---
 title: "Johns Hopkins CSSE COVID-19 Dataset Scraper"
 author: "Bastián González-Bustamante"
-output: github_document
+output: 
+  github_document:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
