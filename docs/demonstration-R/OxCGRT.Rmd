@@ -1,7 +1,9 @@
 ---
 title: "Oxford Government Responses Tracker Scraper"
 author: "Bastián González-Bustamante"
-output: github_document
+output: 
+  github_document:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
