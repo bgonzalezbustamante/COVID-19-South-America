@@ -3,12 +3,9 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [3.2.0] - TBC
+## [3.4.0] - TBC
 ### Added
 - Replication File: Demonstration for R at GitHub.
-- Early projections Paraguay code.
-- Early projections Peru code.
-- Early projections Uruguay code.
 - Parametric Re estimations Argentina code.
 - Parametric Re estimations Bolivia code.
 - Parametric Re estimations Brazil code.
@@ -21,6 +18,12 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Descriptives per people code.
 
 ## [Released]
+
+## [3.3.0] - 2020-09-01
+### Added
+- Early projections Paraguay code.
+- Early projections Peru code.
+- Early projections Uruguay code.
 
 ## [3.2.0] - 2020-08-31
 ### Added
