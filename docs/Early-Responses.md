@@ -8,7 +8,7 @@ The chunks of the code are presented below. It is also possible to revise the fu
 - [Oxford Government Responses Tracker Scraper](demonstration-R/OxCGRT.md)
 - [Descriptive Analysis Code](demonstration-R/Descriptive-Analysis.md)
 - [Early Projections Precoding](demonstration-R/Projections-Precoding.md)
-- Early Projections Argentina Code (forthcoming)
+- [Early Projections Argentina Code](demonstration-R/Projections-Argentina.md)
 - Early Projections Bolivia Code (forthcoming)
 - Early Projections Brazil Code (forthcoming)
 - Early Projections Chile Code (forthcoming)
