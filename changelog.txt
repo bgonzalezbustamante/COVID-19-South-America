@@ -6,9 +6,6 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ## [3.2.0] - TBC
 ### Added
 - Replication File: Demonstration for R at GitHub.
-- Early projections precoding.
-- Early projections Argentina code.
-- Early projections Bolivia code.
 - Early projections Brazil code.
 - Early projections Chile code.
 - Early projections Colombia code.
@@ -27,6 +24,12 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Descriptives per people code.
 
 ## [Released]
+
+## [3.2.0] - 2020-08-31
+### Added
+- Early projections precoding.
+- Early projections Argentina code.
+- Early projections Bolivia code.
 
 ## [3.1.0] - 2020-08-30
 ### Added
