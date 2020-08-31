@@ -1,6 +1,6 @@
 Descriptive Analysis Code
 ================
-Bastián González-Bustamante
+[Bastián González-Bustamante](http://users.ox.ac.uk/~shil5311/)
 
   - [Precoding](#precoding)
   - [Descriptive Analysis](#descriptive-analysis)
