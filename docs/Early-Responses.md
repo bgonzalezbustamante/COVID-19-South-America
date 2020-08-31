@@ -14,7 +14,7 @@ The chunks of the code are presented below. It is also possible to revise the fu
 - [Early Projections Chile Code](demonstration-R/Projections-Chile.md)
 - [Early Projections Colombia Code](demonstration-R/Projections-Colombia.md)
 - [Early Projections Paraguay Code](demonstration-R/Projections-Paraguay.md)
-- Early Projections Peru Code (forthcoming)
+- [Early Projections Peru Code](demonstration-R/Projections-Peru.md)
 - Early Projections Uruguay Code (forthcoming)
 - Parametric Re Estimations Argentina Code (forthcoming)
 - Parametric Re Estimations Bolivia Code (forthcoming)
