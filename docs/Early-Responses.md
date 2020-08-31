@@ -6,8 +6,8 @@ The chunks of the code are presented below. It is also possible to revise the fu
 
 - [Johns Hopkins CSSE COVID-19 Dataset Scraper](demonstration-R/CSSE-Scraper.md)
 - [Oxford Government Responses Tracker Scraper](demonstration-R/OxCGRT.md)
-- [Descriptive Analysis Code](demonstration-R/Descriptive-Analysis.md) 
-- Early Projections Precoding (forthcoming)
+- [Descriptive Analysis Code](demonstration-R/Descriptive-Analysis.md)
+- [Early Projections Precoding](demonstration-R/Projections-Precoding.md)
 - Early Projections Argentina Code (forthcoming)
 - Early Projections Bolivia Code (forthcoming)
 - Early Projections Brazil Code (forthcoming)
