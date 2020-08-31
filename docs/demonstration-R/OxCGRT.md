@@ -1,6 +1,6 @@
 Oxford Government Responses Tracker Scraper
 ================
-Bastián González-Bustamante
+[Bastián González-Bustamante](http://users.ox.ac.uk/~shil5311/)
 
   - [Precoding](#precoding)
   - [Argentina Responses](#argentina-responses)
