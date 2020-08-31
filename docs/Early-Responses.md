@@ -11,7 +11,7 @@ The chunks of the code are presented below. It is also possible to revise the fu
 - [Early Projections Argentina Code](demonstration-R/Projections-Argentina.md)
 - [Early Projections Bolivia Code](demonstration-R/Projections-Bolivia.md)
 - [Early Projections Brazil Code](demonstration-R/Projections-Brazil.md)
-- Early Projections Chile Code (forthcoming)
+- [Early Projections Chile Code](demonstration-R/Projections-Chile.md)
 - Early Projections Colombia Code (forthcoming)
 - Early Projections Paraguay Code (forthcoming)
 - Early Projections Peru Code (forthcoming)
