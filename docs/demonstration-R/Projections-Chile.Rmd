@@ -1,0 +1,3677 @@
+---
+title: "Early Projections Chile Code"
+author: "[Bastián González-Bustamante](http://users.ox.ac.uk/~shil5311/)"
+output: 
+  github_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, warning = FALSE, echo = FALSE}
+## Packages
+library(tidyverse)
+library(lubridate)
+
+## Forks Structure
+fork1 <- "https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19/"
+fork2 <- "master/csse_covid_19_data/csse_covid_19_time_series/"
+
+## JHU-CSSE COVID-19 Confirmed Dataset
+fork_cases <- "time_series_covid19_confirmed_global.csv"
+JHU_cases <- read.csv(paste(fork1, fork2, fork_cases, sep = ""), sep = ",")
+
+## JHU-CSSE COVID-19 Deaths Dataset
+fork_deaths <- "time_series_covid19_deaths_global.csv"
+JHU_deaths <- read.csv(paste(fork1, fork2, fork_deaths, sep = ""), sep = ",")
+
+## JHU-CSSE COVID-19 Recovered Dataset
+fork_recovered <- "time_series_covid19_recovered_global.csv"
+JHU_recovered <- read.csv(paste(fork1, fork2, fork_recovered, sep = ""), sep = ",")
+
+## Period Coverage
+dd_JHU <- as.numeric((as.Date("2020-05-19")) - as.Date("2020-01-22"))
+begin_JHU <- ((as.Date("2020-05-19"))-dd_JHU) ## 22 January
+dates_JHU <- seq(as.Date(begin_JHU), as.Date("2020-05-19"), by="days")
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, echo = FALSE}
+## ARGENTINA
+cases_arg <- slice(JHU_cases, which(JHU_cases[,2] == "Argentina")
+                   :which(JHU_cases[,2] == "Argentina")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+cases_arg <- data.frame(cases_arg, dates_JHU)
+cases_arg$Province.State <- NULL
+cases_arg$Country.Region <- NULL
+cases_arg$Lat <- NULL
+cases_arg$Long <- NULL
+cases_arg$Date <- NULL
+cases_arg$cumulative_cases <- NULL
+names(cases_arg)[1] = "ARG"
+
+## BOLIVIA
+cases_bol <- slice(JHU_cases, which(JHU_cases[,2] == "Bolivia")
+                   :which(JHU_cases[,2] == "Bolivia")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+cases_bol <- data.frame(cases_bol, dates_JHU)
+cases_bol$Province.State <- NULL
+cases_bol$Country.Region <- NULL
+cases_bol$Lat <- NULL
+cases_bol$Long <- NULL
+cases_bol$Date <- NULL
+cases_bol$cumulative_cases <- NULL
+names(cases_bol)[1] = "BOL"
+
+## BRAZIL
+cases_bra <- slice(JHU_cases, which(JHU_cases[,2] == "Brazil")
+                   :which(JHU_cases[,2] == "Brazil")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+cases_bra <- data.frame(cases_bra, dates_JHU)
+cases_bra$Province.State <- NULL
+cases_bra$Country.Region <- NULL
+cases_bra$Lat <- NULL
+cases_bra$Long <- NULL
+cases_bra$Date <- NULL
+cases_bra$cumulative_cases <- NULL
+names(cases_bra)[1] = "BRA"
+
+## CHILE
+cases_chl <- slice(JHU_cases, which(JHU_cases[,2] == "Chile")
+             :which(JHU_cases[,2] == "Chile")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+cases_chl <- data.frame(cases_chl, dates_JHU)
+cases_chl$Province.State <- NULL
+cases_chl$Country.Region <- NULL
+cases_chl$Lat <- NULL
+cases_chl$Long <- NULL
+cases_chl$Date <- NULL
+cases_chl$cumulative_cases <- NULL
+names(cases_chl)[1] = "CHL"
+
+## COLOMBIA
+cases_col <- slice(JHU_cases, which(JHU_cases[,2] == "Colombia")
+             :which(JHU_cases[,2] == "Colombia")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+cases_col <- data.frame(cases_col, dates_JHU)
+cases_col$Province.State <- NULL
+cases_col$Country.Region <- NULL
+cases_col$Lat <- NULL
+cases_col$Long <- NULL
+cases_col$Date <- NULL
+cases_col$cumulative_cases <- NULL
+names(cases_col)[1] = "COL"
+
+## PARAGUAY
+cases_pry <- slice(JHU_cases, which(JHU_cases[,2] == "Paraguay")
+                   :which(JHU_cases[,2] == "Paraguay")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+cases_pry <- data.frame(cases_pry, dates_JHU)
+cases_pry$Province.State <- NULL
+cases_pry$Country.Region <- NULL
+cases_pry$Lat <- NULL
+cases_pry$Long <- NULL
+cases_pry$Date <- NULL
+cases_pry$cumulative_cases <- NULL
+names(cases_pry)[1] = "PRY"
+
+## PERU
+cases_per <- slice(JHU_cases, which(JHU_cases[,2] == "Peru")
+                   :which(JHU_cases[,2] == "Peru")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+cases_per <- data.frame(cases_per, dates_JHU)
+cases_per$Province.State <- NULL
+cases_per$Country.Region <- NULL
+cases_per$Lat <- NULL
+cases_per$Long <- NULL
+cases_per$Date <- NULL
+cases_per$cumulative_cases <- NULL
+names(cases_per)[1] = "PER"
+
+## URUGUAY
+cases_ury <- slice(JHU_cases, which(JHU_cases[,2] == "Uruguay")
+                   :which(JHU_cases[,2] == "Uruguay")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+cases_ury <- data.frame(cases_ury, dates_JHU)
+cases_ury$Province.State <- NULL
+cases_ury$Country.Region <- NULL
+cases_ury$Lat <- NULL
+cases_ury$Long <- NULL
+cases_ury$Date <- NULL
+cases_ury$cumulative_cases <- NULL
+names(cases_ury)[1] = "URY"
+
+# Combine Datasets
+cases_covid19 <- merge(cases_arg, cases_bol, by = "dates_JHU", all = TRUE)
+cases_covid19 <- merge(cases_covid19, cases_bra, by = "dates_JHU", all = TRUE)
+cases_covid19 <- merge(cases_covid19, cases_chl, by = "dates_JHU", all = TRUE)
+cases_covid19 <- merge(cases_covid19, cases_col, by = "dates_JHU", all = TRUE)
+cases_covid19 <- merge(cases_covid19, cases_pry, by = "dates_JHU", all = TRUE)
+cases_covid19 <- merge(cases_covid19, cases_per, by = "dates_JHU", all = TRUE)
+cases_covid19 <- merge(cases_covid19, cases_ury, by = "dates_JHU", all = TRUE)
+
+## Slice Data (26 Feb - 15 May)
+confirmed_covid19 <- slice(cases_covid19, 36:(nrow(cases_covid19)-4))
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, echo = FALSE}
+## ARGENTINA
+deaths_arg <- slice(JHU_deaths, which(JHU_deaths[,2] == "Argentina")
+                    :which(JHU_deaths[,2] == "Argentina")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+deaths_arg <- data.frame(deaths_arg, dates_JHU)
+deaths_arg$Province.State <- NULL
+deaths_arg$Country.Region <- NULL
+deaths_arg$Lat <- NULL
+deaths_arg$Long <- NULL
+deaths_arg$Date <- NULL
+deaths_arg$cumulative_cases <- NULL
+names(deaths_arg)[1] = "ARG"
+
+## BOLIVIA
+deaths_bol <- slice(JHU_deaths, which(JHU_deaths[,2] == "Bolivia")
+                    :which(JHU_deaths[,2] == "Bolivia")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+deaths_bol <- data.frame(deaths_bol, dates_JHU)
+deaths_bol$Province.State <- NULL
+deaths_bol$Country.Region <- NULL
+deaths_bol$Lat <- NULL
+deaths_bol$Long <- NULL
+deaths_bol$Date <- NULL
+deaths_bol$cumulative_cases <- NULL
+names(deaths_bol)[1] = "BOL"
+
+## BRAZIL
+deaths_bra <- slice(JHU_deaths, which(JHU_deaths[,2] == "Brazil")
+                    :which(JHU_deaths[,2] == "Brazil")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+deaths_bra <- data.frame(deaths_bra, dates_JHU)
+deaths_bra$Province.State <- NULL
+deaths_bra$Country.Region <- NULL
+deaths_bra$Lat <- NULL
+deaths_bra$Long <- NULL
+deaths_bra$Date <- NULL
+deaths_bra$cumulative_cases <- NULL
+names(deaths_bra)[1] = "BRA"
+
+## CHILE
+deaths_chl <- slice(JHU_deaths, which(JHU_deaths[,2] == "Chile")
+                    :which(JHU_deaths[,2] == "Chile")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+deaths_chl <- data.frame(deaths_chl, dates_JHU)
+deaths_chl$Province.State <- NULL
+deaths_chl$Country.Region <- NULL
+deaths_chl$Lat <- NULL
+deaths_chl$Long <- NULL
+deaths_chl$Date <- NULL
+deaths_chl$cumulative_cases <- NULL
+names(deaths_chl)[1] = "CHL"
+
+## COLOMBIA
+deaths_col <- slice(JHU_deaths, which(JHU_deaths[,2] == "Colombia")
+                    :which(JHU_deaths[,2] == "Colombia")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+deaths_col <- data.frame(deaths_col, dates_JHU)
+deaths_col$Province.State <- NULL
+deaths_col$Country.Region <- NULL
+deaths_col$Lat <- NULL
+deaths_col$Long <- NULL
+deaths_col$Date <- NULL
+deaths_col$cumulative_cases <- NULL
+names(deaths_col)[1] = "COL"
+
+## PARAGUAY
+deaths_pry <- slice(JHU_deaths, which(JHU_deaths[,2] == "Paraguay")
+                    :which(JHU_deaths[,2] == "Paraguay")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+deaths_pry <- data.frame(deaths_pry, dates_JHU)
+deaths_pry$Province.State <- NULL
+deaths_pry$Country.Region <- NULL
+deaths_pry$Lat <- NULL
+deaths_pry$Long <- NULL
+deaths_pry$Date <- NULL
+deaths_pry$cumulative_cases <- NULL
+names(deaths_pry)[1] = "PRY"
+
+## PERU
+deaths_per <- slice(JHU_deaths, which(JHU_deaths[,2] == "Peru")
+                    :which(JHU_deaths[,2] == "Peru")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+deaths_per <- data.frame(deaths_per, dates_JHU)
+deaths_per$Province.State <- NULL
+deaths_per$Country.Region <- NULL
+deaths_per$Lat <- NULL
+deaths_per$Long <- NULL
+deaths_per$Date <- NULL
+deaths_per$cumulative_cases <- NULL
+names(deaths_per)[1] = "PER"
+
+## URUGUAY
+deaths_ury <- slice(JHU_deaths, which(JHU_deaths[,2] == "Uruguay")
+                    :which(JHU_deaths[,2] == "Uruguay")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+deaths_ury <- data.frame(deaths_ury, dates_JHU)
+deaths_ury$Province.State <- NULL
+deaths_ury$Country.Region <- NULL
+deaths_ury$Lat <- NULL
+deaths_ury$Long <- NULL
+deaths_ury$Date <- NULL
+deaths_ury$cumulative_cases <- NULL
+names(deaths_ury)[1] = "URY"
+
+# Combine Datasets
+deaths_covid19 <- merge(deaths_arg, deaths_bol, by = "dates_JHU", all = TRUE)
+deaths_covid19 <- merge(deaths_covid19, deaths_bra, by = "dates_JHU", all = TRUE)
+deaths_covid19 <- merge(deaths_covid19, deaths_chl, by = "dates_JHU", all = TRUE)
+deaths_covid19 <- merge(deaths_covid19, deaths_col, by = "dates_JHU", all = TRUE)
+deaths_covid19 <- merge(deaths_covid19, deaths_pry, by = "dates_JHU", all = TRUE)
+deaths_covid19 <- merge(deaths_covid19, deaths_per, by = "dates_JHU", all = TRUE)
+deaths_covid19 <- merge(deaths_covid19, deaths_ury, by = "dates_JHU", all = TRUE)
+
+## Slice Data  (26 Feb - 15 May)
+deaths_covid19 <- slice(deaths_covid19, 36:(nrow(deaths_covid19)-4))
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, echo = FALSE}
+## ARGENTINA
+recovered_arg <- slice(JHU_recovered, which(JHU_recovered[,2] == "Argentina")
+                       :which(JHU_recovered[,2] == "Argentina")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+recovered_arg <- data.frame(recovered_arg, dates_JHU)
+recovered_arg$Province.State <- NULL
+recovered_arg$Country.Region <- NULL
+recovered_arg$Lat <- NULL
+recovered_arg$Long <- NULL
+recovered_arg$Date <- NULL
+recovered_arg$cumulative_cases <- NULL
+names(recovered_arg)[1] = "ARG"
+
+## BOLIVIA
+recovered_bol <- slice(JHU_recovered, which(JHU_recovered[,2] == "Bolivia")
+                       :which(JHU_recovered[,2] == "Bolivia")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+recovered_bol <- data.frame(recovered_bol, dates_JHU)
+recovered_bol$Province.State <- NULL
+recovered_bol$Country.Region <- NULL
+recovered_bol$Lat <- NULL
+recovered_bol$Long <- NULL
+recovered_bol$Date <- NULL
+recovered_bol$cumulative_cases <- NULL
+names(recovered_bol)[1] = "BOL"
+
+## BRAZIL
+recovered_bra <- slice(JHU_recovered, which(JHU_recovered[,2] == "Brazil")
+                       :which(JHU_recovered[,2] == "Brazil")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+recovered_bra <- data.frame(recovered_bra, dates_JHU)
+recovered_bra$Province.State <- NULL
+recovered_bra$Country.Region <- NULL
+recovered_bra$Lat <- NULL
+recovered_bra$Long <- NULL
+recovered_bra$Date <- NULL
+recovered_bra$cumulative_cases <- NULL
+names(recovered_bra)[1] = "BRA"
+
+## CHILE
+recovered_chl <- slice(JHU_recovered, which(JHU_recovered[,2] == "Chile")
+                       :which(JHU_recovered[,2] == "Chile")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
+recovered_chl <- data.frame(recovered_chl, dates_JHU)
+recovered_chl$Province.State <- NULL
+recovered_chl$Country.Region <- NULL
+recovered_chl$Lat <- NULL
+recovered_chl$Long <- NULL
+recovered_chl$Date <- NULL
+recovered_chl$cumulative_cases <- NULL
+names(recovered_chl)[1] = "CHL"
+
+## COLOMBIA
+recovered_col <- slice(JHU_recovered, which(JHU_recovered[,2] == "Colombia")
+                       :which(JHU_recovered[,2] == "Colombia")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+recovered_col <- data.frame(recovered_col, dates_JHU)
+recovered_col$Province.State <- NULL
+recovered_col$Country.Region <- NULL
+recovered_col$Lat <- NULL
+recovered_col$Long <- NULL
+recovered_col$Date <- NULL
+recovered_col$cumulative_cases <- NULL
+names(recovered_col)[1] = "COL"
+
+## PARAGUAY
+recovered_pry <- slice(JHU_recovered, which(JHU_recovered[,2] == "Paraguay")
+                       :which(JHU_recovered[,2] == "Paraguay")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+recovered_pry <- data.frame(recovered_pry, dates_JHU)
+recovered_pry$Province.State <- NULL
+recovered_pry$Country.Region <- NULL
+recovered_pry$Lat <- NULL
+recovered_pry$Long <- NULL
+recovered_pry$Date <- NULL
+recovered_pry$cumulative_cases <- NULL
+names(recovered_pry)[1] = "PRY"
+
+## PERU
+recovered_per <- slice(JHU_recovered, which(JHU_recovered[,2] == "Peru")
+                       :which(JHU_recovered[,2] == "Peru")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+recovered_per <- data.frame(recovered_per, dates_JHU)
+recovered_per$Province.State <- NULL
+recovered_per$Country.Region <- NULL
+recovered_per$Lat <- NULL
+recovered_per$Long <- NULL
+recovered_per$Date <- NULL
+recovered_per$cumulative_cases <- NULL
+names(recovered_per)[1] = "PER"
+
+## URUGUAY
+recovered_ury <- slice(JHU_recovered, which(JHU_recovered[,2] == "Uruguay")
+                       :which(JHU_recovered[,2] == "Uruguay")) %>% 
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               names_to = "Date", values_to = "cumulative_cases") %>%
+  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+recovered_ury <- data.frame(recovered_ury, dates_JHU)
+recovered_ury$Province.State <- NULL
+recovered_ury$Country.Region <- NULL
+recovered_ury$Lat <- NULL
+recovered_ury$Long <- NULL
+recovered_ury$Date <- NULL
+recovered_ury$cumulative_cases <- NULL
+names(recovered_ury)[1] = "URY"
+
+# Combine Datasets
+recovered_covid19 <- merge(recovered_arg, recovered_bol, by = "dates_JHU", all = TRUE)
+recovered_covid19 <- merge(recovered_covid19, recovered_bra, by = "dates_JHU", all = TRUE)
+recovered_covid19 <- merge(recovered_covid19, recovered_chl, by = "dates_JHU", all = TRUE)
+recovered_covid19 <- merge(recovered_covid19, recovered_col, by = "dates_JHU", all = TRUE)
+recovered_covid19 <- merge(recovered_covid19, recovered_pry, by = "dates_JHU", all = TRUE)
+recovered_covid19 <- merge(recovered_covid19, recovered_per, by = "dates_JHU", all = TRUE)
+recovered_covid19 <- merge(recovered_covid19, recovered_ury, by = "dates_JHU", all = TRUE)
+
+## Slice Data (26 Feb - 15 May)
+recovered_covid19 <- slice(recovered_covid19, 36:(nrow(recovered_covid19)-4))
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, echo = FALSE}
+## OxCGRT - Covid-Policy-Tracker
+OXF_fork1 <- "https://raw.githubusercontent.com/bgonzalezbustamante/"
+OXF_fork2 <- "covid-policy-tracker/master/data/timeseries/"
+stringencyindex <- read.csv(paste(OXF_fork1, OXF_fork2,
+                                  "stringency_index.csv", sep = ""), sep = ",")
+c1_schoolclosing <- read.csv(paste(OXF_fork1, OXF_fork2, "c1_schoolclosing.csv", 
+                                   sep = ""), sep = ",")
+c1_flag <- read.csv(paste(OXF_fork1, OXF_fork2, "c1_flag.csv", sep = ""), sep = ",")
+c2_workplaceclosing <- read.csv(paste(OXF_fork1, OXF_fork2, "c2_workplaceclosing.csv", 
+                                      sep = ""), sep = ",")
+c2_flag <- read.csv(paste(OXF_fork1, OXF_fork2, "c2_flag.csv", sep = ""), sep = ",")
+c3_cancelpublicevents <- read.csv(paste(OXF_fork1, OXF_fork2, "c3_cancelpublicevents.csv", 
+                                        sep = ""), sep = ",")
+c3_flag <- read.csv(paste(OXF_fork1, OXF_fork2, "c3_flag.csv", sep = ""), sep = ",")
+c4_restrictionsongatherings <- read.csv(paste(OXF_fork1, OXF_fork2,
+                                              "c4_restrictionsongatherings.csv", 
+                                              sep = ""), sep = ",")
+c4_flag <- read.csv(paste(OXF_fork1, OXF_fork2, "c4_flag.csv", sep = ""), sep = ",")
+c5_closepublictransport <- read.csv(paste(OXF_fork1, OXF_fork2, 
+                                          "c5_closepublictransport.csv", sep = ""), 
+                                    sep = ",")
+c5_flag <- read.csv(paste(OXF_fork1, OXF_fork2, "c5_flag.csv", sep = ""), sep = ",")
+c6_stayathomerequirements <- read.csv(paste(OXF_fork1, OXF_fork2,
+                                            "c6_stayathomerequirements.csv", sep = ""), 
+                                      sep = ",")
+c6_flag <- read.csv(paste(OXF_fork1, OXF_fork2, "c6_flag.csv", sep = ""), sep = ",")
+c7_domestictravel <- read.csv(paste(OXF_fork1, OXF_fork2, "c7_domestictravel.csv", 
+                                    sep = ""), sep = ",")
+c7_flag <- read.csv(paste(OXF_fork1, OXF_fork2, "c7_flag.csv", sep = ""), sep = ",")
+c8_internationaltravel <- read.csv(paste(OXF_fork1, OXF_fork2,
+                                         "c8_internationaltravel.csv", sep = ""), 
+                                   sep = ",")
+h2_testingpolicy <- read.csv(paste(OXF_fork1, OXF_fork2, "h2_testingpolicy.csv", 
+                                   sep = ""), sep = ",")
+h3_contacttracing <- read.csv(paste(OXF_fork1, OXF_fork2, "h3_contacttracing.csv", 
+                                    sep = ""), sep = ",")
+
+## Period Coverage
+dd_OXF <- as.numeric((as.Date("2020-05-15")) - as.Date("2020-01-01"))
+begin_OXF <- ((as.Date("2020-05-15"))-dd_OXF) ## 01 January
+dates_OXF <- seq(as.Date(begin_OXF), as.Date("2020-05-15"), by="days")
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, echo = FALSE}
+## stringencyindex
+arg.stringencyindex <- slice(stringencyindex, which(stringencyindex[,1] == "Argentina"):
+                               which(stringencyindex[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "stringency_index")
+arg.stringencyindex <- slice(arg.stringencyindex, 1:136) ## 15 May
+arg.stringencyindex <- data.frame(arg.stringencyindex, dates_OXF)
+arg.stringencyindex$X <- NULL
+arg.stringencyindex$X.1 <- NULL
+arg.stringencyindex$Date <- NULL
+
+## c1_schoolclosing
+arg.c1_schoolclosing <- slice(c1_schoolclosing, which(c1_schoolclosing[,1] 
+                                                      == "Argentina"):
+                               which(c1_schoolclosing[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_schoolclosing")
+arg.c1_schoolclosing <- slice(arg.c1_schoolclosing, 1:136) ## 15 May
+arg.c1_schoolclosing <- data.frame(arg.c1_schoolclosing, dates_OXF)
+arg.c1_schoolclosing$X <- NULL
+arg.c1_schoolclosing$X.1 <- NULL
+arg.c1_schoolclosing$Date <- NULL
+
+## c1_flag
+arg.c1_flag <- slice(c1_flag, which(c1_flag[,1] == "Argentina"):
+                            which(c1_flag[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_flag")
+arg.c1_flag <- slice(arg.c1_flag, 1:136) ## 15 May
+arg.c1_flag <- data.frame(arg.c1_flag, dates_OXF)
+arg.c1_flag$X <- NULL
+arg.c1_flag$X.1 <- NULL
+arg.c1_flag$Date <- NULL
+
+## c2_workplaceclosing
+arg.c2_workplaceclosing <- slice(c2_workplaceclosing, which(c2_workplaceclosing[,1] 
+                                                            == "Argentina"):
+                            which(c2_workplaceclosing[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_workplaceclosing")
+arg.c2_workplaceclosing <- slice(arg.c2_workplaceclosing, 1:136) ## 15 May
+arg.c2_workplaceclosing <- data.frame(arg.c2_workplaceclosing, dates_OXF)
+arg.c2_workplaceclosing$X <- NULL
+arg.c2_workplaceclosing$X.1 <- NULL
+arg.c2_workplaceclosing$Date <- NULL
+
+## c2_flag
+arg.c2_flag <- slice(c2_flag, which(c2_flag[,1] == "Argentina"):
+                            which(c2_flag[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_flag")
+arg.c2_flag <- slice(arg.c2_flag, 1:136) ## 15 May
+arg.c2_flag <- data.frame(arg.c2_flag, dates_OXF)
+arg.c2_flag$X <- NULL
+arg.c2_flag$X.1 <- NULL
+arg.c2_flag$Date <- NULL
+
+## c3_cancelpublicevents
+arg.c3_cancelpublicevents <- slice(c3_cancelpublicevents, which(c3_cancelpublicevents[,1]
+                                                                == "Argentina"):
+                                   which(c3_cancelpublicevents[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_cancelpublicevents")
+arg.c3_cancelpublicevents <- slice(arg.c3_cancelpublicevents, 1:136) ## 15 May
+arg.c3_cancelpublicevents <- data.frame(arg.c3_cancelpublicevents, dates_OXF)
+arg.c3_cancelpublicevents$X <- NULL
+arg.c3_cancelpublicevents$X.1 <- NULL
+arg.c3_cancelpublicevents$Date <- NULL
+
+## c3_flag
+arg.c3_flag <- slice(c3_flag, which(c3_flag[,1] == "Argentina"):
+                            which(c3_flag[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_flag")
+arg.c3_flag <- slice(arg.c3_flag, 1:136) ## 15 May
+arg.c3_flag <- data.frame(arg.c3_flag, dates_OXF)
+arg.c3_flag$X <- NULL
+arg.c3_flag$X.1 <- NULL
+arg.c3_flag$Date <- NULL
+
+## c4_restrictionsongatherings
+arg.c4_restrictionsongatherings <- slice(c4_restrictionsongatherings, 
+                                         which(c4_restrictionsongatherings[,1]
+                                               == "Argentina"):
+                                     which(c4_restrictionsongatherings[,1]
+                                           == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_restrictionsongatherings")
+arg.c4_restrictionsongatherings <- slice(arg.c4_restrictionsongatherings, 1:136) ## 15 May
+arg.c4_restrictionsongatherings <- data.frame(arg.c4_restrictionsongatherings, dates_OXF)
+arg.c4_restrictionsongatherings$X <- NULL
+arg.c4_restrictionsongatherings$X.1 <- NULL
+arg.c4_restrictionsongatherings$Date <- NULL
+
+## c4_flag
+arg.c4_flag <- slice(c4_flag, which(c4_flag[,1] == "Argentina"):
+                       which(c4_flag[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_flag")
+arg.c4_flag <- slice(arg.c4_flag, 1:136) ## 15 May
+arg.c4_flag <- data.frame(arg.c4_flag, dates_OXF)
+arg.c4_flag$X <- NULL
+arg.c4_flag$X.1 <- NULL
+arg.c4_flag$Date <- NULL
+
+## c5_closepublictransport 
+arg.c5_closepublictransport <- slice(c5_closepublictransport, 
+                                     which(c5_closepublictransport[,1] == "Argentina"):
+                                     which(c5_closepublictransport[,1] 
+                                           == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_closepublictransport")
+arg.c5_closepublictransport <- slice(arg.c5_closepublictransport, 1:136) ## 15 May
+arg.c5_closepublictransport <- data.frame(arg.c5_closepublictransport, dates_OXF)
+arg.c5_closepublictransport$X <- NULL
+arg.c5_closepublictransport$X.1 <- NULL
+arg.c5_closepublictransport$Date <- NULL
+
+## c5_flag 
+arg.c5_flag <- slice(c5_flag, which(c5_flag[,1] == "Argentina"):
+                            which(c5_flag[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_flag")
+arg.c5_flag <- slice(arg.c5_flag, 1:136) ## 15 May
+arg.c5_flag <- data.frame(arg.c5_flag, dates_OXF)
+arg.c5_flag$X <- NULL
+arg.c5_flag$X.1 <- NULL
+arg.c5_flag$Date <- NULL
+
+## c6_stayathomerequirements
+arg.c6_stayathomerequirements <- slice(c6_stayathomerequirements,
+                                       which(c6_stayathomerequirements[,1]
+                                             == "Argentina"):
+                                       which(c6_stayathomerequirements[,1]
+                                             == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_stayathomerequirements")
+arg.c6_stayathomerequirements <- slice(arg.c6_stayathomerequirements, 1:136) ## 15 May
+arg.c6_stayathomerequirements <- data.frame(arg.c6_stayathomerequirements, dates_OXF)
+arg.c6_stayathomerequirements$X <- NULL
+arg.c6_stayathomerequirements$X.1 <- NULL
+arg.c6_stayathomerequirements$Date <- NULL
+
+## c6_flag
+arg.c6_flag <- slice(c6_flag, which(c6_flag[,1] == "Argentina"):
+                       which(c6_flag[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_flag")
+arg.c6_flag <- slice(arg.c6_flag, 1:136) ## 15 May
+arg.c6_flag <- data.frame(arg.c6_flag, dates_OXF)
+arg.c6_flag$X <- NULL
+arg.c6_flag$X.1 <- NULL
+arg.c6_flag$Date <- NULL
+
+## c7_domestictravel
+arg.c7_domestictravel <- slice(c7_domestictravel, which(c7_domestictravel[,1]
+                                                        == "Argentina"):
+                                       which(c7_domestictravel[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_domestictravel")
+arg.c7_domestictravel <- slice(arg.c7_domestictravel, 1:136) ## 15 May
+arg.c7_domestictravel <- data.frame(arg.c7_domestictravel, dates_OXF)
+arg.c7_domestictravel$X <- NULL
+arg.c7_domestictravel$X.1 <- NULL
+arg.c7_domestictravel$Date <- NULL
+
+## c7_flag 
+arg.c7_flag <- slice(c7_flag, which(c7_flag[,1] == "Argentina"):
+                            which(c7_flag[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_flag")
+arg.c7_flag <- slice(arg.c7_flag, 1:136) ## 15 May
+arg.c7_flag <- data.frame(arg.c7_flag, dates_OXF)
+arg.c7_flag$X <- NULL
+arg.c7_flag$X.1 <- NULL
+arg.c7_flag$Date <- NULL
+
+## c8_internationaltravel
+arg.c8_internationaltravel <- slice(c8_internationaltravel,
+                                    which(c8_internationaltravel[,1] == "Argentina"):
+                                 which(c8_internationaltravel[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c8_internationaltravel")
+arg.c8_internationaltravel <- slice(arg.c8_internationaltravel, 1:136) ## 15 May
+arg.c8_internationaltravel <- data.frame(arg.c8_internationaltravel, dates_OXF)
+arg.c8_internationaltravel$X <- NULL
+arg.c8_internationaltravel$X.1 <- NULL
+arg.c8_internationaltravel$Date <- NULL
+
+## h2_testingpolicy
+arg.h2_testingpolicy <- slice(h2_testingpolicy, which(h2_testingpolicy[,1]
+                                                      == "Argentina"):
+                                 which(h2_testingpolicy[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h2_testingpolicy")
+arg.h2_testingpolicy <- slice(arg.h2_testingpolicy, 1:136) ## 15 May
+arg.h2_testingpolicy <- data.frame(arg.h2_testingpolicy, dates_OXF)
+arg.h2_testingpolicy$X <- NULL
+arg.h2_testingpolicy$X.1 <- NULL
+arg.h2_testingpolicy$Date <- NULL
+
+## h3_contacttracing
+arg.h3_contacttracing <- slice(h3_contacttracing, which(h3_contacttracing[,1]
+                                                        == "Argentina"):
+                                    which(h3_contacttracing[,1] == "Argentina")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h3_contacttracing")
+arg.h3_contacttracing <- slice(arg.h3_contacttracing, 1:136) ## 15 May
+arg.h3_contacttracing <- data.frame(arg.h3_contacttracing, dates_OXF)
+arg.h3_contacttracing$X <- NULL
+arg.h3_contacttracing$X.1 <- NULL
+arg.h3_contacttracing$Date <- NULL
+
+## Dataframe 
+arg_resp <- data.frame(arg.stringencyindex, arg.c1_schoolclosing$c1_schoolclosing, 
+                       arg.c1_flag$c1_flag, arg.c2_workplaceclosing$c2_workplaceclosing, 
+                       arg.c2_flag$c2_flag, 
+                       arg.c3_cancelpublicevents$c3_cancelpublicevents, 
+                       arg.c3_flag$c3_flag, 
+                       arg.c4_restrictionsongatherings$c4_restrictionsongatherings,
+                       arg.c4_flag$c4_flag, 
+                       arg.c5_closepublictransport$c5_closepublictransport, 
+                       arg.c5_flag$c5_flag, 
+                       arg.c6_stayathomerequirements$c6_stayathomerequirements,
+                       arg.c6_flag$c6_flag, arg.c7_domestictravel$c7_domestictravel, 
+                       arg.c7_flag$c7_flag, 
+                       arg.c8_internationaltravel$c8_internationaltravel, 
+                       arg.h2_testingpolicy$h2_testingpolicy, 
+                       arg.h3_contacttracing$h3_contacttracing)
+names(arg_resp)[1] = "stringencyindex"
+names(arg_resp)[2] = "dates"
+names(arg_resp)[3] = "c1_schoolclosing"
+names(arg_resp)[4] = "c1_flag"
+names(arg_resp)[5] = "c2_workplaceclosing"
+names(arg_resp)[6] = "c2_flag"
+names(arg_resp)[7] = "c3_cancelpublicevents"
+names(arg_resp)[8] = "c3_flag"
+names(arg_resp)[9] = "c4_restrictionsongatherings"
+names(arg_resp)[10] = "c4_flag"
+names(arg_resp)[11] = "c5_closepublictransport"
+names(arg_resp)[12] = "c5_flag"
+names(arg_resp)[13] = "c6_stayathomerequirements"
+names(arg_resp)[14] = "c6_flag"
+names(arg_resp)[15] = "c7_domestictravel"
+names(arg_resp)[16] = "c7_flag"
+names(arg_resp)[17] = "c8_internationaltravel"
+names(arg_resp)[18] = "h2_testingpolicy"
+names(arg_resp)[19] = "h3_contacttracing"
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, echo = FALSE}
+## stringencyindex
+bol.stringencyindex <- slice(stringencyindex, which(stringencyindex[,1] == "Bolivia"):
+                               which(stringencyindex[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "stringency_index")
+bol.stringencyindex <- slice(bol.stringencyindex, 1:136) ## 15 May
+bol.stringencyindex <- data.frame(bol.stringencyindex, dates_OXF)
+bol.stringencyindex$X <- NULL
+bol.stringencyindex$X.1 <- NULL
+bol.stringencyindex$Date <- NULL
+
+## c1_schoolclosing
+bol.c1_schoolclosing <- slice(c1_schoolclosing, which(c1_schoolclosing[,1] == "Bolivia"):
+                                which(c1_schoolclosing[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_schoolclosing")
+bol.c1_schoolclosing <- slice(bol.c1_schoolclosing, 1:136) ## 15 May
+bol.c1_schoolclosing <- data.frame(bol.c1_schoolclosing, dates_OXF)
+bol.c1_schoolclosing$X <- NULL
+bol.c1_schoolclosing$X.1 <- NULL
+bol.c1_schoolclosing$Date <- NULL
+
+## c1_flag
+bol.c1_flag <- slice(c1_flag, which(c1_flag[,1] == "Bolivia"):
+                       which(c1_flag[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_flag")
+bol.c1_flag <- slice(bol.c1_flag, 1:136) ## 15 May
+bol.c1_flag <- data.frame(bol.c1_flag, dates_OXF)
+bol.c1_flag$X <- NULL
+bol.c1_flag$X.1 <- NULL
+bol.c1_flag$Date <- NULL
+
+## c2_workplaceclosing
+bol.c2_workplaceclosing <- slice(c2_workplaceclosing, which(c2_workplaceclosing[,1]
+                                                            == "Bolivia"):
+                                   which(c2_workplaceclosing[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_workplaceclosing")
+bol.c2_workplaceclosing <- slice(bol.c2_workplaceclosing, 1:136) ## 15 May
+bol.c2_workplaceclosing <- data.frame(bol.c2_workplaceclosing, dates_OXF)
+bol.c2_workplaceclosing$X <- NULL
+bol.c2_workplaceclosing$X.1 <- NULL
+bol.c2_workplaceclosing$Date <- NULL
+
+## c2_flag
+bol.c2_flag <- slice(c2_flag, which(c2_flag[,1] == "Bolivia"):
+                       which(c2_flag[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_flag")
+bol.c2_flag <- slice(bol.c2_flag, 1:136) ## 15 May
+bol.c2_flag <- data.frame(bol.c2_flag, dates_OXF)
+bol.c2_flag$X <- NULL
+bol.c2_flag$X.1 <- NULL
+bol.c2_flag$Date <- NULL
+
+## c3_cancelpublicevents
+bol.c3_cancelpublicevents <- slice(c3_cancelpublicevents, which(c3_cancelpublicevents[,1]
+                                                                == "Bolivia"):
+                                     which(c3_cancelpublicevents[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_cancelpublicevents")
+bol.c3_cancelpublicevents <- slice(bol.c3_cancelpublicevents, 1:136) ## 15 May
+bol.c3_cancelpublicevents <- data.frame(bol.c3_cancelpublicevents, dates_OXF)
+bol.c3_cancelpublicevents$X <- NULL
+bol.c3_cancelpublicevents$X.1 <- NULL
+bol.c3_cancelpublicevents$Date <- NULL
+
+## c3_flag
+bol.c3_flag <- slice(c3_flag, which(c3_flag[,1] == "Bolivia"):
+                       which(c3_flag[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_flag")
+bol.c3_flag <- slice(bol.c3_flag, 1:136) ## 15 May
+bol.c3_flag <- data.frame(bol.c3_flag, dates_OXF)
+bol.c3_flag$X <- NULL
+bol.c3_flag$X.1 <- NULL
+bol.c3_flag$Date <- NULL
+
+## c4_restrictionsongatherings
+bol.c4_restrictionsongatherings <- slice(c4_restrictionsongatherings,
+                                         which(c4_restrictionsongatherings[,1]
+                                               == "Bolivia"):
+                                           which(c4_restrictionsongatherings[,1]
+                                                 == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_restrictionsongatherings")
+bol.c4_restrictionsongatherings <- slice(bol.c4_restrictionsongatherings, 1:136) ## 15 May
+bol.c4_restrictionsongatherings <- data.frame(bol.c4_restrictionsongatherings, dates_OXF)
+bol.c4_restrictionsongatherings$X <- NULL
+bol.c4_restrictionsongatherings$X.1 <- NULL
+bol.c4_restrictionsongatherings$Date <- NULL
+
+## c4_flag
+bol.c4_flag <- slice(c4_flag, which(c4_flag[,1] == "Bolivia"):
+                       which(c4_flag[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_flag")
+bol.c4_flag <- slice(bol.c4_flag, 1:136) ## 15 May
+bol.c4_flag <- data.frame(bol.c4_flag, dates_OXF)
+bol.c4_flag$X <- NULL
+bol.c4_flag$X.1 <- NULL
+bol.c4_flag$Date <- NULL
+
+## c5_closepublictransport 
+bol.c5_closepublictransport <- slice(c5_closepublictransport,
+                                     which(c5_closepublictransport[,1] == "Bolivia"):
+                                       which(c5_closepublictransport[,1]
+                                             == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_closepublictransport")
+bol.c5_closepublictransport <- slice(bol.c5_closepublictransport, 1:136) ## 15 May
+bol.c5_closepublictransport <- data.frame(bol.c5_closepublictransport, dates_OXF)
+bol.c5_closepublictransport$X <- NULL
+bol.c5_closepublictransport$X.1 <- NULL
+bol.c5_closepublictransport$Date <- NULL
+
+## c5_flag 
+bol.c5_flag <- slice(c5_flag, which(c5_flag[,1] == "Bolivia"):
+                       which(c5_flag[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_flag")
+bol.c5_flag <- slice(bol.c5_flag, 1:136) ## 15 May
+bol.c5_flag <- data.frame(bol.c5_flag, dates_OXF)
+bol.c5_flag$X <- NULL
+bol.c5_flag$X.1 <- NULL
+bol.c5_flag$Date <- NULL
+
+## c6_stayathomerequirements
+bol.c6_stayathomerequirements <- slice(c6_stayathomerequirements,
+                                       which(c6_stayathomerequirements[,1] == "Bolivia"):
+                                         which(c6_stayathomerequirements[,1]
+                                               == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_stayathomerequirements")
+bol.c6_stayathomerequirements <- slice(bol.c6_stayathomerequirements, 1:136) ## 15 May
+bol.c6_stayathomerequirements <- data.frame(bol.c6_stayathomerequirements, dates_OXF)
+bol.c6_stayathomerequirements$X <- NULL
+bol.c6_stayathomerequirements$X.1 <- NULL
+bol.c6_stayathomerequirements$Date <- NULL
+
+## c6_flag
+bol.c6_flag <- slice(c6_flag, which(c6_flag[,1] == "Bolivia"):
+                       which(c6_flag[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_flag")
+bol.c6_flag <- slice(bol.c6_flag, 1:136) ## 15 May
+bol.c6_flag <- data.frame(bol.c6_flag, dates_OXF)
+bol.c6_flag$X <- NULL
+bol.c6_flag$X.1 <- NULL
+bol.c6_flag$Date <- NULL
+
+## c7_domestictravel
+bol.c7_domestictravel <- slice(c7_domestictravel, which(c7_domestictravel[,1]
+                                                        == "Bolivia"):
+                                 which(c7_domestictravel[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_domestictravel")
+bol.c7_domestictravel <- slice(bol.c7_domestictravel, 1:136) ## 15 May
+bol.c7_domestictravel <- data.frame(bol.c7_domestictravel, dates_OXF)
+bol.c7_domestictravel$X <- NULL
+bol.c7_domestictravel$X.1 <- NULL
+bol.c7_domestictravel$Date <- NULL
+
+## c7_flag 
+bol.c7_flag <- slice(c7_flag, which(c7_flag[,1] == "Bolivia"):
+                       which(c7_flag[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_flag")
+bol.c7_flag <- slice(bol.c7_flag, 1:136) ## 15 May
+bol.c7_flag <- data.frame(bol.c7_flag, dates_OXF)
+bol.c7_flag$X <- NULL
+bol.c7_flag$X.1 <- NULL
+bol.c7_flag$Date <- NULL
+
+## c8_internationaltravel
+bol.c8_internationaltravel <- slice(c8_internationaltravel,
+                                    which(c8_internationaltravel[,1] == "Bolivia"):
+                                      which(c8_internationaltravel[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c8_internationaltravel")
+bol.c8_internationaltravel <- slice(bol.c8_internationaltravel, 1:136) ## 15 May
+bol.c8_internationaltravel <- data.frame(bol.c8_internationaltravel, dates_OXF)
+bol.c8_internationaltravel$X <- NULL
+bol.c8_internationaltravel$X.1 <- NULL
+bol.c8_internationaltravel$Date <- NULL
+
+## h2_testingpolicy
+bol.h2_testingpolicy <- slice(h2_testingpolicy, which(h2_testingpolicy[,1] == "Bolivia"):
+                                which(h2_testingpolicy[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h2_testingpolicy")
+bol.h2_testingpolicy <- slice(bol.h2_testingpolicy, 1:136) ## 15 May
+bol.h2_testingpolicy <- data.frame(bol.h2_testingpolicy, dates_OXF)
+bol.h2_testingpolicy$X <- NULL
+bol.h2_testingpolicy$X.1 <- NULL
+bol.h2_testingpolicy$Date <- NULL
+
+## h3_contacttracing
+bol.h3_contacttracing <- slice(h3_contacttracing, which(h3_contacttracing[,1]
+                                                        == "Bolivia"):
+                                 which(h3_contacttracing[,1] == "Bolivia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h3_contacttracing")
+bol.h3_contacttracing <- slice(bol.h3_contacttracing, 1:136) ## 15 May
+bol.h3_contacttracing <- data.frame(bol.h3_contacttracing, dates_OXF)
+bol.h3_contacttracing$X <- NULL
+bol.h3_contacttracing$X.1 <- NULL
+bol.h3_contacttracing$Date <- NULL
+
+## Dataframe 
+bol_resp <- data.frame(bol.stringencyindex, bol.c1_schoolclosing$c1_schoolclosing, 
+                       bol.c1_flag$c1_flag, bol.c2_workplaceclosing$c2_workplaceclosing, 
+                       bol.c2_flag$c2_flag, 
+                       bol.c3_cancelpublicevents$c3_cancelpublicevents, 
+                       bol.c3_flag$c3_flag, 
+                       bol.c4_restrictionsongatherings$c4_restrictionsongatherings,
+                       bol.c4_flag$c4_flag, 
+                       bol.c5_closepublictransport$c5_closepublictransport, 
+                       bol.c5_flag$c5_flag, 
+                       bol.c6_stayathomerequirements$c6_stayathomerequirements,
+                       bol.c6_flag$c6_flag, bol.c7_domestictravel$c7_domestictravel, 
+                       bol.c7_flag$c7_flag, 
+                       bol.c8_internationaltravel$c8_internationaltravel, 
+                       bol.h2_testingpolicy$h2_testingpolicy, 
+                       bol.h3_contacttracing$h3_contacttracing)
+names(bol_resp)[1] = "stringencyindex"
+names(bol_resp)[2] = "dates"
+names(bol_resp)[3] = "c1_schoolclosing"
+names(bol_resp)[4] = "c1_flag"
+names(bol_resp)[5] = "c2_workplaceclosing"
+names(bol_resp)[6] = "c2_flag"
+names(bol_resp)[7] = "c3_cancelpublicevents"
+names(bol_resp)[8] = "c3_flag"
+names(bol_resp)[9] = "c4_restrictionsongatherings"
+names(bol_resp)[10] = "c4_flag"
+names(bol_resp)[11] = "c5_closepublictransport"
+names(bol_resp)[12] = "c5_flag"
+names(bol_resp)[13] = "c6_stayathomerequirements"
+names(bol_resp)[14] = "c6_flag"
+names(bol_resp)[15] = "c7_domestictravel"
+names(bol_resp)[16] = "c7_flag"
+names(bol_resp)[17] = "c8_internationaltravel"
+names(bol_resp)[18] = "h2_testingpolicy"
+names(bol_resp)[19] = "h3_contacttracing"
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, echo = FALSE}
+## stringencyindex
+bra.stringencyindex <- slice(stringencyindex, which(stringencyindex[,1] == "Brazil"):
+                               which(stringencyindex[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "stringency_index")
+bra.stringencyindex <- slice(bra.stringencyindex, 1:136) ## 15 May
+bra.stringencyindex <- data.frame(bra.stringencyindex, dates_OXF)
+bra.stringencyindex$X <- NULL
+bra.stringencyindex$X.1 <- NULL
+bra.stringencyindex$Date <- NULL
+
+## c1_schoolclosing
+bra.c1_schoolclosing <- slice(c1_schoolclosing, which(c1_schoolclosing[,1] == "Brazil"):
+                                which(c1_schoolclosing[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_schoolclosing")
+bra.c1_schoolclosing <- slice(bra.c1_schoolclosing, 1:136) ## 15 May
+bra.c1_schoolclosing <- data.frame(bra.c1_schoolclosing, dates_OXF)
+bra.c1_schoolclosing$X <- NULL
+bra.c1_schoolclosing$X.1 <- NULL
+bra.c1_schoolclosing$Date <- NULL
+
+## c1_flag
+bra.c1_flag <- slice(c1_flag, which(c1_flag[,1] == "Brazil"):
+                       which(c1_flag[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_flag")
+bra.c1_flag <- slice(bra.c1_flag, 1:136) ## 15 May
+bra.c1_flag <- data.frame(bra.c1_flag, dates_OXF)
+bra.c1_flag$X <- NULL
+bra.c1_flag$X.1 <- NULL
+bra.c1_flag$Date <- NULL
+
+## c2_workplaceclosing
+bra.c2_workplaceclosing <- slice(c2_workplaceclosing, which(c2_workplaceclosing[,1]
+                                                            == "Brazil"):
+                                   which(c2_workplaceclosing[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_workplaceclosing")
+bra.c2_workplaceclosing <- slice(bra.c2_workplaceclosing, 1:136) ## 15 May
+bra.c2_workplaceclosing <- data.frame(bra.c2_workplaceclosing, dates_OXF)
+bra.c2_workplaceclosing$X <- NULL
+bra.c2_workplaceclosing$X.1 <- NULL
+bra.c2_workplaceclosing$Date <- NULL
+
+## c2_flag
+bra.c2_flag <- slice(c2_flag, which(c2_flag[,1] == "Brazil"):
+                       which(c2_flag[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_flag")
+bra.c2_flag <- slice(bra.c2_flag, 1:136) ## 15 May
+bra.c2_flag <- data.frame(bra.c2_flag, dates_OXF)
+bra.c2_flag$X <- NULL
+bra.c2_flag$X.1 <- NULL
+bra.c2_flag$Date <- NULL
+
+## c3_cancelpublicevents
+bra.c3_cancelpublicevents <- slice(c3_cancelpublicevents, which(c3_cancelpublicevents[,1]
+                                                                == "Brazil"):
+                                     which(c3_cancelpublicevents[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_cancelpublicevents")
+bra.c3_cancelpublicevents <- slice(bra.c3_cancelpublicevents, 1:136) ## 15 May
+bra.c3_cancelpublicevents <- data.frame(bra.c3_cancelpublicevents, dates_OXF)
+bra.c3_cancelpublicevents$X <- NULL
+bra.c3_cancelpublicevents$X.1 <- NULL
+bra.c3_cancelpublicevents$Date <- NULL
+
+## c3_flag
+bra.c3_flag <- slice(c3_flag, which(c3_flag[,1] == "Brazil"):
+                       which(c3_flag[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_flag")
+bra.c3_flag <- slice(bra.c3_flag, 1:136) ## 15 May
+bra.c3_flag <- data.frame(bra.c3_flag, dates_OXF)
+bra.c3_flag$X <- NULL
+bra.c3_flag$X.1 <- NULL
+bra.c3_flag$Date <- NULL
+
+## c4_restrictionsongatherings
+bra.c4_restrictionsongatherings <- slice(c4_restrictionsongatherings,
+                                         which(c4_restrictionsongatherings[,1]
+                                               == "Brazil"):
+                                           which(c4_restrictionsongatherings[,1] 
+                                                 == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_restrictionsongatherings")
+bra.c4_restrictionsongatherings <- slice(bra.c4_restrictionsongatherings, 1:136) ## 15 May
+bra.c4_restrictionsongatherings <- data.frame(bra.c4_restrictionsongatherings, dates_OXF)
+bra.c4_restrictionsongatherings$X <- NULL
+bra.c4_restrictionsongatherings$X.1 <- NULL
+bra.c4_restrictionsongatherings$Date <- NULL
+
+## c4_flag
+bra.c4_flag <- slice(c4_flag, which(c4_flag[,1] == "Brazil"):
+                       which(c4_flag[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_flag")
+bra.c4_flag <- slice(bra.c4_flag, 1:136) ## 15 May
+bra.c4_flag <- data.frame(bra.c4_flag, dates_OXF)
+bra.c4_flag$X <- NULL
+bra.c4_flag$X.1 <- NULL
+bra.c4_flag$Date <- NULL
+
+## c5_closepublictransport 
+bra.c5_closepublictransport <- slice(c5_closepublictransport,
+                                     which(c5_closepublictransport[,1] == "Brazil"):
+                                       which(c5_closepublictransport[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_closepublictransport")
+bra.c5_closepublictransport <- slice(bra.c5_closepublictransport, 1:136) ## 15 May
+bra.c5_closepublictransport <- data.frame(bra.c5_closepublictransport, dates_OXF)
+bra.c5_closepublictransport$X <- NULL
+bra.c5_closepublictransport$X.1 <- NULL
+bra.c5_closepublictransport$Date <- NULL
+
+## c5_flag 
+bra.c5_flag <- slice(c5_flag, which(c5_flag[,1] == "Brazil"):
+                       which(c5_flag[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_flag")
+bra.c5_flag <- slice(bra.c5_flag, 1:136) ## 15 May
+bra.c5_flag <- data.frame(bra.c5_flag, dates_OXF)
+bra.c5_flag$X <- NULL
+bra.c5_flag$X.1 <- NULL
+bra.c5_flag$Date <- NULL
+
+## c6_stayathomerequirements
+bra.c6_stayathomerequirements <- slice(c6_stayathomerequirements,
+                                       which(c6_stayathomerequirements[,1] == "Brazil"):
+                                         which(c6_stayathomerequirements[,1]
+                                               == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_stayathomerequirements")
+bra.c6_stayathomerequirements <- slice(bra.c6_stayathomerequirements, 1:136) ## 15 May
+bra.c6_stayathomerequirements <- data.frame(bra.c6_stayathomerequirements, dates_OXF)
+bra.c6_stayathomerequirements$X <- NULL
+bra.c6_stayathomerequirements$X.1 <- NULL
+bra.c6_stayathomerequirements$Date <- NULL
+
+## c6_flag
+bra.c6_flag <- slice(c6_flag, which(c6_flag[,1] == "Brazil"):
+                       which(c6_flag[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_flag")
+bra.c6_flag <- slice(bra.c6_flag, 1:136) ## 15 May
+bra.c6_flag <- data.frame(bra.c6_flag, dates_OXF)
+bra.c6_flag$X <- NULL
+bra.c6_flag$X.1 <- NULL
+bra.c6_flag$Date <- NULL
+
+## c7_domestictravel
+bra.c7_domestictravel <- slice(c7_domestictravel, which(c7_domestictravel[,1]
+                                                        == "Brazil"):
+                                 which(c7_domestictravel[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_domestictravel")
+bra.c7_domestictravel <- slice(bra.c7_domestictravel, 1:136) ## 15 May
+bra.c7_domestictravel <- data.frame(bra.c7_domestictravel, dates_OXF)
+bra.c7_domestictravel$X <- NULL
+bra.c7_domestictravel$X.1 <- NULL
+bra.c7_domestictravel$Date <- NULL
+
+## c7_flag 
+bra.c7_flag <- slice(c7_flag, which(c7_flag[,1] == "Brazil"):
+                       which(c7_flag[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_flag")
+bra.c7_flag <- slice(bra.c7_flag, 1:136) ## 15 May
+bra.c7_flag <- data.frame(bra.c7_flag, dates_OXF)
+bra.c7_flag$X <- NULL
+bra.c7_flag$X.1 <- NULL
+bra.c7_flag$Date <- NULL
+
+## c8_internationaltravel
+bra.c8_internationaltravel <- slice(c8_internationaltravel,
+                                    which(c8_internationaltravel[,1] == "Brazil"):
+                                      which(c8_internationaltravel[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c8_internationaltravel")
+bra.c8_internationaltravel <- slice(bra.c8_internationaltravel, 1:136) ## 15 May
+bra.c8_internationaltravel <- data.frame(bra.c8_internationaltravel, dates_OXF)
+bra.c8_internationaltravel$X <- NULL
+bra.c8_internationaltravel$X.1 <- NULL
+bra.c8_internationaltravel$Date <- NULL
+
+## h2_testingpolicy
+bra.h2_testingpolicy <- slice(h2_testingpolicy, which(h2_testingpolicy[,1] == "Brazil"):
+                                which(h2_testingpolicy[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h2_testingpolicy")
+bra.h2_testingpolicy <- slice(bra.h2_testingpolicy, 1:136) ## 15 May
+bra.h2_testingpolicy <- data.frame(bra.h2_testingpolicy, dates_OXF)
+bra.h2_testingpolicy$X <- NULL
+bra.h2_testingpolicy$X.1 <- NULL
+bra.h2_testingpolicy$Date <- NULL
+
+## h3_contacttracing
+bra.h3_contacttracing <- slice(h3_contacttracing, which(h3_contacttracing[,1]
+                                                        == "Brazil"):
+                                 which(h3_contacttracing[,1] == "Brazil")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h3_contacttracing")
+bra.h3_contacttracing <- slice(bra.h3_contacttracing, 1:136) ## 15 May
+bra.h3_contacttracing <- data.frame(bra.h3_contacttracing, dates_OXF)
+bra.h3_contacttracing$X <- NULL
+bra.h3_contacttracing$X.1 <- NULL
+bra.h3_contacttracing$Date <- NULL
+
+## Dataframe 
+bra_resp <- data.frame(bra.stringencyindex, bra.c1_schoolclosing$c1_schoolclosing, 
+                       bra.c1_flag$c1_flag, bra.c2_workplaceclosing$c2_workplaceclosing, 
+                       bra.c2_flag$c2_flag, 
+                       bra.c3_cancelpublicevents$c3_cancelpublicevents, 
+                       bra.c3_flag$c3_flag, 
+                       bra.c4_restrictionsongatherings$c4_restrictionsongatherings,
+                       bra.c4_flag$c4_flag, 
+                       bra.c5_closepublictransport$c5_closepublictransport, 
+                       bra.c5_flag$c5_flag, 
+                       bra.c6_stayathomerequirements$c6_stayathomerequirements,
+                       bra.c6_flag$c6_flag, bra.c7_domestictravel$c7_domestictravel, 
+                       bra.c7_flag$c7_flag, 
+                       bra.c8_internationaltravel$c8_internationaltravel, 
+                       bra.h2_testingpolicy$h2_testingpolicy, 
+                       bra.h3_contacttracing$h3_contacttracing)
+names(bra_resp)[1] = "stringencyindex"
+names(bra_resp)[2] = "dates"
+names(bra_resp)[3] = "c1_schoolclosing"
+names(bra_resp)[4] = "c1_flag"
+names(bra_resp)[5] = "c2_workplaceclosing"
+names(bra_resp)[6] = "c2_flag"
+names(bra_resp)[7] = "c3_cancelpublicevents"
+names(bra_resp)[8] = "c3_flag"
+names(bra_resp)[9] = "c4_restrictionsongatherings"
+names(bra_resp)[10] = "c4_flag"
+names(bra_resp)[11] = "c5_closepublictransport"
+names(bra_resp)[12] = "c5_flag"
+names(bra_resp)[13] = "c6_stayathomerequirements"
+names(bra_resp)[14] = "c6_flag"
+names(bra_resp)[15] = "c7_domestictravel"
+names(bra_resp)[16] = "c7_flag"
+names(bra_resp)[17] = "c8_internationaltravel"
+names(bra_resp)[18] = "h2_testingpolicy"
+names(bra_resp)[19] = "h3_contacttracing"
+
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, echo = FALSE}
+## stringencyindex
+chl.stringencyindex <- slice(stringencyindex, which(stringencyindex[,1] == "Chile"):
+                               which(stringencyindex[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "stringency_index")
+chl.stringencyindex <- slice(chl.stringencyindex, 1:136) ## 15 May
+chl.stringencyindex <- data.frame(chl.stringencyindex, dates_OXF)
+chl.stringencyindex$X <- NULL
+chl.stringencyindex$X.1 <- NULL
+chl.stringencyindex$Date <- NULL
+
+## c1_schoolclosing
+chl.c1_schoolclosing <- slice(c1_schoolclosing, which(c1_schoolclosing[,1] == "Chile"):
+                                which(c1_schoolclosing[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_schoolclosing")
+chl.c1_schoolclosing <- slice(chl.c1_schoolclosing, 1:136) ## 15 May
+chl.c1_schoolclosing <- data.frame(chl.c1_schoolclosing, dates_OXF)
+chl.c1_schoolclosing$X <- NULL
+chl.c1_schoolclosing$X.1 <- NULL
+chl.c1_schoolclosing$Date <- NULL
+
+## c1_flag
+chl.c1_flag <- slice(c1_flag, which(c1_flag[,1] == "Chile"):
+                       which(c1_flag[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_flag")
+chl.c1_flag <- slice(chl.c1_flag, 1:136) ## 15 May
+chl.c1_flag <- data.frame(chl.c1_flag, dates_OXF)
+chl.c1_flag$X <- NULL
+chl.c1_flag$X.1 <- NULL
+chl.c1_flag$Date <- NULL
+
+## c2_workplaceclosing
+chl.c2_workplaceclosing <- slice(c2_workplaceclosing, which(c2_workplaceclosing[,1]
+                                                            == "Chile"):
+                                   which(c2_workplaceclosing[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_workplaceclosing")
+chl.c2_workplaceclosing <- slice(chl.c2_workplaceclosing, 1:136) ## 15 May
+chl.c2_workplaceclosing <- data.frame(chl.c2_workplaceclosing, dates_OXF)
+chl.c2_workplaceclosing$X <- NULL
+chl.c2_workplaceclosing$X.1 <- NULL
+chl.c2_workplaceclosing$Date <- NULL
+
+## c2_flag
+chl.c2_flag <- slice(c2_flag, which(c2_flag[,1] == "Chile"):
+                       which(c2_flag[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_flag")
+chl.c2_flag <- slice(chl.c2_flag, 1:136) ## 15 May
+chl.c2_flag <- data.frame(chl.c2_flag, dates_OXF)
+chl.c2_flag$X <- NULL
+chl.c2_flag$X.1 <- NULL
+chl.c2_flag$Date <- NULL
+
+## c3_cancelpublicevents
+chl.c3_cancelpublicevents <- slice(c3_cancelpublicevents, which(c3_cancelpublicevents[,1]
+                                                                == "Chile"):
+                                     which(c3_cancelpublicevents[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_cancelpublicevents")
+chl.c3_cancelpublicevents <- slice(chl.c3_cancelpublicevents, 1:136) ## 15 May
+chl.c3_cancelpublicevents <- data.frame(chl.c3_cancelpublicevents, dates_OXF)
+chl.c3_cancelpublicevents$X <- NULL
+chl.c3_cancelpublicevents$X.1 <- NULL
+chl.c3_cancelpublicevents$Date <- NULL
+
+## c3_flag
+chl.c3_flag <- slice(c3_flag, which(c3_flag[,1] == "Chile"):
+                       which(c3_flag[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_flag")
+chl.c3_flag <- slice(chl.c3_flag, 1:136) ## 15 May
+chl.c3_flag <- data.frame(chl.c3_flag, dates_OXF)
+chl.c3_flag$X <- NULL
+chl.c3_flag$X.1 <- NULL
+chl.c3_flag$Date <- NULL
+
+## c4_restrictionsongatherings
+chl.c4_restrictionsongatherings <- slice(c4_restrictionsongatherings,
+                                         which(c4_restrictionsongatherings[,1]
+                                               == "Chile"):
+                                           which(c4_restrictionsongatherings[,1]
+                                                 == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_restrictionsongatherings")
+chl.c4_restrictionsongatherings <- slice(chl.c4_restrictionsongatherings, 1:136) ## 15 May
+chl.c4_restrictionsongatherings <- data.frame(chl.c4_restrictionsongatherings, dates_OXF)
+chl.c4_restrictionsongatherings$X <- NULL
+chl.c4_restrictionsongatherings$X.1 <- NULL
+chl.c4_restrictionsongatherings$Date <- NULL
+
+## c4_flag
+chl.c4_flag <- slice(c4_flag, which(c4_flag[,1] == "Chile"):
+                       which(c4_flag[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_flag")
+chl.c4_flag <- slice(chl.c4_flag, 1:136) ## 15 May
+chl.c4_flag <- data.frame(chl.c4_flag, dates_OXF)
+chl.c4_flag$X <- NULL
+chl.c4_flag$X.1 <- NULL
+chl.c4_flag$Date <- NULL
+
+## c5_closepublictransport 
+chl.c5_closepublictransport <- slice(c5_closepublictransport,
+                                     which(c5_closepublictransport[,1] == "Chile"):
+                                       which(c5_closepublictransport[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_closepublictransport")
+chl.c5_closepublictransport <- slice(chl.c5_closepublictransport, 1:136) ## 15 May
+chl.c5_closepublictransport <- data.frame(chl.c5_closepublictransport, dates_OXF)
+chl.c5_closepublictransport$X <- NULL
+chl.c5_closepublictransport$X.1 <- NULL
+chl.c5_closepublictransport$Date <- NULL
+
+## c5_flag 
+chl.c5_flag <- slice(c5_flag, which(c5_flag[,1] == "Chile"):
+                       which(c5_flag[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_flag")
+chl.c5_flag <- slice(chl.c5_flag, 1:136) ## 15 May
+chl.c5_flag <- data.frame(chl.c5_flag, dates_OXF)
+chl.c5_flag$X <- NULL
+chl.c5_flag$X.1 <- NULL
+chl.c5_flag$Date <- NULL
+
+## c6_stayathomerequirements
+chl.c6_stayathomerequirements <- slice(c6_stayathomerequirements,
+                                       which(c6_stayathomerequirements[,1] == "Chile"):
+                                         which(c6_stayathomerequirements[,1]
+                                               == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_stayathomerequirements")
+chl.c6_stayathomerequirements <- slice(chl.c6_stayathomerequirements, 1:136) ## 15 May
+chl.c6_stayathomerequirements <- data.frame(chl.c6_stayathomerequirements, dates_OXF)
+chl.c6_stayathomerequirements$X <- NULL
+chl.c6_stayathomerequirements$X.1 <- NULL
+chl.c6_stayathomerequirements$Date <- NULL
+
+## c6_flag
+chl.c6_flag <- slice(c6_flag, which(c6_flag[,1] == "Chile"):
+                       which(c6_flag[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_flag")
+chl.c6_flag <- slice(chl.c6_flag, 1:136) ## 15 May
+chl.c6_flag <- data.frame(chl.c6_flag, dates_OXF)
+chl.c6_flag$X <- NULL
+chl.c6_flag$X.1 <- NULL
+chl.c6_flag$Date <- NULL
+
+## c7_domestictravel
+chl.c7_domestictravel <- slice(c7_domestictravel, which(c7_domestictravel[,1] == "Chile"):
+                                 which(c7_domestictravel[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_domestictravel")
+chl.c7_domestictravel <- slice(chl.c7_domestictravel, 1:136) ## 15 May
+chl.c7_domestictravel <- data.frame(chl.c7_domestictravel, dates_OXF)
+chl.c7_domestictravel$X <- NULL
+chl.c7_domestictravel$X.1 <- NULL
+chl.c7_domestictravel$Date <- NULL
+
+## c7_flag 
+chl.c7_flag <- slice(c7_flag, which(c7_flag[,1] == "Chile"):
+                       which(c7_flag[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_flag")
+chl.c7_flag <- slice(chl.c7_flag, 1:136) ## 15 May
+chl.c7_flag <- data.frame(chl.c7_flag, dates_OXF)
+chl.c7_flag$X <- NULL
+chl.c7_flag$X.1 <- NULL
+chl.c7_flag$Date <- NULL
+
+## c8_internationaltravel
+chl.c8_internationaltravel <- slice(c8_internationaltravel,
+                                    which(c8_internationaltravel[,1] == "Chile"):
+                                      which(c8_internationaltravel[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c8_internationaltravel")
+chl.c8_internationaltravel <- slice(chl.c8_internationaltravel, 1:136) ## 15 May
+chl.c8_internationaltravel <- data.frame(chl.c8_internationaltravel, dates_OXF)
+chl.c8_internationaltravel$X <- NULL
+chl.c8_internationaltravel$X.1 <- NULL
+chl.c8_internationaltravel$Date <- NULL
+
+## h2_testingpolicy
+chl.h2_testingpolicy <- slice(h2_testingpolicy, which(h2_testingpolicy[,1] == "Chile"):
+                                which(h2_testingpolicy[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h2_testingpolicy")
+chl.h2_testingpolicy <- slice(chl.h2_testingpolicy, 1:136) ## 15 May
+chl.h2_testingpolicy <- data.frame(chl.h2_testingpolicy, dates_OXF)
+chl.h2_testingpolicy$X <- NULL
+chl.h2_testingpolicy$X.1 <- NULL
+chl.h2_testingpolicy$Date <- NULL
+
+## h3_contacttracing
+chl.h3_contacttracing <- slice(h3_contacttracing, which(h3_contacttracing[,1] == "Chile"):
+                                 which(h3_contacttracing[,1] == "Chile")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h3_contacttracing")
+chl.h3_contacttracing <- slice(chl.h3_contacttracing, 1:136) ## 15 May
+chl.h3_contacttracing <- data.frame(chl.h3_contacttracing, dates_OXF)
+chl.h3_contacttracing$X <- NULL
+chl.h3_contacttracing$X.1 <- NULL
+chl.h3_contacttracing$Date <- NULL
+
+## Dataframe 
+chl_resp <- data.frame(chl.stringencyindex, chl.c1_schoolclosing$c1_schoolclosing, 
+                       chl.c1_flag$c1_flag, chl.c2_workplaceclosing$c2_workplaceclosing, 
+                       chl.c2_flag$c2_flag, 
+                       chl.c3_cancelpublicevents$c3_cancelpublicevents, 
+                       chl.c3_flag$c3_flag, 
+                       chl.c4_restrictionsongatherings$c4_restrictionsongatherings,
+                       chl.c4_flag$c4_flag, 
+                       chl.c5_closepublictransport$c5_closepublictransport, 
+                       chl.c5_flag$c5_flag, 
+                       chl.c6_stayathomerequirements$c6_stayathomerequirements,
+                       chl.c6_flag$c6_flag, chl.c7_domestictravel$c7_domestictravel, 
+                       chl.c7_flag$c7_flag, 
+                       chl.c8_internationaltravel$c8_internationaltravel, 
+                       chl.h2_testingpolicy$h2_testingpolicy, 
+                       chl.h3_contacttracing$h3_contacttracing)
+names(chl_resp)[1] = "stringencyindex"
+names(chl_resp)[2] = "dates"
+names(chl_resp)[3] = "c1_schoolclosing"
+names(chl_resp)[4] = "c1_flag"
+names(chl_resp)[5] = "c2_workplaceclosing"
+names(chl_resp)[6] = "c2_flag"
+names(chl_resp)[7] = "c3_cancelpublicevents"
+names(chl_resp)[8] = "c3_flag"
+names(chl_resp)[9] = "c4_restrictionsongatherings"
+names(chl_resp)[10] = "c4_flag"
+names(chl_resp)[11] = "c5_closepublictransport"
+names(chl_resp)[12] = "c5_flag"
+names(chl_resp)[13] = "c6_stayathomerequirements"
+names(chl_resp)[14] = "c6_flag"
+names(chl_resp)[15] = "c7_domestictravel"
+names(chl_resp)[16] = "c7_flag"
+names(chl_resp)[17] = "c8_internationaltravel"
+names(chl_resp)[18] = "h2_testingpolicy"
+names(chl_resp)[19] = "h3_contacttracing"
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, echo = FALSE}
+## stringencyindex
+col.stringencyindex <- slice(stringencyindex, which(stringencyindex[,1] == "Colombia"):
+                               which(stringencyindex[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "stringency_index")
+col.stringencyindex <- slice(col.stringencyindex, 1:136) ## 15 May
+col.stringencyindex <- data.frame(col.stringencyindex, dates_OXF)
+col.stringencyindex$X <- NULL
+col.stringencyindex$X.1 <- NULL
+col.stringencyindex$Date <- NULL
+
+## c1_schoolclosing
+col.c1_schoolclosing <- slice(c1_schoolclosing, which(c1_schoolclosing[,1] == "Colombia"):
+                                which(c1_schoolclosing[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_schoolclosing")
+col.c1_schoolclosing <- slice(col.c1_schoolclosing, 1:136) ## 15 May
+col.c1_schoolclosing <- data.frame(col.c1_schoolclosing, dates_OXF)
+col.c1_schoolclosing$X <- NULL
+col.c1_schoolclosing$X.1 <- NULL
+col.c1_schoolclosing$Date <- NULL
+
+## c1_flag
+col.c1_flag <- slice(c1_flag, which(c1_flag[,1] == "Colombia"):
+                       which(c1_flag[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_flag")
+col.c1_flag <- slice(col.c1_flag, 1:136) ## 15 May
+col.c1_flag <- data.frame(col.c1_flag, dates_OXF)
+col.c1_flag$X <- NULL
+col.c1_flag$X.1 <- NULL
+col.c1_flag$Date <- NULL
+
+## c2_workplaceclosing
+col.c2_workplaceclosing <- slice(c2_workplaceclosing, which(c2_workplaceclosing[,1]
+                                                            == "Colombia"):
+                                   which(c2_workplaceclosing[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_workplaceclosing")
+col.c2_workplaceclosing <- slice(col.c2_workplaceclosing, 1:136) ## 15 May
+col.c2_workplaceclosing <- data.frame(col.c2_workplaceclosing, dates_OXF)
+col.c2_workplaceclosing$X <- NULL
+col.c2_workplaceclosing$X.1 <- NULL
+col.c2_workplaceclosing$Date <- NULL
+
+## c2_flag
+col.c2_flag <- slice(c2_flag, which(c2_flag[,1] == "Colombia"):
+                       which(c2_flag[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_flag")
+col.c2_flag <- slice(col.c2_flag, 1:136) ## 15 May
+col.c2_flag <- data.frame(col.c2_flag, dates_OXF)
+col.c2_flag$X <- NULL
+col.c2_flag$X.1 <- NULL
+col.c2_flag$Date <- NULL
+
+## c3_cancelpublicevents
+col.c3_cancelpublicevents <- slice(c3_cancelpublicevents, which(c3_cancelpublicevents[,1]
+                                                                == "Colombia"):
+                                     which(c3_cancelpublicevents[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_cancelpublicevents")
+col.c3_cancelpublicevents <- slice(col.c3_cancelpublicevents, 1:136) ## 15 May
+col.c3_cancelpublicevents <- data.frame(col.c3_cancelpublicevents, dates_OXF)
+col.c3_cancelpublicevents$X <- NULL
+col.c3_cancelpublicevents$X.1 <- NULL
+col.c3_cancelpublicevents$Date <- NULL
+
+## c3_flag
+col.c3_flag <- slice(c3_flag, which(c3_flag[,1] == "Colombia"):
+                       which(c3_flag[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_flag")
+col.c3_flag <- slice(col.c3_flag, 1:136) ## 15 May
+col.c3_flag <- data.frame(col.c3_flag, dates_OXF)
+col.c3_flag$X <- NULL
+col.c3_flag$X.1 <- NULL
+col.c3_flag$Date <- NULL
+
+## c4_restrictionsongatherings
+col.c4_restrictionsongatherings <- slice(c4_restrictionsongatherings,
+                                         which(c4_restrictionsongatherings[,1]
+                                               == "Colombia"):
+                                           which(c4_restrictionsongatherings[,1]
+                                                 == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_restrictionsongatherings")
+col.c4_restrictionsongatherings <- slice(col.c4_restrictionsongatherings, 1:136) ## 15 May
+col.c4_restrictionsongatherings <- data.frame(col.c4_restrictionsongatherings, dates_OXF)
+col.c4_restrictionsongatherings$X <- NULL
+col.c4_restrictionsongatherings$X.1 <- NULL
+col.c4_restrictionsongatherings$Date <- NULL
+
+## c4_flag
+col.c4_flag <- slice(c4_flag, which(c4_flag[,1] == "Colombia"):
+                       which(c4_flag[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_flag")
+col.c4_flag <- slice(col.c4_flag, 1:136) ## 15 May
+col.c4_flag <- data.frame(col.c4_flag, dates_OXF)
+col.c4_flag$X <- NULL
+col.c4_flag$X.1 <- NULL
+col.c4_flag$Date <- NULL
+
+## c5_closepublictransport 
+col.c5_closepublictransport <- slice(c5_closepublictransport, 
+                                     which(c5_closepublictransport[,1] 
+                                           == "Colombia"):
+                                       which(c5_closepublictransport[,1] 
+                                             == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_closepublictransport")
+col.c5_closepublictransport <- slice(col.c5_closepublictransport, 1:136) ## 15 May
+col.c5_closepublictransport <- data.frame(col.c5_closepublictransport, dates_OXF)
+col.c5_closepublictransport$X <- NULL
+col.c5_closepublictransport$X.1 <- NULL
+col.c5_closepublictransport$Date <- NULL
+
+## c5_flag 
+col.c5_flag <- slice(c5_flag, which(c5_flag[,1] == "Colombia"):
+                       which(c5_flag[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_flag")
+col.c5_flag <- slice(col.c5_flag, 1:136) ## 15 May
+col.c5_flag <- data.frame(col.c5_flag, dates_OXF)
+col.c5_flag$X <- NULL
+col.c5_flag$X.1 <- NULL
+col.c5_flag$Date <- NULL
+
+## c6_stayathomerequirements
+col.c6_stayathomerequirements <- slice(c6_stayathomerequirements,
+                                       which(c6_stayathomerequirements[,1] == "Colombia"):
+                                         which(c6_stayathomerequirements[,1] 
+                                               == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_stayathomerequirements")
+col.c6_stayathomerequirements <- slice(col.c6_stayathomerequirements, 1:136) ## 15 May
+col.c6_stayathomerequirements <- data.frame(col.c6_stayathomerequirements, dates_OXF)
+col.c6_stayathomerequirements$X <- NULL
+col.c6_stayathomerequirements$X.1 <- NULL
+col.c6_stayathomerequirements$Date <- NULL
+
+## c6_flag
+col.c6_flag <- slice(c6_flag, which(c6_flag[,1] == "Colombia"):
+                       which(c6_flag[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_flag")
+col.c6_flag <- slice(col.c6_flag, 1:136) ## 15 May
+col.c6_flag <- data.frame(col.c6_flag, dates_OXF)
+col.c6_flag$X <- NULL
+col.c6_flag$X.1 <- NULL
+col.c6_flag$Date <- NULL
+
+## c7_domestictravel
+col.c7_domestictravel <- slice(c7_domestictravel, which(c7_domestictravel[,1]
+                                                        == "Colombia"):
+                                 which(c7_domestictravel[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_domestictravel")
+col.c7_domestictravel <- slice(col.c7_domestictravel, 1:136) ## 15 May
+col.c7_domestictravel <- data.frame(col.c7_domestictravel, dates_OXF)
+col.c7_domestictravel$X <- NULL
+col.c7_domestictravel$X.1 <- NULL
+col.c7_domestictravel$Date <- NULL
+
+## c7_flag 
+col.c7_flag <- slice(c7_flag, which(c7_flag[,1] == "Colombia"):
+                       which(c7_flag[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_flag")
+col.c7_flag <- slice(col.c7_flag, 1:136) ## 15 May
+col.c7_flag <- data.frame(col.c7_flag, dates_OXF)
+col.c7_flag$X <- NULL
+col.c7_flag$X.1 <- NULL
+col.c7_flag$Date <- NULL
+
+## c8_internationaltravel
+col.c8_internationaltravel <- slice(c8_internationaltravel, 
+                                    which(c8_internationaltravel[,1] == "Colombia"):
+                                      which(c8_internationaltravel[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c8_internationaltravel")
+col.c8_internationaltravel <- slice(col.c8_internationaltravel, 1:136) ## 15 May
+col.c8_internationaltravel <- data.frame(col.c8_internationaltravel, dates_OXF)
+col.c8_internationaltravel$X <- NULL
+col.c8_internationaltravel$X.1 <- NULL
+col.c8_internationaltravel$Date <- NULL
+
+## h2_testingpolicy
+col.h2_testingpolicy <- slice(h2_testingpolicy, which(h2_testingpolicy[,1] == "Colombia"):
+                                which(h2_testingpolicy[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h2_testingpolicy")
+col.h2_testingpolicy <- slice(col.h2_testingpolicy, 1:136) ## 15 May
+col.h2_testingpolicy <- data.frame(col.h2_testingpolicy, dates_OXF)
+col.h2_testingpolicy$X <- NULL
+col.h2_testingpolicy$X.1 <- NULL
+col.h2_testingpolicy$Date <- NULL
+
+## h3_contacttracing
+col.h3_contacttracing <- slice(h3_contacttracing, which(h3_contacttracing[,1] 
+                                                        == "Colombia"):
+                                 which(h3_contacttracing[,1] == "Colombia")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h3_contacttracing")
+col.h3_contacttracing <- slice(col.h3_contacttracing, 1:136) ## 15 May
+col.h3_contacttracing <- data.frame(col.h3_contacttracing, dates_OXF)
+col.h3_contacttracing$X <- NULL
+col.h3_contacttracing$X.1 <- NULL
+col.h3_contacttracing$Date <- NULL
+
+## Dataframe 
+col_resp <- data.frame(col.stringencyindex, col.c1_schoolclosing$c1_schoolclosing, 
+                       col.c1_flag$c1_flag, col.c2_workplaceclosing$c2_workplaceclosing, 
+                       col.c2_flag$c2_flag, 
+                       col.c3_cancelpublicevents$c3_cancelpublicevents, 
+                       col.c3_flag$c3_flag, 
+                       col.c4_restrictionsongatherings$c4_restrictionsongatherings,
+                       col.c4_flag$c4_flag, 
+                       col.c5_closepublictransport$c5_closepublictransport, 
+                       col.c5_flag$c5_flag, 
+                       col.c6_stayathomerequirements$c6_stayathomerequirements,
+                       col.c6_flag$c6_flag, col.c7_domestictravel$c7_domestictravel, 
+                       col.c7_flag$c7_flag,
+                       col.c8_internationaltravel$c8_internationaltravel, 
+                       col.h2_testingpolicy$h2_testingpolicy, 
+                       col.h3_contacttracing$h3_contacttracing)
+names(col_resp)[1] = "stringencyindex"
+names(col_resp)[2] = "dates"
+names(col_resp)[3] = "c1_schoolclosing"
+names(col_resp)[4] = "c1_flag"
+names(col_resp)[5] = "c2_workplaceclosing"
+names(col_resp)[6] = "c2_flag"
+names(col_resp)[7] = "c3_cancelpublicevents"
+names(col_resp)[8] = "c3_flag"
+names(col_resp)[9] = "c4_restrictionsongatherings"
+names(col_resp)[10] = "c4_flag"
+names(col_resp)[11] = "c5_closepublictransport"
+names(col_resp)[12] = "c5_flag"
+names(col_resp)[13] = "c6_stayathomerequirements"
+names(col_resp)[14] = "c6_flag"
+names(col_resp)[15] = "c7_domestictravel"
+names(col_resp)[16] = "c7_flag"
+names(col_resp)[17] = "c8_internationaltravel"
+names(col_resp)[18] = "h2_testingpolicy"
+names(col_resp)[19] = "h3_contacttracing"
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, echo = FALSE}
+## stringencyindex
+pry.stringencyindex <- slice(stringencyindex, which(stringencyindex[,1] == "Paraguay"):
+                               which(stringencyindex[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "stringency_index")
+pry.stringencyindex <- slice(pry.stringencyindex, 1:136) ## 15 May
+pry.stringencyindex <- data.frame(pry.stringencyindex, dates_OXF)
+pry.stringencyindex$X <- NULL
+pry.stringencyindex$X.1 <- NULL
+pry.stringencyindex$Date <- NULL
+
+## c1_schoolclosing
+pry.c1_schoolclosing <- slice(c1_schoolclosing, which(c1_schoolclosing[,1] == "Paraguay"):
+                                which(c1_schoolclosing[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_schoolclosing")
+pry.c1_schoolclosing <- slice(pry.c1_schoolclosing, 1:136) ## 15 May
+pry.c1_schoolclosing <- data.frame(pry.c1_schoolclosing, dates_OXF)
+pry.c1_schoolclosing$X <- NULL
+pry.c1_schoolclosing$X.1 <- NULL
+pry.c1_schoolclosing$Date <- NULL
+
+## c1_flag
+pry.c1_flag <- slice(c1_flag, which(c1_flag[,1] == "Paraguay"):
+                       which(c1_flag[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_flag")
+pry.c1_flag <- slice(pry.c1_flag, 1:136) ## 15 May
+pry.c1_flag <- data.frame(pry.c1_flag, dates_OXF)
+pry.c1_flag$X <- NULL
+pry.c1_flag$X.1 <- NULL
+pry.c1_flag$Date <- NULL
+
+## c2_workplaceclosing
+pry.c2_workplaceclosing <- slice(c2_workplaceclosing, which(c2_workplaceclosing[,1]
+                                                            == "Paraguay"):
+                                   which(c2_workplaceclosing[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_workplaceclosing")
+pry.c2_workplaceclosing <- slice(pry.c2_workplaceclosing, 1:136) ## 15 May
+pry.c2_workplaceclosing <- data.frame(pry.c2_workplaceclosing, dates_OXF)
+pry.c2_workplaceclosing$X <- NULL
+pry.c2_workplaceclosing$X.1 <- NULL
+pry.c2_workplaceclosing$Date <- NULL
+
+## c2_flag
+pry.c2_flag <- slice(c2_flag, which(c2_flag[,1] == "Paraguay"):
+                       which(c2_flag[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_flag")
+pry.c2_flag <- slice(pry.c2_flag, 1:136) ## 15 May
+pry.c2_flag <- data.frame(pry.c2_flag, dates_OXF)
+pry.c2_flag$X <- NULL
+pry.c2_flag$X.1 <- NULL
+pry.c2_flag$Date <- NULL
+
+## c3_cancelpublicevents
+pry.c3_cancelpublicevents <- slice(c3_cancelpublicevents, which(c3_cancelpublicevents[,1]
+                                                                == "Paraguay"):
+                                     which(c3_cancelpublicevents[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_cancelpublicevents")
+pry.c3_cancelpublicevents <- slice(pry.c3_cancelpublicevents, 1:136) ## 15 May
+pry.c3_cancelpublicevents <- data.frame(pry.c3_cancelpublicevents, dates_OXF)
+pry.c3_cancelpublicevents$X <- NULL
+pry.c3_cancelpublicevents$X.1 <- NULL
+pry.c3_cancelpublicevents$Date <- NULL
+
+## c3_flag
+pry.c3_flag <- slice(c3_flag, which(c3_flag[,1] == "Paraguay"):
+                       which(c3_flag[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_flag")
+pry.c3_flag <- slice(pry.c3_flag, 1:136) ## 15 May
+pry.c3_flag <- data.frame(pry.c3_flag, dates_OXF)
+pry.c3_flag$X <- NULL
+pry.c3_flag$X.1 <- NULL
+pry.c3_flag$Date <- NULL
+
+## c4_restrictionsongatherings
+pry.c4_restrictionsongatherings <- slice(c4_restrictionsongatherings,
+                                         which(c4_restrictionsongatherings[,1] 
+                                               == "Paraguay"):
+                                           which(c4_restrictionsongatherings[,1] 
+                                                 == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_restrictionsongatherings")
+pry.c4_restrictionsongatherings <- slice(pry.c4_restrictionsongatherings, 1:136) ## 15 May
+pry.c4_restrictionsongatherings <- data.frame(pry.c4_restrictionsongatherings, dates_OXF)
+pry.c4_restrictionsongatherings$X <- NULL
+pry.c4_restrictionsongatherings$X.1 <- NULL
+pry.c4_restrictionsongatherings$Date <- NULL
+
+## c4_flag
+pry.c4_flag <- slice(c4_flag, which(c4_flag[,1] == "Paraguay"):
+                       which(c4_flag[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_flag")
+pry.c4_flag <- slice(pry.c4_flag, 1:136) ## 15 May
+pry.c4_flag <- data.frame(pry.c4_flag, dates_OXF)
+pry.c4_flag$X <- NULL
+pry.c4_flag$X.1 <- NULL
+pry.c4_flag$Date <- NULL
+
+## c5_closepublictransport 
+pry.c5_closepublictransport <- slice(c5_closepublictransport, 
+                                     which(c5_closepublictransport[,1] 
+                                           == "Paraguay"):
+                                       which(c5_closepublictransport[,1] 
+                                             == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_closepublictransport")
+pry.c5_closepublictransport <- slice(pry.c5_closepublictransport, 1:136) ## 15 May
+pry.c5_closepublictransport <- data.frame(pry.c5_closepublictransport, dates_OXF)
+pry.c5_closepublictransport$X <- NULL
+pry.c5_closepublictransport$X.1 <- NULL
+pry.c5_closepublictransport$Date <- NULL
+
+## c5_flag 
+pry.c5_flag <- slice(c5_flag, which(c5_flag[,1] == "Paraguay"):
+                       which(c5_flag[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_flag")
+pry.c5_flag <- slice(pry.c5_flag, 1:136) ## 15 May
+pry.c5_flag <- data.frame(pry.c5_flag, dates_OXF)
+pry.c5_flag$X <- NULL
+pry.c5_flag$X.1 <- NULL
+pry.c5_flag$Date <- NULL
+
+## c6_stayathomerequirements
+pry.c6_stayathomerequirements <- slice(c6_stayathomerequirements, 
+                                       which(c6_stayathomerequirements[,1] == "Paraguay"):
+                                         which(c6_stayathomerequirements[,1]
+                                               == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_stayathomerequirements")
+pry.c6_stayathomerequirements <- slice(pry.c6_stayathomerequirements, 1:136) ## 15 May
+pry.c6_stayathomerequirements <- data.frame(pry.c6_stayathomerequirements, dates_OXF)
+pry.c6_stayathomerequirements$X <- NULL
+pry.c6_stayathomerequirements$X.1 <- NULL
+pry.c6_stayathomerequirements$Date <- NULL
+
+## c6_flag
+pry.c6_flag <- slice(c6_flag, which(c6_flag[,1] == "Paraguay"):
+                       which(c6_flag[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_flag")
+pry.c6_flag <- slice(pry.c6_flag, 1:136) ## 15 May
+pry.c6_flag <- data.frame(pry.c6_flag, dates_OXF)
+pry.c6_flag$X <- NULL
+pry.c6_flag$X.1 <- NULL
+pry.c6_flag$Date <- NULL
+
+## c7_domestictravel
+pry.c7_domestictravel <- slice(c7_domestictravel, which(c7_domestictravel[,1] 
+                                                        == "Paraguay"):
+                                 which(c7_domestictravel[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_domestictravel")
+pry.c7_domestictravel <- slice(pry.c7_domestictravel, 1:136) ## 15 May
+pry.c7_domestictravel <- data.frame(pry.c7_domestictravel, dates_OXF)
+pry.c7_domestictravel$X <- NULL
+pry.c7_domestictravel$X.1 <- NULL
+pry.c7_domestictravel$Date <- NULL
+
+## c7_flag 
+pry.c7_flag <- slice(c7_flag, which(c7_flag[,1] == "Paraguay"):
+                       which(c7_flag[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_flag")
+pry.c7_flag <- slice(pry.c7_flag, 1:136) ## 15 May
+pry.c7_flag <- data.frame(pry.c7_flag, dates_OXF)
+pry.c7_flag$X <- NULL
+pry.c7_flag$X.1 <- NULL
+pry.c7_flag$Date <- NULL
+
+## c8_internationaltravel
+pry.c8_internationaltravel <- slice(c8_internationaltravel, 
+                                    which(c8_internationaltravel[,1] == "Paraguay"):
+                                      which(c8_internationaltravel[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c8_internationaltravel")
+pry.c8_internationaltravel <- slice(pry.c8_internationaltravel, 1:136) ## 15 May
+pry.c8_internationaltravel <- data.frame(pry.c8_internationaltravel, dates_OXF)
+pry.c8_internationaltravel$X <- NULL
+pry.c8_internationaltravel$X.1 <- NULL
+pry.c8_internationaltravel$Date <- NULL
+
+## h2_testingpolicy
+pry.h2_testingpolicy <- slice(h2_testingpolicy, which(h2_testingpolicy[,1] == "Paraguay"):
+                                which(h2_testingpolicy[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h2_testingpolicy")
+pry.h2_testingpolicy <- slice(pry.h2_testingpolicy, 1:136) ## 15 May
+pry.h2_testingpolicy <- data.frame(pry.h2_testingpolicy, dates_OXF)
+pry.h2_testingpolicy$X <- NULL
+pry.h2_testingpolicy$X.1 <- NULL
+pry.h2_testingpolicy$Date <- NULL
+
+## h3_contacttracing
+pry.h3_contacttracing <- slice(h3_contacttracing, which(h3_contacttracing[,1] 
+                                                        == "Paraguay"):
+                                 which(h3_contacttracing[,1] == "Paraguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h3_contacttracing")
+pry.h3_contacttracing <- slice(pry.h3_contacttracing, 1:136) ## 15 May
+pry.h3_contacttracing <- data.frame(pry.h3_contacttracing, dates_OXF)
+pry.h3_contacttracing$X <- NULL
+pry.h3_contacttracing$X.1 <- NULL
+pry.h3_contacttracing$Date <- NULL
+
+## Dataframe 
+pry_resp <- data.frame(pry.stringencyindex, pry.c1_schoolclosing$c1_schoolclosing, 
+                       pry.c1_flag$c1_flag, pry.c2_workplaceclosing$c2_workplaceclosing, 
+                       pry.c2_flag$c2_flag, 
+                       pry.c3_cancelpublicevents$c3_cancelpublicevents, 
+                       pry.c3_flag$c3_flag, 
+                       pry.c4_restrictionsongatherings$c4_restrictionsongatherings,
+                       pry.c4_flag$c4_flag, 
+                       pry.c5_closepublictransport$c5_closepublictransport, 
+                       pry.c5_flag$c5_flag, 
+                       pry.c6_stayathomerequirements$c6_stayathomerequirements,
+                       pry.c6_flag$c6_flag, pry.c7_domestictravel$c7_domestictravel, 
+                       pry.c7_flag$c7_flag, 
+                       pry.c8_internationaltravel$c8_internationaltravel, 
+                       pry.h2_testingpolicy$h2_testingpolicy, 
+                       pry.h3_contacttracing$h3_contacttracing)
+names(pry_resp)[1] = "stringencyindex"
+names(pry_resp)[2] = "dates"
+names(pry_resp)[3] = "c1_schoolclosing"
+names(pry_resp)[4] = "c1_flag"
+names(pry_resp)[5] = "c2_workplaceclosing"
+names(pry_resp)[6] = "c2_flag"
+names(pry_resp)[7] = "c3_cancelpublicevents"
+names(pry_resp)[8] = "c3_flag"
+names(pry_resp)[9] = "c4_restrictionsongatherings"
+names(pry_resp)[10] = "c4_flag"
+names(pry_resp)[11] = "c5_closepublictransport"
+names(pry_resp)[12] = "c5_flag"
+names(pry_resp)[13] = "c6_stayathomerequirements"
+names(pry_resp)[14] = "c6_flag"
+names(pry_resp)[15] = "c7_domestictravel"
+names(pry_resp)[16] = "c7_flag"
+names(pry_resp)[17] = "c8_internationaltravel"
+names(pry_resp)[18] = "h2_testingpolicy"
+names(pry_resp)[19] = "h3_contacttracing"
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, echo = FALSE}
+## stringencyindex
+per.stringencyindex <- slice(stringencyindex, which(stringencyindex[,1] == "Peru"):
+                               which(stringencyindex[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "stringency_index")
+per.stringencyindex <- slice(per.stringencyindex, 1:136) ## 15 May
+per.stringencyindex <- data.frame(per.stringencyindex, dates_OXF)
+per.stringencyindex$X <- NULL
+per.stringencyindex$X.1 <- NULL
+per.stringencyindex$Date <- NULL
+
+## c1_schoolclosing
+per.c1_schoolclosing <- slice(c1_schoolclosing, which(c1_schoolclosing[,1] == "Peru"):
+                                which(c1_schoolclosing[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_schoolclosing")
+per.c1_schoolclosing <- slice(per.c1_schoolclosing, 1:136) ## 15 May
+per.c1_schoolclosing <- data.frame(per.c1_schoolclosing, dates_OXF)
+per.c1_schoolclosing$X <- NULL
+per.c1_schoolclosing$X.1 <- NULL
+per.c1_schoolclosing$Date <- NULL
+
+## c1_flag
+per.c1_flag <- slice(c1_flag, which(c1_flag[,1] == "Peru"):
+                       which(c1_flag[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_flag")
+per.c1_flag <- slice(per.c1_flag, 1:136) ## 15 May
+per.c1_flag <- data.frame(per.c1_flag, dates_OXF)
+per.c1_flag$X <- NULL
+per.c1_flag$X.1 <- NULL
+per.c1_flag$Date <- NULL
+
+## c2_workplaceclosing
+per.c2_workplaceclosing <- slice(c2_workplaceclosing, which(c2_workplaceclosing[,1]
+                                                            == "Peru"):
+                                   which(c2_workplaceclosing[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_workplaceclosing")
+per.c2_workplaceclosing <- slice(per.c2_workplaceclosing, 1:136) ## 15 May
+per.c2_workplaceclosing <- data.frame(per.c2_workplaceclosing, dates_OXF)
+per.c2_workplaceclosing$X <- NULL
+per.c2_workplaceclosing$X.1 <- NULL
+per.c2_workplaceclosing$Date <- NULL
+
+## c2_flag
+per.c2_flag <- slice(c2_flag, which(c2_flag[,1] == "Peru"):
+                       which(c2_flag[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_flag")
+per.c2_flag <- slice(per.c2_flag, 1:136) ## 15 May
+per.c2_flag <- data.frame(per.c2_flag, dates_OXF)
+per.c2_flag$X <- NULL
+per.c2_flag$X.1 <- NULL
+per.c2_flag$Date <- NULL
+
+## c3_cancelpublicevents
+per.c3_cancelpublicevents <- slice(c3_cancelpublicevents, which(c3_cancelpublicevents[,1]
+                                                                == "Peru"):
+                                     which(c3_cancelpublicevents[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_cancelpublicevents")
+per.c3_cancelpublicevents <- slice(per.c3_cancelpublicevents, 1:136) ## 15 May
+per.c3_cancelpublicevents <- data.frame(per.c3_cancelpublicevents, dates_OXF)
+per.c3_cancelpublicevents$X <- NULL
+per.c3_cancelpublicevents$X.1 <- NULL
+per.c3_cancelpublicevents$Date <- NULL
+
+## c3_flag
+per.c3_flag <- slice(c3_flag, which(c3_flag[,1] == "Peru"):
+                       which(c3_flag[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_flag")
+per.c3_flag <- slice(per.c3_flag, 1:136) ## 15 May
+per.c3_flag <- data.frame(per.c3_flag, dates_OXF)
+per.c3_flag$X <- NULL
+per.c3_flag$X.1 <- NULL
+per.c3_flag$Date <- NULL
+
+## c4_restrictionsongatherings
+per.c4_restrictionsongatherings <- slice(c4_restrictionsongatherings,
+                                         which(c4_restrictionsongatherings[,1]
+                                               == "Peru"):
+                                           which(c4_restrictionsongatherings[,1]
+                                                 == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_restrictionsongatherings")
+per.c4_restrictionsongatherings <- slice(per.c4_restrictionsongatherings, 1:136) ## 15 May
+per.c4_restrictionsongatherings <- data.frame(per.c4_restrictionsongatherings, dates_OXF)
+per.c4_restrictionsongatherings$X <- NULL
+per.c4_restrictionsongatherings$X.1 <- NULL
+per.c4_restrictionsongatherings$Date <- NULL
+
+## c4_flag
+per.c4_flag <- slice(c4_flag, which(c4_flag[,1] == "Peru"):
+                       which(c4_flag[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_flag")
+per.c4_flag <- slice(per.c4_flag, 1:136) ## 15 May
+per.c4_flag <- data.frame(per.c4_flag, dates_OXF)
+per.c4_flag$X <- NULL
+per.c4_flag$X.1 <- NULL
+per.c4_flag$Date <- NULL
+
+## c5_closepublictransport 
+per.c5_closepublictransport <- slice(c5_closepublictransport,
+                                     which(c5_closepublictransport[,1] == "Peru"):
+                                       which(c5_closepublictransport[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_closepublictransport")
+per.c5_closepublictransport <- slice(per.c5_closepublictransport, 1:136) ## 15 May
+per.c5_closepublictransport <- data.frame(per.c5_closepublictransport, dates_OXF)
+per.c5_closepublictransport$X <- NULL
+per.c5_closepublictransport$X.1 <- NULL
+per.c5_closepublictransport$Date <- NULL
+
+## c5_flag 
+per.c5_flag <- slice(c5_flag, which(c5_flag[,1] == "Peru"):
+                       which(c5_flag[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_flag")
+per.c5_flag <- slice(per.c5_flag, 1:136) ## 15 May
+per.c5_flag <- data.frame(per.c5_flag, dates_OXF)
+per.c5_flag$X <- NULL
+per.c5_flag$X.1 <- NULL
+per.c5_flag$Date <- NULL
+
+## c6_stayathomerequirements
+per.c6_stayathomerequirements <- slice(c6_stayathomerequirements,
+                                       which(c6_stayathomerequirements[,1] == "Peru"):
+                                         which(c6_stayathomerequirements[,1]
+                                               == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_stayathomerequirements")
+per.c6_stayathomerequirements <- slice(per.c6_stayathomerequirements, 1:136) ## 15 May
+per.c6_stayathomerequirements <- data.frame(per.c6_stayathomerequirements, dates_OXF)
+per.c6_stayathomerequirements$X <- NULL
+per.c6_stayathomerequirements$X.1 <- NULL
+per.c6_stayathomerequirements$Date <- NULL
+
+## c6_flag
+per.c6_flag <- slice(c6_flag, which(c6_flag[,1] == "Peru"):
+                       which(c6_flag[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_flag")
+per.c6_flag <- slice(per.c6_flag, 1:136) ## 15 May
+per.c6_flag <- data.frame(per.c6_flag, dates_OXF)
+per.c6_flag$X <- NULL
+per.c6_flag$X.1 <- NULL
+per.c6_flag$Date <- NULL
+
+## c7_domestictravel
+per.c7_domestictravel <- slice(c7_domestictravel, which(c7_domestictravel[,1] == "Peru"):
+                                 which(c7_domestictravel[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_domestictravel")
+per.c7_domestictravel <- slice(per.c7_domestictravel, 1:136) ## 15 May
+per.c7_domestictravel <- data.frame(per.c7_domestictravel, dates_OXF)
+per.c7_domestictravel$X <- NULL
+per.c7_domestictravel$X.1 <- NULL
+per.c7_domestictravel$Date <- NULL
+
+## c7_flag 
+per.c7_flag <- slice(c7_flag, which(c7_flag[,1] == "Peru"):
+                       which(c7_flag[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_flag")
+per.c7_flag <- slice(per.c7_flag, 1:136) ## 15 May
+per.c7_flag <- data.frame(per.c7_flag, dates_OXF)
+per.c7_flag$X <- NULL
+per.c7_flag$X.1 <- NULL
+per.c7_flag$Date <- NULL
+
+## c8_internationaltravel
+per.c8_internationaltravel <- slice(c8_internationaltravel, 
+                                    which(c8_internationaltravel[,1] == "Peru"):
+                                      which(c8_internationaltravel[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c8_internationaltravel")
+per.c8_internationaltravel <- slice(per.c8_internationaltravel, 1:136) ## 15 May
+per.c8_internationaltravel <- data.frame(per.c8_internationaltravel, dates_OXF)
+per.c8_internationaltravel$X <- NULL
+per.c8_internationaltravel$X.1 <- NULL
+per.c8_internationaltravel$Date <- NULL
+
+## h2_testingpolicy
+per.h2_testingpolicy <- slice(h2_testingpolicy, which(h2_testingpolicy[,1] == "Peru"):
+                                which(h2_testingpolicy[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h2_testingpolicy")
+per.h2_testingpolicy <- slice(per.h2_testingpolicy, 1:136) ## 15 May
+per.h2_testingpolicy <- data.frame(per.h2_testingpolicy, dates_OXF)
+per.h2_testingpolicy$X <- NULL
+per.h2_testingpolicy$X.1 <- NULL
+per.h2_testingpolicy$Date <- NULL
+
+## h3_contacttracing
+per.h3_contacttracing <- slice(h3_contacttracing, which(h3_contacttracing[,1] == "Peru"):
+                                 which(h3_contacttracing[,1] == "Peru")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h3_contacttracing")
+per.h3_contacttracing <- slice(per.h3_contacttracing, 1:136) ## 15 May
+per.h3_contacttracing <- data.frame(per.h3_contacttracing, dates_OXF)
+per.h3_contacttracing$X <- NULL
+per.h3_contacttracing$X.1 <- NULL
+per.h3_contacttracing$Date <- NULL
+
+## Dataframe 
+per_resp <- data.frame(per.stringencyindex, per.c1_schoolclosing$c1_schoolclosing, 
+                       per.c1_flag$c1_flag, per.c2_workplaceclosing$c2_workplaceclosing, 
+                       per.c2_flag$c2_flag,
+                       per.c3_cancelpublicevents$c3_cancelpublicevents, 
+                       per.c3_flag$c3_flag, 
+                       per.c4_restrictionsongatherings$c4_restrictionsongatherings,
+                       per.c4_flag$c4_flag, 
+                       per.c5_closepublictransport$c5_closepublictransport, 
+                       per.c5_flag$c5_flag, 
+                       per.c6_stayathomerequirements$c6_stayathomerequirements,
+                       per.c6_flag$c6_flag, per.c7_domestictravel$c7_domestictravel, 
+                       per.c7_flag$c7_flag, 
+                       per.c8_internationaltravel$c8_internationaltravel, 
+                       per.h2_testingpolicy$h2_testingpolicy, 
+                       per.h3_contacttracing$h3_contacttracing)
+names(per_resp)[1] = "stringencyindex"
+names(per_resp)[2] = "dates"
+names(per_resp)[3] = "c1_schoolclosing"
+names(per_resp)[4] = "c1_flag"
+names(per_resp)[5] = "c2_workplaceclosing"
+names(per_resp)[6] = "c2_flag"
+names(per_resp)[7] = "c3_cancelpublicevents"
+names(per_resp)[8] = "c3_flag"
+names(per_resp)[9] = "c4_restrictionsongatherings"
+names(per_resp)[10] = "c4_flag"
+names(per_resp)[11] = "c5_closepublictransport"
+names(per_resp)[12] = "c5_flag"
+names(per_resp)[13] = "c6_stayathomerequirements"
+names(per_resp)[14] = "c6_flag"
+names(per_resp)[15] = "c7_domestictravel"
+names(per_resp)[16] = "c7_flag"
+names(per_resp)[17] = "c8_internationaltravel"
+names(per_resp)[18] = "h2_testingpolicy"
+names(per_resp)[19] = "h3_contacttracing"
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, echo = FALSE}
+## stringencyindex
+ury.stringencyindex <- slice(stringencyindex, which(stringencyindex[,1] == "Uruguay"):
+                               which(stringencyindex[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "stringency_index")
+ury.stringencyindex <- slice(ury.stringencyindex, 1:136) ## 15 May
+ury.stringencyindex <- data.frame(ury.stringencyindex, dates_OXF)
+ury.stringencyindex$X <- NULL
+ury.stringencyindex$X.1 <- NULL
+ury.stringencyindex$Date <- NULL
+
+## c1_schoolclosing
+ury.c1_schoolclosing <- slice(c1_schoolclosing, which(c1_schoolclosing[,1] == "Uruguay"):
+                                which(c1_schoolclosing[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_schoolclosing")
+ury.c1_schoolclosing <- slice(ury.c1_schoolclosing, 1:136) ## 15 May
+ury.c1_schoolclosing <- data.frame(ury.c1_schoolclosing, dates_OXF)
+ury.c1_schoolclosing$X <- NULL
+ury.c1_schoolclosing$X.1 <- NULL
+ury.c1_schoolclosing$Date <- NULL
+
+## c1_flag
+ury.c1_flag <- slice(c1_flag, which(c1_flag[,1] == "Uruguay"):
+                       which(c1_flag[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c1_flag")
+ury.c1_flag <- slice(ury.c1_flag, 1:136) ## 15 May
+ury.c1_flag <- data.frame(ury.c1_flag, dates_OXF)
+ury.c1_flag$X <- NULL
+ury.c1_flag$X.1 <- NULL
+ury.c1_flag$Date <- NULL
+
+## c2_workplaceclosing
+ury.c2_workplaceclosing <- slice(c2_workplaceclosing, which(c2_workplaceclosing[,1] 
+                                                            == "Uruguay"):
+                                   which(c2_workplaceclosing[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_workplaceclosing")
+ury.c2_workplaceclosing <- slice(ury.c2_workplaceclosing, 1:136) ## 15 May
+ury.c2_workplaceclosing <- data.frame(ury.c2_workplaceclosing, dates_OXF)
+ury.c2_workplaceclosing$X <- NULL
+ury.c2_workplaceclosing$X.1 <- NULL
+ury.c2_workplaceclosing$Date <- NULL
+
+## c2_flag
+ury.c2_flag <- slice(c2_flag, which(c2_flag[,1] == "Uruguay"):
+                       which(c2_flag[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c2_flag")
+ury.c2_flag <- slice(ury.c2_flag, 1:136) ## 15 May
+ury.c2_flag <- data.frame(ury.c2_flag, dates_OXF)
+ury.c2_flag$X <- NULL
+ury.c2_flag$X.1 <- NULL
+ury.c2_flag$Date <- NULL
+
+## c3_cancelpublicevents
+ury.c3_cancelpublicevents <- slice(c3_cancelpublicevents, which(c3_cancelpublicevents[,1] 
+                                                                == "Uruguay"):
+                                     which(c3_cancelpublicevents[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_cancelpublicevents")
+ury.c3_cancelpublicevents <- slice(ury.c3_cancelpublicevents, 1:136) ## 15 May
+ury.c3_cancelpublicevents <- data.frame(ury.c3_cancelpublicevents, dates_OXF)
+ury.c3_cancelpublicevents$X <- NULL
+ury.c3_cancelpublicevents$X.1 <- NULL
+ury.c3_cancelpublicevents$Date <- NULL
+
+## c3_flag
+ury.c3_flag <- slice(c3_flag, which(c3_flag[,1] == "Uruguay"):
+                       which(c3_flag[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c3_flag")
+ury.c3_flag <- slice(ury.c3_flag, 1:136) ## 15 May
+ury.c3_flag <- data.frame(ury.c3_flag, dates_OXF)
+ury.c3_flag$X <- NULL
+ury.c3_flag$X.1 <- NULL
+ury.c3_flag$Date <- NULL
+
+## c4_restrictionsongatherings
+ury.c4_restrictionsongatherings <- slice(c4_restrictionsongatherings, 
+                                         which(c4_restrictionsongatherings[,1] 
+                                               == "Uruguay"):
+                                           which(c4_restrictionsongatherings[,1] 
+                                                 == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_restrictionsongatherings")
+ury.c4_restrictionsongatherings <- slice(ury.c4_restrictionsongatherings, 1:136) ## 15 May
+ury.c4_restrictionsongatherings <- data.frame(ury.c4_restrictionsongatherings, dates_OXF)
+ury.c4_restrictionsongatherings$X <- NULL
+ury.c4_restrictionsongatherings$X.1 <- NULL
+ury.c4_restrictionsongatherings$Date <- NULL
+
+## c4_flag
+ury.c4_flag <- slice(c4_flag, which(c4_flag[,1] == "Uruguay"):
+                       which(c4_flag[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c4_flag")
+ury.c4_flag <- slice(ury.c4_flag, 1:136) ## 15 May
+ury.c4_flag <- data.frame(ury.c4_flag, dates_OXF)
+ury.c4_flag$X <- NULL
+ury.c4_flag$X.1 <- NULL
+ury.c4_flag$Date <- NULL
+
+## c5_closepublictransport 
+ury.c5_closepublictransport <- slice(c5_closepublictransport, 
+                                     which(c5_closepublictransport[,1] == "Uruguay"):
+                                       which(c5_closepublictransport[,1] 
+                                             == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_closepublictransport")
+ury.c5_closepublictransport <- slice(ury.c5_closepublictransport, 1:136) ## 15 May
+ury.c5_closepublictransport <- data.frame(ury.c5_closepublictransport, dates_OXF)
+ury.c5_closepublictransport$X <- NULL
+ury.c5_closepublictransport$X.1 <- NULL
+ury.c5_closepublictransport$Date <- NULL
+
+## c5_flag 
+ury.c5_flag <- slice(c5_flag, which(c5_flag[,1] == "Uruguay"):
+                       which(c5_flag[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c5_flag")
+ury.c5_flag <- slice(ury.c5_flag, 1:136) ## 15 May
+ury.c5_flag <- data.frame(ury.c5_flag, dates_OXF)
+ury.c5_flag$X <- NULL
+ury.c5_flag$X.1 <- NULL
+ury.c5_flag$Date <- NULL
+
+## c6_stayathomerequirements
+ury.c6_stayathomerequirements <- slice(c6_stayathomerequirements, 
+                                       which(c6_stayathomerequirements[,1] == "Uruguay"):
+                                         which(c6_stayathomerequirements[,1] 
+                                               == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_stayathomerequirements")
+ury.c6_stayathomerequirements <- slice(ury.c6_stayathomerequirements, 1:136) ## 15 May
+ury.c6_stayathomerequirements <- data.frame(ury.c6_stayathomerequirements, dates_OXF)
+ury.c6_stayathomerequirements$X <- NULL
+ury.c6_stayathomerequirements$X.1 <- NULL
+ury.c6_stayathomerequirements$Date <- NULL
+
+## c6_flag
+ury.c6_flag <- slice(c6_flag, which(c6_flag[,1] == "Uruguay"):
+                       which(c6_flag[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c6_flag")
+ury.c6_flag <- slice(ury.c6_flag, 1:136) ## 15 May
+ury.c6_flag <- data.frame(ury.c6_flag, dates_OXF)
+ury.c6_flag$X <- NULL
+ury.c6_flag$X.1 <- NULL
+ury.c6_flag$Date <- NULL
+
+## c7_domestictravel
+ury.c7_domestictravel <- slice(c7_domestictravel, which(c7_domestictravel[,1] 
+                                                        == "Uruguay"):
+                                 which(c7_domestictravel[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_domestictravel")
+ury.c7_domestictravel <- slice(ury.c7_domestictravel, 1:136) ## 15 May
+ury.c7_domestictravel <- data.frame(ury.c7_domestictravel, dates_OXF)
+ury.c7_domestictravel$X <- NULL
+ury.c7_domestictravel$X.1 <- NULL
+ury.c7_domestictravel$Date <- NULL
+
+## c7_flag 
+ury.c7_flag <- slice(c7_flag, which(c7_flag[,1] == "Uruguay"):
+                       which(c7_flag[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c7_flag")
+ury.c7_flag <- slice(ury.c7_flag, 1:136) ## 15 May
+ury.c7_flag <- data.frame(ury.c7_flag, dates_OXF)
+ury.c7_flag$X <- NULL
+ury.c7_flag$X.1 <- NULL
+ury.c7_flag$Date <- NULL
+
+## c8_internationaltravel
+ury.c8_internationaltravel <- slice(c8_internationaltravel, 
+                                    which(c8_internationaltravel[,1] == "Uruguay"):
+                                      which(c8_internationaltravel[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "c8_internationaltravel")
+ury.c8_internationaltravel <- slice(ury.c8_internationaltravel, 1:136) ## 15 May
+ury.c8_internationaltravel <- data.frame(ury.c8_internationaltravel, dates_OXF)
+ury.c8_internationaltravel$X <- NULL
+ury.c8_internationaltravel$X.1 <- NULL
+ury.c8_internationaltravel$Date <- NULL
+
+## h2_testingpolicy
+ury.h2_testingpolicy <- slice(h2_testingpolicy, which(h2_testingpolicy[,1] == "Uruguay"):
+                                which(h2_testingpolicy[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h2_testingpolicy")
+ury.h2_testingpolicy <- slice(ury.h2_testingpolicy, 1:136) ## 15 May
+ury.h2_testingpolicy <- data.frame(ury.h2_testingpolicy, dates_OXF)
+ury.h2_testingpolicy$X <- NULL
+ury.h2_testingpolicy$X.1 <- NULL
+ury.h2_testingpolicy$Date <- NULL
+
+## h3_contacttracing
+ury.h3_contacttracing <- slice(h3_contacttracing, which(h3_contacttracing[,1] 
+                                                        == "Uruguay"):
+                                 which(h3_contacttracing[,1] == "Uruguay")) %>% 
+  pivot_longer(-c(X, X.1), names_to = "Date", values_to = "h3_contacttracing")
+ury.h3_contacttracing <- slice(ury.h3_contacttracing, 1:136) ## 15 May
+ury.h3_contacttracing <- data.frame(ury.h3_contacttracing, dates_OXF)
+ury.h3_contacttracing$X <- NULL
+ury.h3_contacttracing$X.1 <- NULL
+ury.h3_contacttracing$Date <- NULL
+
+## Dataframe 
+ury_resp <- data.frame(ury.stringencyindex, ury.c1_schoolclosing$c1_schoolclosing, 
+                       ury.c1_flag$c1_flag, ury.c2_workplaceclosing$c2_workplaceclosing, 
+                       ury.c2_flag$c2_flag, 
+                       ury.c3_cancelpublicevents$c3_cancelpublicevents, 
+                       ury.c3_flag$c3_flag, 
+                       ury.c4_restrictionsongatherings$c4_restrictionsongatherings,
+                       ury.c4_flag$c4_flag, 
+                       ury.c5_closepublictransport$c5_closepublictransport, 
+                       ury.c5_flag$c5_flag, 
+                       ury.c6_stayathomerequirements$c6_stayathomerequirements,
+                       ury.c6_flag$c6_flag, ury.c7_domestictravel$c7_domestictravel, 
+                       ury.c7_flag$c7_flag, 
+                       ury.c8_internationaltravel$c8_internationaltravel, 
+                       ury.h2_testingpolicy$h2_testingpolicy, 
+                       ury.h3_contacttracing$h3_contacttracing)
+names(ury_resp)[1] = "stringencyindex"
+names(ury_resp)[2] = "dates"
+names(ury_resp)[3] = "c1_schoolclosing"
+names(ury_resp)[4] = "c1_flag"
+names(ury_resp)[5] = "c2_workplaceclosing"
+names(ury_resp)[6] = "c2_flag"
+names(ury_resp)[7] = "c3_cancelpublicevents"
+names(ury_resp)[8] = "c3_flag"
+names(ury_resp)[9] = "c4_restrictionsongatherings"
+names(ury_resp)[10] = "c4_flag"
+names(ury_resp)[11] = "c5_closepublictransport"
+names(ury_resp)[12] = "c5_flag"
+names(ury_resp)[13] = "c6_stayathomerequirements"
+names(ury_resp)[14] = "c6_flag"
+names(ury_resp)[15] = "c7_domestictravel"
+names(ury_resp)[16] = "c7_flag"
+names(ury_resp)[17] = "c8_internationaltravel"
+names(ury_resp)[18] = "h2_testingpolicy"
+names(ury_resp)[19] = "h3_contacttracing"
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, warning = FALSE, echo = FALSE}
+## Packages
+library(EpiEstim)
+library(incidence)
+library(ggplot2)
+library(scales)
+library(shadowtext)
+library(dplyr)
+library(epitrix)
+library(distcrete)
+library(projections)
+library(earlyR)
+library(broom)
+library(lubridate) ## PS-Note 2020-08-30: It had already been loaded.
+library(grid)
+library(cowplot)
+library(tidyverse) ## PS-Note 2020-08-30: It had already been loaded.
+library(lubridate) ## PS-Note 2020-08-30: It had already been loaded.
+
+## Incidence
+covid19 <- confirmed_covid19
+names(covid19)[1] = "dates"
+
+## Correction URY 12 April (2.87%)
+covid19[47, 9] <- 0
+
+## Deaths
+names(deaths_covid19)[1] = "dates"
+
+## Recovered
+names(recovered_covid19)[1] = "dates"
+
+## ICU Beds
+icu_arg <- 8444 
+icu_bol <- 220 
+icu_bra <- 55101 
+icu_chl <- 2724 
+icu_col <- 5354 
+icu_ecu <- 1183 
+icu_pry <- 734 
+icu_per <- 721 
+icu_ury <- 700 
+
+## Country Names
+arg_name <- "Argentina"
+bol_name <- "Bolivia"
+bra_name <- "Brazil"
+chl_name <- "Chile"
+col_name <- "Colombia"
+pry_name <- "Paraguay"
+per_name <- "Peru"
+ury_name <- "Uruguay"
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, warning = FALSE, echo = FALSE}
+## Dataframe Confirmed
+df_confirmed <- data.frame(dates = c(rep(as.Date(covid19$dates), 8)),
+                           value = c(cumulate(covid19$ARG), 
+                                     cumulate(covid19$BOL),
+                                     cumulate(covid19$BRA),
+                                     cumulate(covid19$CHL),
+                                     cumulate(covid19$COL),
+                                     cumulate(covid19$PRY),
+                                     cumulate(covid19$PER),
+                                     cumulate(covid19$URY)),
+                           country = c(rep(arg_name, length(covid19$dates)),
+                                       rep(bol_name, length(covid19$dates)),
+                                       rep(bra_name, length(covid19$dates)),
+                                       rep(chl_name, length(covid19$dates)),
+                                       rep(col_name, length(covid19$dates)),
+                                       rep(pry_name, length(covid19$dates)),
+                                       rep(per_name, length(covid19$dates)),
+                                       rep(ury_name, length(covid19$dates))))
+
+## Plot Confirmed
+
+## Dataframe Deaths
+df_deaths <- data.frame(dates = c(rep(as.Date(deaths_covid19$dates), 8)),
+                           value = c(cumulate(deaths_covid19$ARG), 
+                                     cumulate(deaths_covid19$BOL),
+                                     cumulate(deaths_covid19$BRA),
+                                     cumulate(deaths_covid19$CHL),
+                                     cumulate(deaths_covid19$COL),
+                                     cumulate(deaths_covid19$PRY),
+                                     cumulate(deaths_covid19$PER),
+                                     cumulate(deaths_covid19$URY)),
+                           country = c(rep(arg_name, length(deaths_covid19$dates)),
+                                       rep(bol_name, length(deaths_covid19$dates)),
+                                       rep(bra_name, length(deaths_covid19$dates)),
+                                       rep(chl_name, length(deaths_covid19$dates)),
+                                       rep(col_name, length(deaths_covid19$dates)),
+                                       rep(pry_name, length(deaths_covid19$dates)),
+                                       rep(per_name, length(deaths_covid19$dates)),
+                                       rep(ury_name, length(deaths_covid19$dates))))
+
+## Plot Deaths
+
+## Dataframe Recovered
+df_recovered <- data.frame(dates = c(rep(as.Date(recovered_covid19$dates), 8)),
+                           value = c(cumulate(recovered_covid19$ARG), 
+                                     cumulate(recovered_covid19$BOL),
+                                     cumulate(recovered_covid19$BRA),
+                                     cumulate(recovered_covid19$CHL),
+                                     cumulate(recovered_covid19$COL),
+                                     cumulate(recovered_covid19$PRY),
+                                     cumulate(recovered_covid19$PER),
+                                     cumulate(recovered_covid19$URY)),
+                        country = c(rep(arg_name, length(recovered_covid19$dates)),
+                                    rep(bol_name, length(recovered_covid19$dates)),
+                                    rep(bra_name, length(recovered_covid19$dates)),
+                                    rep(chl_name, length(recovered_covid19$dates)),
+                                    rep(col_name, length(recovered_covid19$dates)),
+                                    rep(pry_name, length(recovered_covid19$dates)),
+                                    rep(per_name, length(recovered_covid19$dates)),
+                                    rep(ury_name, length(recovered_covid19$dates))))
+
+## Plot Recovered
+
+## Dataframe Burden Index (since 26 Feb to 15 may)
+df_burden <- data.frame(dates = c(rep(as.Date(covid19$dates), 8)),
+                        value = c(
+                          (((cumulate(covid19$ARG) - cumulate(recovered_covid19$ARG))
+                            * 0.15)/(icu_arg * 0.25)),
+                          (((cumulate(covid19$BOL) - cumulate(recovered_covid19$BOL)) 
+                            * 0.15)/(icu_bol * 0.25)),
+                          (((cumulate(covid19$BRA) - cumulate(recovered_covid19$BRA)) 
+                            * 0.15)/(icu_bra * 0.25)),
+                          (((cumulate(covid19$CHL) - cumulate(recovered_covid19$CHL))
+                            * 0.15)/(icu_chl * 0.25)),
+                          (((cumulate(covid19$COL) - cumulate(recovered_covid19$COL))
+                            * 0.15)/(icu_col * 0.25)),
+                          (((cumulate(covid19$PRY) - cumulate(recovered_covid19$PRY))
+                            * 0.15)/(icu_pry * 0.25)),
+                          (((cumulate(covid19$PER) - cumulate(recovered_covid19$PER))
+                            * 0.15)/(icu_per * 0.25)),
+                          (((cumulate(covid19$URY) - cumulate(recovered_covid19$URY))
+                            * 0.15)/(icu_ury * 0.25))
+                                  ),
+                           country = c(rep(arg_name, length(covid19$dates)),
+                                       rep(bol_name, length(covid19$dates)),
+                                       rep(bra_name, length(covid19$dates)),
+                                       rep(chl_name, length(covid19$dates)),
+                                       rep(col_name, length(covid19$dates)),
+                                       rep(pry_name, length(covid19$dates)),
+                                       rep(per_name, length(covid19$dates)),
+                                       rep(ury_name, length(covid19$dates))))
+
+## Plot Burden Index
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, warning = FALSE, echo = FALSE}
+## Data
+south_am <- covid19
+
+## Format Dates
+south_am$dates <- as.Date(south_am$dates)
+
+## Table to Vector
+pre.i.arg <- rep(south_am$dates, south_am$ARG)
+pre.i.bol <- rep(south_am$dates, south_am$BOL)
+pre.i.bra <- rep(south_am$dates, south_am$BRA)
+pre.i.chl <- rep(south_am$dates, south_am$CHL)
+pre.i.col <- rep(south_am$dates, south_am$COL)
+pre.i.per <- rep(south_am$dates, south_am$PER)
+pre.i.pry <- rep(south_am$dates, south_am$PRY)
+pre.i.ury <- rep(south_am$dates, south_am$URY)
+
+## Incidence Objets
+third_week <- as.Date("2020-03-20")
+last_date <- as.Date("2020-05-15") 
+
+## Past Incidence (3rd Week of March)
+past.i.arg <- incidence(as.Date(pre.i.arg), last_date = third_week)
+past.i.bol <- incidence(as.Date(pre.i.bol), last_date = third_week)
+past.i.bra <- incidence(as.Date(pre.i.bra), last_date = third_week)
+past.i.chl <- incidence(as.Date(pre.i.chl), last_date = third_week)
+past.i.col <- incidence(as.Date(pre.i.col), last_date = third_week)
+past.i.per <- incidence(as.Date(pre.i.per), last_date = third_week)
+past.i.pry <- incidence(as.Date(pre.i.pry), last_date = third_week)
+past.i.ury <- incidence(as.Date(pre.i.ury), last_date = third_week)
+
+## Current Incidence (15 May)
+i.arg <- incidence(as.Date(pre.i.arg), last_date = last_date)
+i.bol <- incidence(as.Date(pre.i.bol), last_date = last_date)
+i.bra <- incidence(as.Date(pre.i.bra), last_date = last_date)
+i.chl <- incidence(as.Date(pre.i.chl), last_date = last_date)
+i.col <- incidence(as.Date(pre.i.col), last_date = last_date)
+i.per <- incidence(as.Date(pre.i.per), last_date = last_date)
+i.pry <- incidence(as.Date(pre.i.pry), last_date = last_date)
+i.ury <- incidence(as.Date(pre.i.ury), last_date = last_date)
+
+## Simulations Values
+mu <- 7.5
+sigma <- 3.4
+cv <- sigma / mu
+pred_days <- 7
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, warning = FALSE, echo = FALSE}
+## Early Projections
+res_arg <- get_R(past.i.arg, si_mean = mu, si_sd = sigma)
+## plot(res_arg)
+
+## Range
+arg_range <- 1:(which(get_dates(i.arg) == third_week) - pred_days)
+
+## Simulation of Future Epicurves
+set.seed(20200225)
+R_val_arg <- sample_R(res_arg, 1000)
+future_i_arg <- project(i.arg[arg_range], R = R_val_arg, n_sim = 1000, 
+                        si = res_arg$si, n_days = (pred_days + 41))
+
+## Cumulative Conversion
+future_i_arg <- cumulate(future_i_arg) 
+
+## Dataframe CI 95%
+df_future_i_arg <- as.data.frame(future_i_arg, long = TRUE)
+
+## Lower CI
+arg1_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-14")))
+                    $incidence, 0.025)[[1]]
+arg2_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-15")))
+                    $incidence, 0.025)[[1]]
+arg3_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-16")))
+                    $incidence, 0.025)[[1]]
+arg4_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-17")))
+                    $incidence, 0.025)[[1]]
+arg5_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-18")))
+                    $incidence, 0.025)[[1]]
+arg6_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-19")))
+                    $incidence, 0.025)[[1]]
+arg7_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-20")))
+                    $incidence, 0.025)[[1]]
+arg8_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-21")))
+                    $incidence, 0.025)[[1]]
+arg9_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-22")))
+                    $incidence, 0.025)[[1]]
+arg10_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-23")))
+                     $incidence, 0.025)[[1]]
+arg11_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-24")))
+                     $incidence, 0.025)[[1]]
+arg12_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-25")))
+                     $incidence, 0.025)[[1]]
+arg13_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-26")))
+                     $incidence, 0.025)[[1]]
+arg14_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-27")))
+                     $incidence, 0.025)[[1]]
+arg15_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-28")))
+                     $incidence, 0.025)[[1]]
+arg16_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-29")))
+                     $incidence, 0.025)[[1]]
+arg17_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-30")))
+                     $incidence, 0.025)[[1]]
+arg18_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-31")))
+                     $incidence, 0.025)[[1]]
+arg19_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-01")))
+                     $incidence, 0.025)[[1]]
+arg20_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-02")))
+                     $incidence, 0.025)[[1]]
+arg21_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-03")))
+                     $incidence, 0.025)[[1]]
+arg22_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-04")))
+                     $incidence, 0.025)[[1]]
+arg23_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-05")))
+                     $incidence, 0.025)[[1]]
+arg24_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-06")))
+                     $incidence, 0.025)[[1]]
+arg25_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-07")))
+                     $incidence, 0.025)[[1]]
+arg26_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-08")))
+                     $incidence, 0.025)[[1]]
+arg27_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-09")))
+                     $incidence, 0.025)[[1]]
+arg28_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-10")))
+                     $incidence, 0.025)[[1]]
+arg29_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-11")))
+                     $incidence, 0.025)[[1]]
+arg30_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-12")))
+                     $incidence, 0.025)[[1]]
+arg31_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-13")))
+                     $incidence, 0.025)[[1]]
+arg32_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-14")))
+                     $incidence, 0.025)[[1]]
+arg33_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-15")))
+                     $incidence, 0.025)[[1]]
+arg34_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-16")))
+                     $incidence, 0.025)[[1]]
+arg35_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-17")))
+                     $incidence, 0.025)[[1]]
+arg36_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-18")))
+                     $incidence, 0.025)[[1]]
+arg37_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-19")))
+                     $incidence, 0.025)[[1]]
+arg38_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-20")))
+                     $incidence, 0.025)[[1]]
+arg39_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-21")))
+                     $incidence, 0.025)[[1]]
+arg40_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-22")))
+                     $incidence, 0.025)[[1]]
+arg41_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-23")))
+                     $incidence, 0.025)[[1]]
+arg42_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-24")))
+                     $incidence, 0.025)[[1]]
+arg43_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-25")))
+                     $incidence, 0.025)[[1]]
+arg44_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-26")))
+                     $incidence, 0.025)[[1]]
+arg45_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-27")))
+                     $incidence, 0.025)[[1]]
+arg46_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-28")))
+                     $incidence, 0.025)[[1]]
+arg47_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-29")))
+                     $incidence, 0.025)[[1]]
+arg48_lo <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-30")))
+                     $incidence, 0.025)[[1]]
+
+## Upper CI
+arg1_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-14")))
+                    $incidence, 0.975)[[1]]
+arg2_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-15")))
+                    $incidence, 0.975)[[1]]
+arg3_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-16")))
+                    $incidence, 0.975)[[1]]
+arg4_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-17")))
+                    $incidence, 0.975)[[1]]
+arg5_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-18")))
+                    $incidence, 0.975)[[1]]
+arg6_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-19")))
+                    $incidence, 0.975)[[1]]
+arg7_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-20")))
+                    $incidence, 0.975)[[1]]
+arg8_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-21")))
+                    $incidence, 0.975)[[1]]
+arg9_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-22")))
+                    $incidence, 0.975)[[1]]
+arg10_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-23")))
+                     $incidence, 0.975)[[1]]
+arg11_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-24")))
+                     $incidence, 0.975)[[1]]
+arg12_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-25")))
+                     $incidence, 0.975)[[1]]
+arg13_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-26")))
+                     $incidence, 0.975)[[1]]
+arg14_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-27")))
+                     $incidence, 0.975)[[1]]
+arg15_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-28")))
+                     $incidence, 0.975)[[1]]
+arg16_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-29")))
+                     $incidence, 0.975)[[1]]
+arg17_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-30")))
+                     $incidence, 0.975)[[1]]
+arg18_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-03-31")))
+                     $incidence, 0.975)[[1]]
+arg19_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-01")))
+                     $incidence, 0.975)[[1]]
+arg20_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-02")))
+                     $incidence, 0.975)[[1]]
+arg21_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-03")))
+                     $incidence, 0.975)[[1]]
+arg22_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-04")))
+                     $incidence, 0.975)[[1]]
+arg23_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-05")))
+                     $incidence, 0.975)[[1]]
+arg24_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-06")))
+                     $incidence, 0.975)[[1]]
+arg25_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-07")))
+                     $incidence, 0.975)[[1]]
+arg26_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-08")))
+                     $incidence, 0.975)[[1]]
+arg27_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-09")))
+                     $incidence, 0.975)[[1]]
+arg28_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-10")))
+                     $incidence, 0.975)[[1]]
+arg29_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-11")))
+                     $incidence, 0.975)[[1]]
+arg30_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-12")))
+                     $incidence, 0.975)[[1]]
+arg31_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-13")))
+                     $incidence, 0.975)[[1]]
+arg32_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-14")))
+                     $incidence, 0.975)[[1]]
+arg33_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-15")))
+                     $incidence, 0.975)[[1]]
+arg34_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-16")))
+                     $incidence, 0.975)[[1]]
+arg35_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-17")))
+                     $incidence, 0.975)[[1]]
+arg36_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-18")))
+                     $incidence, 0.975)[[1]]
+arg37_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-19")))
+                     $incidence, 0.975)[[1]]
+arg38_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-20")))
+                     $incidence, 0.975)[[1]]
+arg39_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-21")))
+                     $incidence, 0.975)[[1]]
+arg40_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-22")))
+                     $incidence, 0.975)[[1]]
+arg41_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-23")))
+                     $incidence, 0.975)[[1]]
+arg42_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-24")))
+                     $incidence, 0.975)[[1]]
+arg43_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-25")))
+                     $incidence, 0.975)[[1]]
+arg44_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-26")))
+                     $incidence, 0.975)[[1]]
+arg45_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-27")))
+                     $incidence, 0.975)[[1]]
+arg46_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-28")))
+                     $incidence, 0.975)[[1]]
+arg47_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-29")))
+                     $incidence, 0.975)[[1]]
+arg48_up <- quantile((slice(df_future_i_arg, which(df_future_i_arg$date == "2020-04-30")))
+                     $incidence, 0.975)[[1]]
+
+## Dataframe
+arg_pred_growth_median_counts <- future_i_arg %>% as.data.frame() %>% 
+  pivot_longer(-dates, names_to = "simulation", values_to = "incidence") %>% 
+  group_by(dates) %>% summarise(incident_cases = as.integer(median(incidence))) %>% 
+  mutate(data_type = "Early projection")
+
+## Dataframe
+arg_proj <- arg_pred_growth_median_counts %>% 
+  bind_rows(tibble(dates = get_dates(i.arg), 
+                   incident_cases = cumulate(get_counts(i.arg)), data_type 
+                   = "Confirmed cases"))
+
+## Plot of Early Projections
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, warning = FALSE, echo = FALSE}
+## Early Projections
+res_bol <- get_R(past.i.bol, si_mean = mu, si_sd = sigma)
+## plot(res_bol)
+
+## Range
+bol_range <- 1:(which(get_dates(i.bol) == third_week) - pred_days)
+
+## Simulation of Future Epicurves
+set.seed(20200225)
+R_val_bol <- sample_R(res_bol, 1000)
+future_i_bol <- project(i.bol[bol_range], R = R_val_bol, n_sim = 1000, 
+                        si = res_bol$si, n_days = (pred_days + 41))
+
+## Cumulative Conversion
+future_i_bol <- cumulate(future_i_bol) 
+
+## Dataframe CI 95%
+df_future_i_bol <- as.data.frame(future_i_bol, long = TRUE)
+
+## Lower CI
+bol1_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-14")))
+                    $incidence, 0.025)[[1]]
+bol2_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-15")))
+                    $incidence, 0.025)[[1]]
+bol3_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-16")))
+                    $incidence, 0.025)[[1]]
+bol4_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-17")))
+                    $incidence, 0.025)[[1]]
+bol5_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-18")))
+                    $incidence, 0.025)[[1]]
+bol6_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-19")))
+                    $incidence, 0.025)[[1]]
+bol7_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-20")))
+                    $incidence, 0.025)[[1]]
+bol8_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-21")))
+                    $incidence, 0.025)[[1]]
+bol9_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-22")))
+                    $incidence, 0.025)[[1]]
+bol10_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-23")))
+                     $incidence, 0.025)[[1]]
+bol11_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-24")))
+                     $incidence, 0.025)[[1]]
+bol12_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-25")))
+                     $incidence, 0.025)[[1]]
+bol13_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-26")))
+                     $incidence, 0.025)[[1]]
+bol14_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-27")))
+                     $incidence, 0.025)[[1]]
+bol15_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-28")))
+                     $incidence, 0.025)[[1]]
+bol16_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-29")))
+                     $incidence, 0.025)[[1]]
+bol17_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-30")))
+                     $incidence, 0.025)[[1]]
+bol18_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-31")))
+                     $incidence, 0.025)[[1]]
+bol19_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-01")))
+                     $incidence, 0.025)[[1]]
+bol20_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-02")))
+                     $incidence, 0.025)[[1]]
+bol21_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-03")))
+                     $incidence, 0.025)[[1]]
+bol22_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-04")))
+                     $incidence, 0.025)[[1]]
+bol23_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-05")))
+                     $incidence, 0.025)[[1]]
+bol24_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-06")))
+                     $incidence, 0.025)[[1]]
+bol25_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-07")))
+                     $incidence, 0.025)[[1]]
+bol26_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-08")))
+                     $incidence, 0.025)[[1]]
+bol27_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-09")))
+                     $incidence, 0.025)[[1]]
+bol28_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-10")))
+                     $incidence, 0.025)[[1]]
+bol29_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-11")))
+                     $incidence, 0.025)[[1]]
+bol30_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-12")))
+                     $incidence, 0.025)[[1]]
+bol31_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-13")))
+                     $incidence, 0.025)[[1]]
+bol32_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-14")))
+                     $incidence, 0.025)[[1]]
+bol33_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-15")))
+                     $incidence, 0.025)[[1]]
+bol34_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-16")))
+                     $incidence, 0.025)[[1]]
+bol35_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-17")))
+                     $incidence, 0.025)[[1]]
+bol36_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-18")))
+                     $incidence, 0.025)[[1]]
+bol37_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-19")))
+                     $incidence, 0.025)[[1]]
+bol38_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-20")))
+                     $incidence, 0.025)[[1]]
+bol39_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-21")))
+                     $incidence, 0.025)[[1]]
+bol40_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-22")))
+                     $incidence, 0.025)[[1]]
+bol41_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-23")))
+                     $incidence, 0.025)[[1]]
+bol42_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-24")))
+                     $incidence, 0.025)[[1]]
+bol43_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-25")))
+                     $incidence, 0.025)[[1]]
+bol44_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-26")))
+                     $incidence, 0.025)[[1]]
+bol45_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-27")))
+                     $incidence, 0.025)[[1]]
+bol46_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-28")))
+                     $incidence, 0.025)[[1]]
+bol47_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-29")))
+                     $incidence, 0.025)[[1]]
+bol48_lo <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-30")))
+                     $incidence, 0.025)[[1]]
+
+## Upper CI
+bol1_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-14")))
+                    $incidence, 0.975)[[1]]
+bol2_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-15")))
+                    $incidence, 0.975)[[1]]
+bol3_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-16")))
+                    $incidence, 0.975)[[1]]
+bol4_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-17")))
+                    $incidence, 0.975)[[1]]
+bol5_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-18")))
+                    $incidence, 0.975)[[1]]
+bol6_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-19")))
+                    $incidence, 0.975)[[1]]
+bol7_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-20")))
+                    $incidence, 0.975)[[1]]
+bol8_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-21")))
+                    $incidence, 0.975)[[1]]
+bol9_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-22")))
+                    $incidence, 0.975)[[1]]
+bol10_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-23")))
+                     $incidence, 0.975)[[1]]
+bol11_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-24")))
+                     $incidence, 0.975)[[1]]
+bol12_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-25")))
+                     $incidence, 0.975)[[1]]
+bol13_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-26")))
+                     $incidence, 0.975)[[1]]
+bol14_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-27")))
+                     $incidence, 0.975)[[1]]
+bol15_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-28")))
+                     $incidence, 0.975)[[1]]
+bol16_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-29")))
+                     $incidence, 0.975)[[1]]
+bol17_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-30")))
+                     $incidence, 0.975)[[1]]
+bol18_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-03-31")))
+                     $incidence, 0.975)[[1]]
+bol19_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-01")))
+                     $incidence, 0.975)[[1]]
+bol20_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-02")))
+                     $incidence, 0.975)[[1]]
+bol21_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-03")))
+                     $incidence, 0.975)[[1]]
+bol22_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-04")))
+                     $incidence, 0.975)[[1]]
+bol23_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-05")))
+                     $incidence, 0.975)[[1]]
+bol24_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-06")))
+                     $incidence, 0.975)[[1]]
+bol25_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-07")))
+                     $incidence, 0.975)[[1]]
+bol26_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-08")))
+                     $incidence, 0.975)[[1]]
+bol27_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-09")))
+                     $incidence, 0.975)[[1]]
+bol28_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-10")))
+                     $incidence, 0.975)[[1]]
+bol29_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-11")))
+                     $incidence, 0.975)[[1]]
+bol30_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-12")))
+                     $incidence, 0.975)[[1]]
+bol31_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-13")))
+                     $incidence, 0.975)[[1]]
+bol32_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-14")))
+                     $incidence, 0.975)[[1]]
+bol33_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-15")))
+                     $incidence, 0.975)[[1]]
+bol34_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-16")))
+                     $incidence, 0.975)[[1]]
+bol35_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-17")))
+                     $incidence, 0.975)[[1]]
+bol36_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-18")))
+                     $incidence, 0.975)[[1]]
+bol37_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-19")))
+                     $incidence, 0.975)[[1]]
+bol38_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-20")))
+                     $incidence, 0.975)[[1]]
+bol39_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-21")))
+                     $incidence, 0.975)[[1]]
+bol40_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-22")))
+                     $incidence, 0.975)[[1]]
+bol41_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-23")))
+                     $incidence, 0.975)[[1]]
+bol42_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-24")))
+                     $incidence, 0.975)[[1]]
+bol43_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-25")))
+                     $incidence, 0.975)[[1]]
+bol44_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-26")))
+                     $incidence, 0.975)[[1]]
+bol45_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-27")))
+                     $incidence, 0.975)[[1]]
+bol46_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-28")))
+                     $incidence, 0.975)[[1]]
+bol47_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-29")))
+                     $incidence, 0.975)[[1]]
+bol48_up <- quantile((slice(df_future_i_bol, which(df_future_i_bol$date == "2020-04-30")))
+                     $incidence, 0.975)[[1]]
+
+## Dataframe
+bol_pred_growth_median_counts <- future_i_bol %>% as.data.frame() %>% 
+  pivot_longer(-dates, names_to = "simulation", values_to = "incidence") %>% 
+  group_by(dates) %>% summarise(incident_cases = as.integer(median(incidence))) %>% 
+  mutate(data_type = "Early projection")
+
+## Dataframe
+bol_proj <- bol_pred_growth_median_counts %>% 
+  bind_rows(tibble(dates = get_dates(i.bol), 
+                   incident_cases = cumulate(get_counts(i.bol)), data_type 
+                   = "Confirmed cases"))
+
+## Plot of Early Projections
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, warning = FALSE, echo = FALSE}
+## Early Projections
+res_bra <- get_R(past.i.bra, si_mean = mu, si_sd = sigma)
+## plot(res_bra)
+
+## Range
+bra_range <- 1:(which(get_dates(i.bra) == third_week) - pred_days)
+
+## Simulation of Future Epicurves
+set.seed(20200225)
+R_val_bra <- sample_R(res_bra, 1000)
+future_i_bra <- project(i.bra[bra_range], R = R_val_bra, n_sim = 1000, 
+                        si = res_bra$si, n_days = (pred_days + 41))
+
+## Cumulative conversion
+future_i_bra <- cumulate(future_i_bra) 
+
+## Dataframe CI 95%
+df_future_i_bra <- as.data.frame(future_i_bra, long = TRUE)
+
+## Lower CI
+bra1_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-14")))
+                    $incidence, 0.025)[[1]]
+bra2_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-15")))
+                    $incidence, 0.025)[[1]]
+bra3_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-16")))
+                    $incidence, 0.025)[[1]]
+bra4_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-17")))
+                    $incidence, 0.025)[[1]]
+bra5_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-18")))
+                    $incidence, 0.025)[[1]]
+bra6_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-19")))
+                    $incidence, 0.025)[[1]]
+bra7_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-20")))
+                    $incidence, 0.025)[[1]]
+bra8_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-21")))
+                    $incidence, 0.025)[[1]]
+bra9_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-22")))
+                    $incidence, 0.025)[[1]]
+bra10_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-23")))
+                     $incidence, 0.025)[[1]]
+bra11_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-24")))
+                     $incidence, 0.025)[[1]]
+bra12_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-25")))
+                     $incidence, 0.025)[[1]]
+bra13_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-26")))
+                     $incidence, 0.025)[[1]]
+bra14_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-27")))
+                     $incidence, 0.025)[[1]]
+bra15_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-28")))
+                     $incidence, 0.025)[[1]]
+bra16_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-29")))
+                     $incidence, 0.025)[[1]]
+bra17_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-30")))
+                     $incidence, 0.025)[[1]]
+bra18_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-31")))
+                     $incidence, 0.025)[[1]]
+bra19_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-01")))
+                     $incidence, 0.025)[[1]]
+bra20_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-02")))
+                     $incidence, 0.025)[[1]]
+bra21_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-03")))
+                     $incidence, 0.025)[[1]]
+bra22_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-04")))
+                     $incidence, 0.025)[[1]]
+bra23_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-05")))
+                     $incidence, 0.025)[[1]]
+bra24_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-06")))
+                     $incidence, 0.025)[[1]]
+bra25_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-07")))
+                     $incidence, 0.025)[[1]]
+bra26_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-08")))
+                     $incidence, 0.025)[[1]]
+bra27_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-09")))
+                     $incidence, 0.025)[[1]]
+bra28_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-10")))
+                     $incidence, 0.025)[[1]]
+bra29_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-11")))
+                     $incidence, 0.025)[[1]]
+bra30_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-12")))
+                     $incidence, 0.025)[[1]]
+bra31_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-13")))
+                     $incidence, 0.025)[[1]]
+bra32_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-14")))
+                     $incidence, 0.025)[[1]]
+bra33_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-15")))
+                     $incidence, 0.025)[[1]]
+bra34_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-16")))
+                     $incidence, 0.025)[[1]]
+bra35_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-17")))
+                     $incidence, 0.025)[[1]]
+bra36_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-18")))
+                     $incidence, 0.025)[[1]]
+bra37_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-19")))
+                     $incidence, 0.025)[[1]]
+bra38_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-20")))
+                     $incidence, 0.025)[[1]]
+bra39_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-21")))
+                     $incidence, 0.025)[[1]]
+bra40_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-22")))
+                     $incidence, 0.025)[[1]]
+bra41_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-23")))
+                     $incidence, 0.025)[[1]]
+bra42_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-24")))
+                     $incidence, 0.025)[[1]]
+bra43_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-25")))
+                     $incidence, 0.025)[[1]]
+bra44_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-26")))
+                     $incidence, 0.025)[[1]]
+bra45_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-27")))
+                     $incidence, 0.025)[[1]]
+bra46_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-28")))
+                     $incidence, 0.025)[[1]]
+bra47_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-29")))
+                     $incidence, 0.025)[[1]]
+bra48_lo <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-30")))
+                     $incidence, 0.025)[[1]]
+
+## Upper CI
+bra1_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-14")))
+                    $incidence, 0.975)[[1]]
+bra2_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-15")))
+                    $incidence, 0.975)[[1]]
+bra3_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-16")))
+                    $incidence, 0.975)[[1]]
+bra4_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-17")))
+                    $incidence, 0.975)[[1]]
+bra5_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-18")))
+                    $incidence, 0.975)[[1]]
+bra6_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-19")))
+                    $incidence, 0.975)[[1]]
+bra7_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-20")))
+                    $incidence, 0.975)[[1]]
+bra8_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-21")))
+                    $incidence, 0.975)[[1]]
+bra9_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-22")))
+                    $incidence, 0.975)[[1]]
+bra10_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-23")))
+                     $incidence, 0.975)[[1]]
+bra11_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-24")))
+                     $incidence, 0.975)[[1]]
+bra12_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-25")))
+                     $incidence, 0.975)[[1]]
+bra13_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-26")))
+                     $incidence, 0.975)[[1]]
+bra14_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-27")))
+                     $incidence, 0.975)[[1]]
+bra15_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-28")))
+                     $incidence, 0.975)[[1]]
+bra16_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-29")))
+                     $incidence, 0.975)[[1]]
+bra17_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-30")))
+                     $incidence, 0.975)[[1]]
+bra18_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-03-31")))
+                     $incidence, 0.975)[[1]]
+bra19_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-01")))
+                     $incidence, 0.975)[[1]]
+bra20_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-02")))
+                     $incidence, 0.975)[[1]]
+bra21_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-03")))
+                     $incidence, 0.975)[[1]]
+bra22_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-04")))
+                     $incidence, 0.975)[[1]]
+bra23_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-05")))
+                     $incidence, 0.975)[[1]]
+bra24_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-06")))
+                     $incidence, 0.975)[[1]]
+bra25_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-07")))
+                     $incidence, 0.975)[[1]]
+bra26_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-08")))
+                     $incidence, 0.975)[[1]]
+bra27_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-09")))
+                     $incidence, 0.975)[[1]]
+bra28_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-10")))
+                     $incidence, 0.975)[[1]]
+bra29_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-11")))
+                     $incidence, 0.975)[[1]]
+bra30_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-12")))
+                     $incidence, 0.975)[[1]]
+bra31_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-13")))
+                     $incidence, 0.975)[[1]]
+bra32_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-14")))
+                     $incidence, 0.975)[[1]]
+bra33_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-15")))
+                     $incidence, 0.975)[[1]]
+bra34_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-16")))
+                     $incidence, 0.975)[[1]]
+bra35_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-17")))
+                     $incidence, 0.975)[[1]]
+bra36_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-18")))
+                     $incidence, 0.975)[[1]]
+bra37_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-19")))
+                     $incidence, 0.975)[[1]]
+bra38_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-20")))
+                     $incidence, 0.975)[[1]]
+bra39_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-21")))
+                     $incidence, 0.975)[[1]]
+bra40_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-22")))
+                     $incidence, 0.975)[[1]]
+bra41_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-23")))
+                     $incidence, 0.975)[[1]]
+bra42_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-24")))
+                     $incidence, 0.975)[[1]]
+bra43_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-25")))
+                     $incidence, 0.975)[[1]]
+bra44_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-26")))
+                     $incidence, 0.975)[[1]]
+bra45_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-27")))
+                     $incidence, 0.975)[[1]]
+bra46_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-28")))
+                     $incidence, 0.975)[[1]]
+bra47_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-29")))
+                     $incidence, 0.975)[[1]]
+bra48_up <- quantile((slice(df_future_i_bra, which(df_future_i_bra$date == "2020-04-30")))
+                     $incidence, 0.975)[[1]]
+
+## Dataframe
+bra_pred_growth_median_counts <- future_i_bra %>% as.data.frame() %>% 
+  pivot_longer(-dates, names_to = "simulation", values_to = "incidence") %>% 
+  group_by(dates) %>% summarise(incident_cases = as.integer(median(incidence))) %>% 
+  mutate(data_type = "Early projection")
+
+## Dataframe
+bra_proj <- bra_pred_growth_median_counts %>% 
+  bind_rows(tibble(dates = get_dates(i.bra), 
+                   incident_cases = cumulate(get_counts(i.bra)), data_type 
+                   = "Confirmed cases"))
+
+## Plot of Early Projections
+```
+
+```{r collapse = TRUE, results = "asis", message = FALSE, warning = FALSE}
+## Early Projections
+res_chl <- get_R(past.i.chl, si_mean = mu, si_sd = sigma)
+plot(res_chl)
+
+## Range
+chl_range <- 1:(which(get_dates(i.chl) == third_week) - pred_days)
+
+## Simulation of Future Epicurves
+set.seed(20200225)
+R_val_chl <- sample_R(res_chl, 1000)
+future_i_chl <- project(i.chl[chl_range], R = R_val_chl, n_sim = 1000, 
+                        si = res_chl$si, n_days = (pred_days + 41))
+
+## Cumulative conversion
+future_i_chl <- cumulate(future_i_chl) 
+
+## Dataframe CI 95%
+df_future_i_chl <- as.data.frame(future_i_chl, long = TRUE)
+
+## Lower CI
+chl1_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-14")))
+                    $incidence, 0.025)[[1]]
+chl2_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-15")))
+                    $incidence, 0.025)[[1]]
+chl3_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-16")))
+                    $incidence, 0.025)[[1]]
+chl4_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-17")))
+                    $incidence, 0.025)[[1]]
+chl5_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-18")))
+                    $incidence, 0.025)[[1]]
+chl6_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-19")))
+                    $incidence, 0.025)[[1]]
+chl7_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-20")))
+                    $incidence, 0.025)[[1]]
+chl8_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-21")))
+                    $incidence, 0.025)[[1]]
+chl9_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-22")))
+                    $incidence, 0.025)[[1]]
+chl10_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-23")))
+                     $incidence, 0.025)[[1]]
+chl11_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-24")))
+                     $incidence, 0.025)[[1]]
+chl12_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-25")))
+                     $incidence, 0.025)[[1]]
+chl13_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-26")))
+                     $incidence, 0.025)[[1]]
+chl14_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-27")))
+                     $incidence, 0.025)[[1]]
+chl15_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-28")))
+                     $incidence, 0.025)[[1]]
+chl16_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-29")))
+                     $incidence, 0.025)[[1]]
+chl17_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-30")))
+                     $incidence, 0.025)[[1]]
+chl18_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-31")))
+                     $incidence, 0.025)[[1]]
+chl19_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-01")))
+                     $incidence, 0.025)[[1]]
+chl20_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-02")))
+                     $incidence, 0.025)[[1]]
+chl21_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-03")))
+                     $incidence, 0.025)[[1]]
+chl22_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-04")))
+                     $incidence, 0.025)[[1]]
+chl23_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-05")))
+                     $incidence, 0.025)[[1]]
+chl24_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-06")))
+                     $incidence, 0.025)[[1]]
+chl25_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-07")))
+                     $incidence, 0.025)[[1]]
+chl26_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-08")))
+                     $incidence, 0.025)[[1]]
+chl27_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-09")))
+                     $incidence, 0.025)[[1]]
+chl28_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-10")))
+                     $incidence, 0.025)[[1]]
+chl29_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-11")))
+                     $incidence, 0.025)[[1]]
+chl30_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-12")))
+                     $incidence, 0.025)[[1]]
+chl31_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-13")))
+                     $incidence, 0.025)[[1]]
+chl32_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-14")))
+                     $incidence, 0.025)[[1]]
+chl33_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-15")))
+                     $incidence, 0.025)[[1]]
+chl34_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-16")))
+                     $incidence, 0.025)[[1]]
+chl35_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-17")))
+                     $incidence, 0.025)[[1]]
+chl36_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-18")))
+                     $incidence, 0.025)[[1]]
+chl37_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-19")))
+                     $incidence, 0.025)[[1]]
+chl38_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-20")))
+                     $incidence, 0.025)[[1]]
+chl39_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-21")))
+                     $incidence, 0.025)[[1]]
+chl40_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-22")))
+                     $incidence, 0.025)[[1]]
+chl41_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-23")))
+                     $incidence, 0.025)[[1]]
+chl42_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-24")))
+                     $incidence, 0.025)[[1]]
+chl43_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-25")))
+                     $incidence, 0.025)[[1]]
+chl44_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-26")))
+                     $incidence, 0.025)[[1]]
+chl45_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-27")))
+                     $incidence, 0.025)[[1]]
+chl46_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-28")))
+                     $incidence, 0.025)[[1]]
+chl47_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-29")))
+                     $incidence, 0.025)[[1]]
+chl48_lo <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-30")))
+                     $incidence, 0.025)[[1]]
+
+## Upper CI
+chl1_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-14")))
+                    $incidence, 0.975)[[1]]
+chl2_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-15")))
+                    $incidence, 0.975)[[1]]
+chl3_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-16")))
+                    $incidence, 0.975)[[1]]
+chl4_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-17")))
+                    $incidence, 0.975)[[1]]
+chl5_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-18")))
+                    $incidence, 0.975)[[1]]
+chl6_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-19")))
+                    $incidence, 0.975)[[1]]
+chl7_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-20")))
+                    $incidence, 0.975)[[1]]
+chl8_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-21")))
+                    $incidence, 0.975)[[1]]
+chl9_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-22")))
+                    $incidence, 0.975)[[1]]
+chl10_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-23")))
+                     $incidence, 0.975)[[1]]
+chl11_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-24")))
+                     $incidence, 0.975)[[1]]
+chl12_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-25")))
+                     $incidence, 0.975)[[1]]
+chl13_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-26")))
+                     $incidence, 0.975)[[1]]
+chl14_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-27")))
+                     $incidence, 0.975)[[1]]
+chl15_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-28")))
+                     $incidence, 0.975)[[1]]
+chl16_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-29")))
+                     $incidence, 0.975)[[1]]
+chl17_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-30")))
+                     $incidence, 0.975)[[1]]
+chl18_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-03-31")))
+                     $incidence, 0.975)[[1]]
+chl19_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-01")))
+                     $incidence, 0.975)[[1]]
+chl20_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-02")))
+                     $incidence, 0.975)[[1]]
+chl21_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-03")))
+                     $incidence, 0.975)[[1]]
+chl22_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-04")))
+                     $incidence, 0.975)[[1]]
+chl23_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-05")))
+                     $incidence, 0.975)[[1]]
+chl24_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-06")))
+                     $incidence, 0.975)[[1]]
+chl25_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-07")))
+                     $incidence, 0.975)[[1]]
+chl26_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-08")))
+                     $incidence, 0.975)[[1]]
+chl27_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-09")))
+                     $incidence, 0.975)[[1]]
+chl28_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-10")))
+                     $incidence, 0.975)[[1]]
+chl29_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-11")))
+                     $incidence, 0.975)[[1]]
+chl30_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-12")))
+                     $incidence, 0.975)[[1]]
+chl31_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-13")))
+                     $incidence, 0.975)[[1]]
+chl32_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-14")))
+                     $incidence, 0.975)[[1]]
+chl33_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-15")))
+                     $incidence, 0.975)[[1]]
+chl34_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-16")))
+                     $incidence, 0.975)[[1]]
+chl35_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-17")))
+                     $incidence, 0.975)[[1]]
+chl36_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-18")))
+                     $incidence, 0.975)[[1]]
+chl37_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-19")))
+                     $incidence, 0.975)[[1]]
+chl38_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-20")))
+                     $incidence, 0.975)[[1]]
+chl39_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-21")))
+                     $incidence, 0.975)[[1]]
+chl40_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-22")))
+                     $incidence, 0.975)[[1]]
+chl41_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-23")))
+                     $incidence, 0.975)[[1]]
+chl42_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-24")))
+                     $incidence, 0.975)[[1]]
+chl43_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-25")))
+                     $incidence, 0.975)[[1]]
+chl44_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-26")))
+                     $incidence, 0.975)[[1]]
+chl45_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-27")))
+                     $incidence, 0.975)[[1]]
+chl46_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-28")))
+                     $incidence, 0.975)[[1]]
+chl47_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-29")))
+                     $incidence, 0.975)[[1]]
+chl48_up <- quantile((slice(df_future_i_chl, which(df_future_i_chl$date == "2020-04-30")))
+                     $incidence, 0.975)[[1]]
+
+## Dataframe
+chl_pred_growth_median_counts <- future_i_chl %>% as.data.frame() %>% 
+  pivot_longer(-dates, names_to = "simulation", values_to = "incidence") %>% 
+  group_by(dates) %>% summarise(incident_cases = as.integer(median(incidence))) %>% 
+  mutate(data_type = "Early projection")
+
+## Dataframe
+chl_proj <- chl_pred_growth_median_counts %>% 
+  bind_rows(tibble(dates = get_dates(i.chl), 
+                   incident_cases = cumulate(get_counts(i.chl)), data_type 
+                   = "Confirmed cases"))
+
+## Plot of Early Projections
+ggplot(chl_proj, aes(x = dates, y = incident_cases, colour = data_type)) + 
+  geom_line() + scale_color_manual(values=c("black", "grey60")) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-14" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl1_lo, ymax = chl1_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-15" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl2_lo, ymax = chl2_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-16" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl3_lo, ymax = chl3_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-17" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl4_lo, ymax = chl4_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-18" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl5_lo, ymax = chl5_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-19" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl6_lo, ymax = chl6_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-20" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl7_lo, ymax = chl7_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-21" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl8_lo, ymax = chl8_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-22" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl9_lo, ymax = chl9_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-23" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl10_lo, ymax = chl10_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-24" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl11_lo, ymax = chl11_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-25" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl12_lo, ymax = chl12_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-26" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl13_lo, ymax = chl13_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-27" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl14_lo, ymax = chl14_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-28" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl15_lo, ymax = chl15_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-29" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl16_lo, ymax = chl16_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-30" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl17_lo, ymax = chl17_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-03-31" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl18_lo, ymax = chl18_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-01" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl19_lo, ymax = chl19_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-02" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl20_lo, ymax = chl20_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-03" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl21_lo, ymax = chl21_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-04" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl22_lo, ymax = chl22_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-05" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl23_lo, ymax = chl23_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-06" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl24_lo, ymax = chl24_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-07" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl25_lo, ymax = chl25_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-08" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl26_lo, ymax = chl26_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-09" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl27_lo, ymax = chl27_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-10" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl28_lo, ymax = chl28_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-11" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl29_lo, ymax = chl29_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-12" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl30_lo, ymax = chl30_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-13" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl31_lo, ymax = chl31_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-14" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl32_lo, ymax = chl32_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-15" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl33_lo, ymax = chl33_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-16" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl34_lo, ymax = chl34_up), width = .5) +
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-17" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl35_lo, ymax = chl35_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-18" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl36_lo, ymax = chl36_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-19" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl37_lo, ymax = chl37_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-20" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl38_lo, ymax = chl38_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-21" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl39_lo, ymax = chl39_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-22" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl40_lo, ymax = chl40_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-23" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl41_lo, ymax = chl41_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-24" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl42_lo, ymax = chl42_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-25" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl43_lo, ymax = chl43_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-26" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl44_lo, ymax = chl44_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-27" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl45_lo, ymax = chl45_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-28" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl46_lo, ymax = chl46_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-29" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl47_lo, ymax = chl47_up), width = .5) +  
+  geom_errorbar(data = subset(chl_proj, dates == "2020-04-30" & data_type 
+                              == "Early projection"), 
+                aes(ymin = chl48_lo, ymax = chl48_up), width = .5) + 
+  theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
+  theme(panel.grid.minor = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
+  labs(x = NULL, y = "Cumulative incidence", title = "Chile", subtitle = NULL, 
+       colour = NULL) + 
+  theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
+  scale_x_date(date_breaks = "2 weeks", date_minor_breaks = "2 weeks",
+               date_labels = "%Y-%m-%d") +
+  scale_y_log10(breaks = 10**(1:10), labels = comma(10**(1:10)),
+                sec.axis = sec_axis(~ ., labels = NULL, name = "Log-scale")) + 
+  theme(axis.title.y.right = element_text(angle = 90, size = 11),
+        axis.title.y.left = element_text(size = 11),
+        plot.caption = element_text(size = 9),
+        plot.title = element_text(hjust = 0.5)) +
+  ## School Closing
+  geom_segment(aes(x = as.Date(chl_resp$dates[which(chl_resp$c1_schoolclosing 
+               == 3 & chl_resp$c1_flag == 1, arr.ind = TRUE)[1]]), xend = as.Date
+              (chl_resp$dates[which(chl_resp$c1_schoolclosing == 3 & chl_resp
+               $c1_flag == 1, arr.ind = TRUE)[1]]), y = 0, yend = chl_proj
+               $incident_cases[which(chl_proj$data_type == "Confirmed cases" 
+               & chl_proj$dates == as.Date(chl_resp$dates[which(chl_resp
+               $c1_schoolclosing == 3 & chl_resp$c1_flag == 1, arr.ind = TRUE)
+               [1]]))]), linetype = "dotted") + 
+  geom_segment(aes(x = as.Date("2020-02-26"), xend = as.Date(chl_resp$dates
+              [which(chl_resp$c1_schoolclosing == 3 & chl_resp$c1_flag == 1, 
+               arr.ind = TRUE)[1]]), y = chl_proj$incident_cases[which(chl_proj
+               $data_type == "Confirmed cases" & chl_proj$dates == as.Date
+               (chl_resp$dates[which(chl_resp$c1_schoolclosing == 3 & chl_resp
+               $c1_flag == 1, arr.ind = TRUE)[1]]))], yend = chl_proj$incident_cases
+              [which(chl_proj$data_type == "Confirmed cases" & chl_proj$dates 
+               == as.Date(chl_resp$dates[which(chl_resp$c1_schoolclosing == 3 
+               & chl_resp$c1_flag == 1, arr.ind = TRUE)[1]]))]), linetype = "dotted") +
+  annotate("text", y = 0.7 * chl_proj$incident_cases[which(chl_proj$data_type 
+           == "Confirmed cases" & chl_proj$dates == as.Date(chl_resp$dates
+          [which(chl_resp$c1_schoolclosing == 3 & chl_resp$c1_flag == 1, 
+           arr.ind = TRUE)[1]]))], x =  as.Date(chl_resp$dates[which(chl_resp
+           $c1_schoolclosing == 3 & chl_resp$c1_flag == 1, arr.ind = TRUE)[1]]) 
+           - 10, label = "Schools closing", size = 3) +
+  ## Workplace Closing 
+  geom_segment(aes(x = as.Date(chl_resp$dates[which(chl_resp$c2_workplaceclosing 
+               == 3 & chl_resp$c1_flag == 1, arr.ind = TRUE)[1]]), xend = as.Date
+               (chl_resp$dates[which(chl_resp$c2_workplaceclosing == 3 & chl_resp
+               $c1_flag == 1, arr.ind = TRUE)[1]]), y = 0, yend = chl_proj
+               $incident_cases[which(chl_proj$data_type == "Confirmed cases" 
+               & chl_proj$dates == as.Date(chl_resp$dates[which(chl_resp
+               $c2_workplaceclosing == 3 & chl_resp$c1_flag == 1, arr.ind = TRUE)
+               [1]]))]), linetype = "dotted") + 
+  geom_segment(aes(x = as.Date("2020-02-26"), xend = as.Date(chl_resp$dates[which
+              (chl_resp$c2_workplaceclosing == 3 & chl_resp$c1_flag == 1, 
+               arr.ind = TRUE)[1]]), y = chl_proj$incident_cases[which(chl_proj
+               $data_type == "Confirmed cases" & chl_proj$dates == as.Date
+              (chl_resp$dates[which(chl_resp$c2_workplaceclosing == 3 & chl_resp
+               $c1_flag == 1, arr.ind = TRUE)[1]]))], yend = chl_proj$incident_cases
+              [which(chl_proj$data_type == "Confirmed cases" & chl_proj$dates 
+               == as.Date(chl_resp$dates[which(chl_resp$c2_workplaceclosing == 3 
+               & chl_resp$c1_flag == 1, arr.ind = TRUE)[1]]))]), linetype = "dotted") +
+  annotate("text", y = 1.35 * chl_proj$incident_cases[which(chl_proj$data_type 
+           == "Confirmed cases" & chl_proj$dates == as.Date(chl_resp$dates[which
+          (chl_resp$c2_workplaceclosing == 3 & chl_resp$c1_flag == 1, arr.ind=TRUE)
+           [1]]))], x = as.Date(chl_resp$dates[which(chl_resp$c2_workplaceclosing 
+           == 3 & chl_resp$c1_flag == 1, arr.ind = TRUE)[1]]) - 10, label 
+           = "Workplaces closing", size = 3) +
+  ## Effects
+  geom_segment(aes(x = 21 + as.Date(chl_resp$dates[which(chl_resp$c1_schoolclosing 
+               == 3 & chl_resp$c1_flag == 1, arr.ind = TRUE)[1]]), xend = 21 + as.Date
+              (chl_resp$dates[which(chl_resp$c1_schoolclosing == 3 & chl_resp
+               $c1_flag == 1, arr.ind = TRUE)[1]]), y = 0, yend = chl_proj
+               $incident_cases[which(chl_proj$data_type == "Confirmed cases" 
+               & chl_proj$dates == 21 + as.Date(chl_resp$dates[which(chl_resp
+               $c1_schoolclosing == 3 & chl_resp$c1_flag == 1, arr.ind = TRUE)[1]]))]), 
+               linetype = "dotted") + 
+  geom_segment(aes(x = as.Date("2020-02-26"), xend = 21 + as.Date(chl_resp$dates
+              [which(chl_resp$c1_schoolclosing == 3 & chl_resp$c1_flag == 1, 
+               arr.ind = TRUE)[1]]), y = chl_proj$incident_cases[which(chl_proj
+               $data_type == "Confirmed cases" & chl_proj$dates == 21 + as.Date
+              (chl_resp$dates[which(chl_resp$c1_schoolclosing == 3 & chl_resp
+               $c1_flag == 1, arr.ind = TRUE)[1]]))], yend = chl_proj$incident_cases
+              [which(chl_proj$data_type == "Confirmed cases" & chl_proj$dates == 21 
+               + as.Date(chl_resp$dates[which(chl_resp$c1_schoolclosing == 3 
+               & chl_resp$c1_flag == 1, arr.ind = TRUE)[1]]))]), linetype = "dotted") +
+  annotate("text", y = 1.35 * (chl_proj$incident_cases[which(chl_proj$data_type 
+           == "Confirmed cases" & chl_proj$dates == 21 + as.Date(chl_resp$dates[which
+          (chl_resp$c1_schoolclosing == 3 & chl_resp$c1_flag == 1, arr.ind = TRUE)
+          [1]]))]), x =  as.Date(chl_resp$dates[which(chl_resp$c1_schoolclosing == 3 
+           & chl_resp$c1_flag == 1, arr.ind = TRUE)[1]]) - 10 + 21, label 
+           = "Possible effects", size = 3) 
+```
