@@ -19,6 +19,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
+## [3.3.1] - 2020-09-09
+### Changed
+- Update of badges.
+
 ## [3.3.0] - 2020-09-01
 ### Added
 - Early projections Paraguay code.
