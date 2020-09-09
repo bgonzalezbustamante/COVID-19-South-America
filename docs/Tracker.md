@@ -1,6 +1,6 @@
 ## COVID-19 in South America Tracker
 
-[![Update](https://img.shields.io/badge/latest%20data%20update-2020--05--16-orange.svg)](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series)
+[![Update](https://img.shields.io/badge/latest%20data%20update-2020--05--16-orange.svg)](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series) [![DOI](https://img.shields.io/badge/DOI-10.17605%2FOSF.IO%2F6FM7X-blue)](http://doi.org/10.17605/OSF.IO/6FM7X) [![R](https://img.shields.io/badge/made%20with-R%20v3.6.1-1f425f.svg)](https://cran.r-project.org/) [![Jekyll](https://img.shields.io/badge/made%20with-Jekyll-1f425f.svg)](https://jekyllrb.com/)
 
 > This online tracker was deprecated in mid-May 2020 to focus on a paper which evaluates early projections and governmental responses to COVID-19 epidemic in South America. This paper will be published in *World Development* journal. See its [demonstration for R](Early-Responses.md).
 
