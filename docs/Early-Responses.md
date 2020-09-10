@@ -21,7 +21,7 @@ The chunks of the code are presented below. It is also possible to revise the fu
 - [Parametric Re Estimations Argentina Code](demonstration-R/Re-Argentina.md)
 - [Parametric Re Estimations Bolivia Code](demonstration-R/Re-Bolivia.md)
 - [Parametric Re Estimations Brazil Code](demonstration-R/Re-Brazil.md)
-- Parametric Re Estimations Chile Code (forthcoming)
+- [Parametric Re Estimations Chile Code](demonstration-R/Re-Chile.md)
 - Parametric Re Estimations Colombia Code (forthcoming)
 - Parametric Re Estimations Paraguay Code (forthcoming)
 - Parametric Re Estimations Peru Code (forthcoming)
