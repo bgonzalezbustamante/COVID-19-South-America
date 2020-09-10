@@ -6,10 +6,6 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ## [3.4.0] - TBC
 ### Added
 - Replication File: Demonstration for R at GitHub.
-- Parametric Re estimations Argentina code.
-- Parametric Re estimations Bolivia code.
-- Parametric Re estimations Brazil code.
-- Parametric Re estimations Chile code.
 - Parametric Re estimations Colombia code.
 - Parametric Re estimations Paraguay code.
 - Parametric Re estimations Peru code.
@@ -18,6 +14,13 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Descriptives per people code.
 
 ## [Released]
+
+## [3.4.1] - 2020-09-10
+### Added
+- Parametric Re estimations Argentina code.
+- Parametric Re estimations Bolivia code.
+- Parametric Re estimations Brazil code.
+- Parametric Re estimations Chile code.
 
 ## [3.3.1] - 2020-09-09
 ### Changed
