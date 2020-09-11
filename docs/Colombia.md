@@ -1,6 +1,6 @@
 ## Estimated R and Explored Serial Interval Distribution in Colombia
 
-> This online tracker was deprecated in mid-May 2020 to focus on a paper which evaluates early projections and governmental responses to COVID-19 epidemic in South America. This paper will be published in *World Development* journal. See its [demonstration for R](Early-Responses.md).
+> This online tracker was deprecated in mid-May 2020 to focus on a paper which evaluates early projections and governmental responses to COVID-19 epidemic in South America. This paper was published in *World Development* journal (DOI: [10.1016/j.worlddev.2020.105180](https://doi.org/10.1016/j.worlddev.2020.105180)). See its [demonstration for R](Early-Responses.md).
 
 [![R](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Figures/R_COL.png)](https://raw.githubusercontent.com/bgonzalezbustamante/COVID-19-South-America/master/docs/images/Figures/R_COL.png)
 <small>Source: Compiled using data from the [Johns Hopkins University CSSE COVID-19 Dataset](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series).</small> <br />
