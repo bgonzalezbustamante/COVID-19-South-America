@@ -3,12 +3,8 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [3.6.1] - TBC
+## [3.7.1] - TBC
 ### Added
-- Parametric Re estimations Colombia code.
-- Parametric Re estimations Paraguay code.
-- Parametric Re estimations Peru code.
-- Parametric Re estimations Uruguay code.
 - Proportional Hazards models code.
 - Descriptives per people code.
 
@@ -18,6 +14,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Added
 - Johns Hopkins University CSSE COVID-19 dataset scraper gist.
 - Incidence in South America code gist.
+- Parametric Re estimations Colombia code.
+- Parametric Re estimations Paraguay code.
+- Parametric Re estimations Peru code.
+- Parametric Re estimations Uruguay code.
 
 ## [3.5.1] - 2020-09-11
 ### Added
