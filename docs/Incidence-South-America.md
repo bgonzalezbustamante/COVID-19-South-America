@@ -6,6 +6,11 @@
 <small>Source: Compiled using data from the [Johns Hopkins University CSSE COVID-19 Dataset](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series).</small> <br />
 <small>Note: The epicurve shows new infections over the period.</small>
 
+### Were You Looking for the Code?
+
+- [Johns Hopkins University CSSE COVID-19 Dataset Scraper](https://gist.github.com/bgonzalezbustamante/15363fb0d33ed373dcba16f6cf6ce17f)
+- [Incidence in South America Code](https://gist.github.com/bgonzalezbustamante/996db6dde664afc75c235ecbfa75a009)
+
 ### Were You Looking for Previous Figures?
 
 See the Visualisation COVID-19 component of the **OSF-Project** (DOI: [10.17605/OSF.IO/Y6C7Z](http://doi.org/10.17605/OSF.IO/Y6C7Z))
