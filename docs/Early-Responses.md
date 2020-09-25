@@ -25,7 +25,7 @@ The chunks of the code are presented below. It is also possible to revise the fu
 - [Parametric Re Estimations Colombia Code](demonstration-R/Re-Colombia.md)
 - [Parametric Re Estimations Paraguay Code](demonstration-R/Re-Paraguay.md)
 - [Parametric Re Estimations Peru Code](demonstration-R/Re-Peru.md)
-- Parametric Re Estimations Uruguay Code (forthcoming)
+- [Parametric Re Estimations Uruguay Code](demonstration-R/Re-Uruguay.md)
 - Proportional Hazards Models Code (forthcoming)
 - Descriptives per People Code (forthcoming)
 
