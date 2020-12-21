@@ -3,12 +3,16 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Unreleased]
 
-## [3.7.1] - TBC
+## [4.0.0] - TBC
 ### Added
 - Proportional Hazards models code.
 - Descriptives per people code.
 
 ## [Released]
+
+## [3.6.2] - 2020-12-21
+### Changed
+- Corrections GitHub page.
 
 ## [3.6.1] - 2020-09-25
 ### Added
