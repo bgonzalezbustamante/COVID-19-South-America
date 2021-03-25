@@ -23,13 +23,18 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
+## [3.8.5] - 2021-03-25
+### Changed
+- Revision of upgrade versioning.
+- Minor corrections.
+
 ## [3.6.3] - 2021-01-12
 ### Changed
-- Corrections GitHub page.
+- Minor corrections.
 
 ## [3.6.2] - 2020-12-21
 ### Changed
-- Corrections GitHub page.
+- Minor corrections.
 
 ## [3.6.1] - 2020-09-25
 ### Added
@@ -88,7 +93,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.12.18] - 2020-08-05
 ### Changed
-- Corrections GitHub page.
+- Minor corrections.
 
 ## [2.12.17] - 2020-07-28
 ### Changed
@@ -177,13 +182,13 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Added
 - Possible peaks in growth-phase cases.
 ### Changed
-- Corrections GitHub page.
+- Minor corrections.
 
 ## [2.4.7] - 2020-04-08
 ### Added
 - Technical note.
 ### Changed
-- Corrections GitHub page.
+- Minor corrections.
 
 ## [2.3.7] - 2020-04-03
 ### Changed
@@ -193,12 +198,12 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Added
 - Log-incidence models considering the decay-phase.
 ### Changed
-- Corrections GitHub page.
+- Minor corrections.
 - Figures subtitles.
 
 ## [2.2.6] - 2020-03-26
 ### Changed
-- Corrections GitHub page.
+- Minor corrections.
 
 ## [2.2.5] - 2020-03-20
 ### Changed
@@ -206,7 +211,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.2.4] - 2020-03-19
 ### Changed
-- Corrections GitHub page.
+- Minor corrections.
 - Figures subtitles.
 
 ## [2.2.3] - 2020-03-18
@@ -218,7 +223,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Connection to the Johns Hopkins University CSSE COVID-19 Dataset.
 ### Changed
 - Update of badges.
-- Corrections GitHub page.
+- Minor corrections.
 ### Removed
 - OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
 
@@ -234,22 +239,22 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [1.1.1] - 2020-03-14
 ### Changed
-- Corrections GitHub page.
+- Minor corrections.
 
 ## [1.1.0] - 2020-03-13
 ### Added
 - R estimations in detail.
 ### Changed
-- Corrections GitHub page.
+- Minor corrections.
 
 ## [1.0.0] - 2020-03-12
 ### Added
-- Badges in SVG.
+- Badges in SVG at GitHub repository.
 - Incidence analysis and epidemic curves stratified.
 - R and serial interval distribution estimations by country.
 ### Changed
 - Modify .gitignore file at GitHub repository.
-- Corrections GitHub page.
+- Minor corrections.
 
 ## [0.2.0] - 2020-03-11
 ### Added
@@ -262,7 +267,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - License CC-BY Attribution 4.0 International at GitHub repository.
 - Changelog in TXT format at GitHub repository.
 ### Changed
-- Corrections GitHub page.
+- Minor corrections.
 
 ## [0.1.0] - 2020-03-10
 ### Added
