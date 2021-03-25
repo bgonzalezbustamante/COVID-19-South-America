@@ -31,6 +31,6 @@ The chunks of the code are presented below. It is also possible to revise the fu
 
 ### About Me
 
-I am a PRS in the DPhil (PhD) in Politics programme in the [Department of Politics and International Relations](https://www.politics.ox.ac.uk/) and [St Hilda's College](https://www.sthildas.ox.ac.uk/) at the [University of Oxford](http://www.ox.ac.uk/), United Kingdom. Furthermore, I am an Instructor in the Department of Public Administration and Policy at the [Faculty of Economics and Management](https://fae.usach.cl/) at the Universidad de Santiago, where I have been working since 2014. 
+I am completing my DPhil (PhD) dissertation in the [Department of Politics and International Relations](https://www.politics.ox.ac.uk/) and [St Hilda's College](https://www.sthildas.ox.ac.uk/) at the [University of Oxford](http://www.ox.ac.uk/), United Kingdom. I am currently based at Oxford, working on my research. Furthermore, I am an Instructor Professor in the Management and Public Policies Department at the [Faculty of Administration and Economics](https://fae.usach.cl/) at the Universidad de Santiago de Chile.
 
 Further details on my website [bgonzalezbustamante.com](https://bgonzalezbustamante.com/).
