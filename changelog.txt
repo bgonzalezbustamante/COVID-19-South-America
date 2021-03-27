@@ -18,7 +18,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [3.7.3] - 2021-03-01
 ### Added
-- Google COVID-19 Mobility Data backup at GitHub.
+- Google COVID-19 Mobility Data backup on GitHub.
 - Regional mobility estimations code.
 
 ## [Released]
@@ -26,6 +26,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ## [3.8.6] - 2021-03-27
 ### Changed
 - Update of badges.
+- Minor corrections.
 
 ## [3.8.5] - 2021-03-25
 ### Changed
@@ -105,12 +106,12 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.12.16] - 2020-07-20
 ### Changed
-- AM revised at private OSF component.
+- AM revised on private OSF component.
 
 ## [2.12.15] - 2020-07-16
 ### Changed
-- AM revised based on the revision comments at private OSF component.
-- Replication File: Demonstration for R at private OSF component.
+- AM revised based on the revision comments on private OSF component.
+- Replication File: Demonstration for R on private OSF component.
 
 ## [2.12.14] - 2020-07-15
 ### Added
@@ -118,19 +119,19 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.11.14] - 2020-07-13
 ### Changed
-- Accepted Manuscript (AM) after the peer review process at private OSF component.
+- Accepted Manuscript (AM) after the peer review process on private OSF component.
 
 ## [2.11.13] - 2020-06-02
 ### Added
-- Preprint at private OSF component.
-- Replication File: Demonstration for R at private OSF component.
+- Preprint on private OSF component.
+- Replication File: Demonstration for R on private OSF component.
 ### Changed
 - Minor typesetting corrections in the changelog.
 
 ## [2.10.13] - 2020-05-31
 ### Added
-- Our World in Data Dataset backup at GitHub.
-- V-Dem Core v10 Dataset backup at OSF.
+- Our World in Data Dataset backup on GitHub.
+- V-Dem Core v10 Dataset backup on OSF.
 
 ## [2.9.13] - 2020-05-24
 ### Added
@@ -145,8 +146,8 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.8.12] - 2020-05-20
 ### Added
-- Oxford COVID-19 Government Response Tracker Dataset backup at GitHub.
-- Johns Hopkins University CSSE COVID-19 Dataset backup at GitHub.
+- Oxford COVID-19 Government Response Tracker Dataset backup on GitHub.
+- Johns Hopkins University CSSE COVID-19 Dataset backup on GitHub.
 
 ## [2.7.12] - 2020-05-17
 ### Removed
@@ -253,11 +254,11 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [1.0.0] - 2020-03-12
 ### Added
-- Badges in SVG at GitHub repository.
+- Badges in SVG on GitHub repository.
 - Incidence analysis and epidemic curves stratified.
 - R and serial interval distribution estimations by country.
 ### Changed
-- Modify .gitignore file at GitHub repository.
+- Modify .gitignore file on GitHub repository.
 - Minor corrections.
 
 ## [0.2.0] - 2020-03-11
@@ -268,8 +269,8 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - OSF project (DOI: 10.17605/OSF.IO/6FM7X).
 - OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
 - OSF visualisation component (DOI: 10.17605/OSF.IO/Y6C7Z).
-- License CC-BY Attribution 4.0 International at GitHub repository.
-- Changelog in TXT format at GitHub repository.
+- License CC-BY Attribution 4.0 International on GitHub repository.
+- Changelog in TXT format on GitHub repository.
 ### Changed
 - Minor corrections.
 
