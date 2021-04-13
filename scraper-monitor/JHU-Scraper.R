@@ -1,8 +1,13 @@
-##############################################################
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+#### Script ID ####
+
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ## Johns Hopkins University CSSE COVID-19 Dataset Scraper
 ## R version 3.6.1 (2019-07-05) -- "Action of the Toes"
 ## Date: March 2020
+
 ## Bastián González-Bustamante
 ## University of Oxford
 ## E-mail: bastian.gonzalezbustamante@politics.ox.ac.uk
@@ -12,14 +17,14 @@
 ## OSF-Project DOI: 10.17605/OSF.IO/6FM7X
 ## http://bgonzalezbustamante.github.io/COVID-19-South-America/
 
-##############################################################
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ## Packages
 library(tidyverse)
 library(lubridate)
 
 ## Local Directory
-setwd("C:/Users/basti/Dropbox/22.COVID-19/00.Data")
+## setwd("")
 
 ## Johns Hopkins University CSSE COVID-19 Dataset
 JHU_data <- read.csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv", sep = ",")
@@ -36,10 +41,10 @@ dates
 ## Channel Islands, Gibraltar, Caymand Islands excluded
 which(JHU_data[,1] == "United Kingdom")
 uk <- slice(JHU_data, which(JHU_data[,1] == "United Kingdom"):
-              which(JHU_data[,1] == "United Kingdom")) %>% 
-  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+              which(JHU_data[,1] == "United Kingdom")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long),
                names_to = "Date", values_to = "cumulative_cases") %>%
-  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
 ## view(uk)
 uk <- data.frame(uk, dates)
 uk$Province.State <- NULL
@@ -55,10 +60,10 @@ sum(uk$GBR)
 ## SPAIN
 which(JHU_data[,2] == "Spain")
 esp <- slice(JHU_data, which(JHU_data[,2] == "Spain"):
-               which(JHU_data[,2] == "Spain")) %>% 
-  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               which(JHU_data[,2] == "Spain")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long),
                names_to = "Date", values_to = "cumulative_cases") %>%
-  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
 ## view(esp)
 esp <- data.frame(esp, dates)
 esp$Province.State <- NULL
@@ -74,10 +79,10 @@ sum(esp$ESP)
 ## ITALY
 which(JHU_data[,2] == "Italy")
 ita <- slice(JHU_data, which(JHU_data[,2] == "Italy"):
-               which(JHU_data[,2] == "Italy")) %>% 
-  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               which(JHU_data[,2] == "Italy")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long),
                names_to = "Date", values_to = "cumulative_cases") %>%
-  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
 ## view(ita)
 ita <- data.frame(ita, dates)
 ita$Province.State <- NULL
@@ -93,10 +98,10 @@ sum(ita$ITA)
 ## ARGENTINA
 which(JHU_data[,2] == "Argentina")
 arg <- slice(JHU_data, which(JHU_data[,2] == "Argentina"):
-               which(JHU_data[,2] == "Argentina")) %>% 
-  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               which(JHU_data[,2] == "Argentina")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long),
                names_to = "Date", values_to = "cumulative_cases") %>%
-  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
 ## view(arg)
 arg <- data.frame(arg, dates)
 arg$Province.State <- NULL
@@ -112,10 +117,10 @@ sum(arg$ARG)
 ## BOLIVIA
 which(JHU_data[,2] == "Bolivia")
 bol <- slice(JHU_data, which(JHU_data[,2] == "Bolivia"):
-               which(JHU_data[,2] == "Bolivia")) %>% 
-  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               which(JHU_data[,2] == "Bolivia")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long),
                names_to = "Date", values_to = "cumulative_cases") %>%
-  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
 ## view(bol)
 bol <- data.frame(bol, dates)
 bol$Province.State <- NULL
@@ -131,10 +136,10 @@ sum(bol$BOL)
 ## BRAZIL
 which(JHU_data[,2] == "Brazil")
 bra <- slice(JHU_data, which(JHU_data[,2] == "Brazil"):
-               which(JHU_data[,2] == "Brazil")) %>% 
-  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               which(JHU_data[,2] == "Brazil")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long),
                names_to = "Date", values_to = "cumulative_cases") %>%
-  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
 ## view(bra)
 bra <- data.frame(bra, dates)
 bra$Province.State <- NULL
@@ -150,10 +155,10 @@ sum(bra$BRA)
 ## CHILE
 which(JHU_data[,2] == "Chile")
 chl <- slice(JHU_data, which(JHU_data[,2] == "Chile"):
-               which(JHU_data[,2] == "Chile")) %>% 
-  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               which(JHU_data[,2] == "Chile")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long),
                names_to = "Date", values_to = "cumulative_cases") %>%
-  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
 ## view(chl)
 chl <- data.frame(chl, dates)
 chl$Province.State <- NULL
@@ -169,10 +174,10 @@ sum(chl$CHL)
 ## COLOMBIA
 which(JHU_data[,2] == "Colombia")
 col <- slice(JHU_data, which(JHU_data[,2] == "Colombia"):
-               which(JHU_data[,2] == "Colombia")) %>% 
-  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               which(JHU_data[,2] == "Colombia")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long),
                names_to = "Date", values_to = "cumulative_cases") %>%
-  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
 ## view(col)
 col <- data.frame(col, dates)
 col$Province.State <- NULL
@@ -188,10 +193,10 @@ sum(col$COL)
 ## ECUADOR
 which(JHU_data[,2] == "Ecuador")
 ecu <- slice(JHU_data, which(JHU_data[,2] == "Ecuador"):
-               which(JHU_data[,2] == "Ecuador")) %>% 
-  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               which(JHU_data[,2] == "Ecuador")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long),
                names_to = "Date", values_to = "cumulative_cases") %>%
-  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
 ## view(ecu)
 ecu <- data.frame(ecu, dates)
 ecu$Province.State <- NULL
@@ -207,10 +212,10 @@ sum(ecu$ECU)
 ## PARAGUAY
 which(JHU_data[,2] == "Paraguay")
 pry <- slice(JHU_data, which(JHU_data[,2] == "Paraguay"):
-               which(JHU_data[,2] == "Paraguay")) %>% 
-  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               which(JHU_data[,2] == "Paraguay")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long),
                names_to = "Date", values_to = "cumulative_cases") %>%
-  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
 ## view(pry)
 pry <- data.frame(pry, dates)
 pry$Province.State <- NULL
@@ -226,10 +231,10 @@ sum(pry$PRY)
 ## PERU
 which(JHU_data[,2] == "Peru")
 per <- slice(JHU_data, which(JHU_data[,2] == "Peru"):
-               which(JHU_data[,2] == "Peru")) %>% 
-  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               which(JHU_data[,2] == "Peru")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long),
                names_to = "Date", values_to = "cumulative_cases") %>%
-  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
 ## view(per)
 per <- data.frame(per, dates)
 per$Province.State <- NULL
@@ -245,10 +250,10 @@ sum(per$PER)
 ## URUGUAY
 which(JHU_data[,2] == "Uruguay")
 ury <- slice(JHU_data, which(JHU_data[,2] == "Uruguay"):
-               which(JHU_data[,2] == "Uruguay")) %>% 
-  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               which(JHU_data[,2] == "Uruguay")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long),
                names_to = "Date", values_to = "cumulative_cases") %>%
-  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
 ## view(ury)
 ury <- data.frame(ury, dates)
 ury$Province.State <- NULL
@@ -264,10 +269,10 @@ sum(ury$URY)
 ## VENEZUELA
 which(JHU_data[,2] == "Venezuela")
 ven <- slice(JHU_data, which(JHU_data[,2] == "Venezuela"):
-               which(JHU_data[,2] == "Venezuela")) %>% 
-  pivot_longer(-c(Province.State, Country.Region, Lat, Long), 
+               which(JHU_data[,2] == "Venezuela")) %>%
+  pivot_longer(-c(Province.State, Country.Region, Lat, Long),
                names_to = "Date", values_to = "cumulative_cases") %>%
-  mutate(incident_cases = c(0, diff(cumulative_cases))) 
+  mutate(incident_cases = c(0, diff(cumulative_cases)))
 ## view(ven)
 ven <- data.frame(ven, dates)
 ven$Province.State <- NULL
@@ -280,7 +285,7 @@ ven$cumulative_cases <- NULL
 names(ven)[1] = "VEN"
 sum(ven$VEN)
 
-# Combine Datasets
+## Combine Datasets
 covid19 <- merge(uk, esp, by = "dates", all = TRUE)
 covid19 <- merge(covid19, ita, by = "dates", all = TRUE)
 covid19 <- merge(covid19, arg, by = "dates", all = TRUE)
@@ -294,7 +299,7 @@ covid19 <- merge(covid19, per, by = "dates", all = TRUE)
 covid19 <- merge(covid19, ury, by = "dates", all = TRUE)
 covid19 <- merge(covid19, ven, by = "dates", all = TRUE)
 
-## Slice Data 
+## Slice Data
 covid19 <- slice(covid19, 10:nrow(covid19))
 
 ## Export CSV
