@@ -23,6 +23,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
+## [3.8.7] - 2021-04-13
+### Changed
+- Regional mobility estimations code (WIP).
+
 ## [3.8.6] - 2021-03-27
 ### Changed
 - Update of badges.
