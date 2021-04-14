@@ -23,7 +23,7 @@
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ## Clean Environment
-rm(list = ls())
+## rm(list = ls())
 
 ## Packages
 library(tidyverse)
@@ -51,3 +51,4 @@ COL <- filter(mobility, country_region == "Colombia" & date < "2020-05-15"
 
 PER <- filter(mobility, country_region == "Peru" & date < "2020-05-15"
               & date > "2020-02-15" & sub_region_1 != "")
+
