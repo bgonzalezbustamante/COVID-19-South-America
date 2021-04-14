@@ -29,6 +29,7 @@ is.integer0 <- function(x)
 }
 
 ## Poverty in Argentina
+## GitHub Repository ~/tree/master/docs/poverty-sources/ARG
 mean_poverty_ARG <- 40.9
 f.poverty.ARG <- function(x)
 { if(is.integer0(x)){
@@ -86,6 +87,7 @@ f.poverty.ARG <- function(x)
 }}
 
 ## Poverty in Chile
+## GitHub Repository ~/tree/master/docs/poverty-sources/CHL
 mean_poverty_CHL <- 8.6
 f.poverty.CHL <- function(x)
 { if(is.integer0(x)){
@@ -127,6 +129,7 @@ f.poverty.CHL <- function(x)
 }}
 
 ## Multidimensional Poverty in Chile
+## GitHub Repository ~/tree/master/docs/poverty-sources/CHL
 mean_multi_CHL <- 20.7
 f.multi.CHL <- function(x)
 { if(is.integer0(x)){
@@ -168,6 +171,7 @@ f.multi.CHL <- function(x)
 }}
 
 ## Poverty in Colombia
+## GitHub Repository ~/tree/master/docs/poverty-sources/COL
 mean_poverty_COL <- 35.7
 f.poverty.COL <- function(x)
 { if(is.integer0(x)){
@@ -237,6 +241,7 @@ f.poverty.COL <- function(x)
 }}
 
 ## Poverty in Peru
+## GitHub Repository ~/tree/master/docs/poverty-sources/PER
 mean_poverty_PER <- 16.0020707435589
 f.poverty.PER <- function(x)
 { if(is.integer0(x)){
