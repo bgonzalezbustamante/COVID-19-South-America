@@ -25,11 +25,17 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
+## [3.10.6] - 2021-04-14
+### Added
+- Poverty sources.
+### Changed
+- Regional mobility estimations code (WIP).
+
 ## [3.9.6] - 2021-04-13
 ### Added
 - Git LFS.
 ### Changed
-- Regional mobility estimations code (WIP).
+- Regional mobility estimations code.
 
 ## [3.8.6] - 2021-03-27
 ### Changed
