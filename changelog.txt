@@ -18,18 +18,13 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Added
 - Regional mobility diff-in-diff code.
 
-## [3.7.3] - 2021-03-01
-### Added
-- Google COVID-19 Mobility Data backup on GitHub.
-- Regional mobility estimations code.
-
 ## [Released]
 
 ## [3.10.6] - 2021-04-14
 ### Added
 - Poverty sources.
 ### Changed
-- Regional mobility estimations code (WIP).
+- Regional mobility estimations code.
 
 ## [3.9.6] - 2021-04-13
 ### Added
@@ -46,6 +41,11 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Changed
 - Revision of upgrade versioning.
 - Minor corrections.
+
+## [3.7.3] - 2021-03-01
+### Added
+- Google COVID-19 Mobility Data backup on GitHub.
+- Regional mobility estimations code.
 
 ## [3.6.3] - 2021-01-12
 ### Changed
