@@ -20,6 +20,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
+## [3.10.7] - 2021-04-16
+### Changed
+- Regional mobility estimations code.
+
 ## [3.10.6] - 2021-04-14
 ### Added
 - Poverty sources.
