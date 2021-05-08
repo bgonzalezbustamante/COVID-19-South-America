@@ -8,6 +8,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Proportional Hazards models code.
 - Descriptives per people code.
 ### Changed
+- Regional mobility diff-in-diff code (TBC).
+
+## [3.11.9] - 2021-05-09
+### Changed
 - Regional mobility diff-in-diff code.
 
 ## [3.8.4] - 2021-03-07
@@ -22,7 +26,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [3.11.8] - 2021-05-08
 ### Changed
-- Regional mobility estimations code (WIP).
+- Regional mobility estimations code.
 - Poverty sources.
 
 ## [3.11.7] - 2021-05-07
