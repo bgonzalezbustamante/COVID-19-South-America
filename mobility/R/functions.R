@@ -29,7 +29,7 @@ is.integer0 <- function(x)
 }
 
 ## Poverty in Argentina
-## GitHub Repository ~/tree/master/docs/poverty-sources/ARG
+## GitHub Repository ~/tree/master/data/poverty-sources/ARG
 mean_poverty_ARG <- 40.9
 f.poverty.ARG <- function(x)
 { if(is.integer0(x)){
@@ -63,7 +63,7 @@ f.poverty.ARG <- function(x)
 } else if(x == "Misiones Province"){
   print(NA)
 } else if(x == "Neuquen"){
-  print(NA)
+  print(37.5)
 } else if(x == "Rio Negro"){
   print(NA)
 } else if(x == "Salta Province"){
@@ -87,7 +87,7 @@ f.poverty.ARG <- function(x)
 }}
 
 ## Poverty in Chile
-## GitHub Repository ~/tree/master/docs/poverty-sources/CHL
+## GitHub Repository ~/tree/master/data/poverty-sources/CHL
 mean_poverty_CHL <- 8.6
 f.poverty.CHL <- function(x)
 { if(is.integer0(x)){
@@ -129,7 +129,7 @@ f.poverty.CHL <- function(x)
 }}
 
 ## Multidimensional Poverty in Chile
-## GitHub Repository ~/tree/master/docs/poverty-sources/CHL
+## GitHub Repository ~/tree/master/data/poverty-sources/CHL
 mean_multi_CHL <- 20.7
 f.multi.CHL <- function(x)
 { if(is.integer0(x)){
@@ -153,7 +153,7 @@ f.multi.CHL <- function(x)
 } else if(x == "Maule"){
   print(22.5)
 } else if(x == "Ñuble"){
-  print(24.7)
+  print(24.6)
 } else if(x == "Bio Bio"){
   print(17.4)
 } else if(x == "Araucania"){
@@ -171,7 +171,7 @@ f.multi.CHL <- function(x)
 }}
 
 ## Poverty in Colombia
-## GitHub Repository ~/tree/master/docs/poverty-sources/COL
+## GitHub Repository ~/tree/master/data/poverty-sources/COL
 mean_poverty_COL <- 35.7
 f.poverty.COL <- function(x)
 { if(is.integer0(x)){
@@ -189,7 +189,7 @@ f.poverty.COL <- function(x)
 } else if(x == "Bolivar"){
   print(46)
 } else if(x == "Boyaca"){
-  print(NA)
+  print(35.7)
 } else if(x == "Caldas"){
   print(28.7)
 } else if(x == "Caqueta"){
@@ -241,7 +241,7 @@ f.poverty.COL <- function(x)
 }}
 
 ## Poverty in Peru
-## GitHub Repository ~/tree/master/docs/poverty-sources/PER
+## GitHub Repository ~/tree/master/data/poverty-sources/PER
 mean_poverty_PER <- 16.0020707435589
 f.poverty.PER <- function(x)
 { if(is.integer0(x)){
