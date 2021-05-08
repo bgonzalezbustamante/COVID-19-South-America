@@ -23,6 +23,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ## [3.11.8] - 2021-05-08
 ### Changed
 - Regional mobility estimations code (WIP).
+- Poverty sources.
 
 ## [3.11.7] - 2021-05-07
 ### Added
