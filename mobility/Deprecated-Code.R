@@ -6,7 +6,7 @@
 
 ## Mobility and COVID-19 in South America
 ## R version 4.0.2 (2020-06-22) -- "Taking Off Again"
-## Date: March-April 2021
+## Date: March-May 2021
 
 ## Bastián González-Bustamante (University of Oxford, UK)
 ## E-mail: bastian.gonzalezbustamante@politics.ox.ac.uk
@@ -28,11 +28,13 @@ for(i in 1:nrow(CHL)) {
 }
 
 ## Recode Argentina
+## quantile(unique(ARG.vor$poverty))
 ARG.vor$quantiles <- ifelse(ARG.vor$poverty < as.numeric(quantile(unique(ARG.vor$poverty))[2]), "Low % of poor",
                             ifelse(ARG.vor$poverty > as.numeric(quantile(unique(ARG.vor$poverty))[4]), "High of % poor",
                                    "Average"))
 
 ## Recode Chile
+## quantile(c(unique(CHL$poverty), 4.6))
 CHL$quantiles <- ifelse(CHL$poverty < as.numeric(quantile(c(unique(CHL$poverty), 4.6))[2]), "Low % of poor",
                         ifelse(CHL$poverty > as.numeric(quantile(c(unique(CHL$poverty), 4.6))[4]), "High of % poor",
                                "Average"))
@@ -43,11 +45,13 @@ CHL$dummy_multi <- ifelse(CHL$multi > mean_multi_CHL, "High % of poor", "Low of 
 CHL$binary_multi <- ifelse(CHL$multi > mean_multi_CHL, 1, 0)
 
 ## Recode Colombia
+## quantile(c(unique(COL.vor$poverty), 28.7))
 COL.vor$quantiles <- ifelse(COL.vor$poverty < as.numeric(quantile(c(unique(COL.vor$poverty), 28.7))[2]), "Low % of poor",
                             ifelse(COL.vor$poverty > as.numeric(quantile(c(unique(COL.vor$poverty), 28.7))[4]), "High of % poor",
                                    "Average"))
 
 ## Recode Peru
+## quantile(unique(PER$poverty))
 PER$quantiles <- ifelse(PER$poverty < as.numeric(quantile(unique(PER$poverty))[2]), "Low % of poor",
                         ifelse(PER$poverty > as.numeric(quantile(unique(PER$poverty))[4]), "High of % poor",
                                "Average"))
