@@ -20,11 +20,15 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
-## [3.11.7] - 2021-05-07
-### Added
-- Oxford COVID-19 Government Response Tracker economic indicators (WIP).
+## [3.11.8] - 2021-05-08
 ### Changed
 - Regional mobility estimations code (WIP).
+
+## [3.11.7] - 2021-05-07
+### Added
+- Oxford COVID-19 Government Response Tracker economic indicators.
+### Changed
+- Regional mobility estimations code.
 
 ## [3.10.7] - 2021-04-16
 ### Changed
