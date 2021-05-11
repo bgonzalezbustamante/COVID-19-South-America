@@ -273,7 +273,7 @@ ggplot(cross.national, aes(x = as.Date(date), y = retail_and_recreation_percent_
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
   theme(panel.grid.minor = element_blank()) +
   theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
-  labs(x = "Date", y = "Groceries", title = NULL, subtitle = NULL) +
+  labs(x = "Date", y = "Retail and Recreation", title = NULL, subtitle = NULL) +
   theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
   scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
   scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
@@ -291,7 +291,7 @@ ggplot(subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
   theme(panel.grid.minor = element_blank()) +
   theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
-  labs(x = "Date", y = "Groceries", title = NULL, subtitle = NULL) +
+  labs(x = "Date", y = "Retail and Recreation", title = NULL, subtitle = NULL) +
   theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
   scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
   scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
