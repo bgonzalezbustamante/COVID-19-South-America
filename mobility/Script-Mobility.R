@@ -1160,7 +1160,7 @@ deaths_per$dates_JHU <- NULL
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-#### Diff-in-Diff NPIs ####
+#### Diff-in-Diff Precoding ####
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -1204,6 +1204,11 @@ cross.national$post <- ifelse((cross.national$date > first_ARG) & cross.national
                                       ifelse((cross.national$date > first_COL) & cross.national$Country == "Colombia", 1,
                                              ifelse((cross.national$date > first_PER) & cross.national$Country == "Peru", 1, 0))))
 
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+#### Diff-in-Diff NPIs ####
+
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ## Diff-in-Diff WHO Announcement
 diff_1 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = cs.baseline, cluster = date)
@@ -1211,176 +1216,91 @@ fit_1 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Co
 vif_1 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = cs.baseline))
 
 ## Diff-in-Diff Lockdown
-diff_2 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country),
+diff_1b <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country),
                     data = subset(cross.national, Country == "Argentina" | Country == "Peru"), cluster = date)
-fit_2 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country),
+fit_1b <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country),
             data = subset(cross.national, Country == "Argentina" | Country == "Peru"))
-vif_2 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country),
+vif_1b <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country),
                 data = subset(cross.national, Country == "Argentina" | Country == "Peru")))
 
 ## Diff-in-Diff First Interventions
-diff_3 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = cross.national, cluster = date)
-fit_3 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = cross.national)
-vif_3 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = cross.national))
+diff_2 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = cross.national, cluster = date)
+fit_2 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = cross.national)
+vif_2 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = cross.national))
 
 ## Diff-in-Diff Controlling for Cumulative Cases
-diff_4 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country),
-                    data = cross.national, cluster = date)
-fit_4 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country), data = cross.national)
-vif_4 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country), data = cross.national))
+diff_3 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country),
+                     data = cross.national, cluster = date)
+fit_3 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country), data = cross.national)
+vif_3 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country), data = cross.national))
 
 ## Diff-in-Diff Controlling for Cumulative Deaths
-diff_5 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                    + I(Country), data = cross.national, cluster = date)
-fit_5 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-            + I(Country), data = cross.national)
-vif_5 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths
-                + I(Country), data = cross.national))
+diff_4 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(Country), data = cross.national, cluster = date)
+fit_4 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+             + I(Country), data = cross.national)
+vif_4 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths
+                 + I(Country), data = cross.national))
 
 ## Diff-in-Diff Argentina
-diff_6 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                    data = subset(cross.national, Country == "Argentina"), cluster = date)
-fit_6 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-            data = subset(cross.national, Country == "Argentina"))
-vif_6 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-             data = subset(cross.national, Country == "Argentina")))
+diff_5 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(sub_region_1), data = subset(cross.national, Country == "Argentina"), cluster = date)
+fit_5 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
+             data = subset(cross.national, Country == "Argentina"))
+vif_5 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + I(sub_region_1), data = subset(cross.national, Country == "Argentina")))
 
 ## Diff-in-Diff Chile
-diff_7 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                    data = subset(cross.national, Country == "Chile"), cluster = date)
-fit_7 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-            data = subset(cross.national, Country == "Chile"))
-vif_7 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                data = subset(cross.national, Country == "Chile")))
+diff_6 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(sub_region_1), data = subset(cross.national, Country == "Chile"), cluster = date)
+fit_6 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
+             data = subset(cross.national, Country == "Chile"))
+vif_6 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + I(sub_region_1), data = subset(cross.national, Country == "Chile")))
 
 ## Diff-in-Diff Colombia
-diff_8 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                    data = subset(cross.national, Country == "Colombia"), cluster = date)
-fit_8 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-            data = subset(cross.national, Country == "Colombia"))
-vif_8 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                data = subset(cross.national, Country == "Colombia")))
+diff_7 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(sub_region_1), data = subset(cross.national, Country == "Colombia"), cluster = date)
+fit_7 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
+             data = subset(cross.national, Country == "Colombia"))
+vif_7 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + I(sub_region_1), data = subset(cross.national, Country == "Colombia")))
 
 ## Diff-in-Diff Peru
-diff_9 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                    data = subset(cross.national, Country == "Peru"), cluster = date)
-fit_9 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-            data = subset(cross.national, Country == "Peru"))
-vif_9 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                data = subset(cross.national, Country == "Peru")))
+diff_8 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(sub_region_1), data = subset(cross.national, Country == "Peru"), cluster = date)
+fit_8 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
+             data = subset(cross.national, Country == "Peru"))
+vif_8 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + I(sub_region_1), data = subset(cross.national, Country == "Peru")))
+
 
 ## Models Table
-stargazer(fit_1, fit_2, fit_3, fit_4, fit_5, fit_6, fit_7, fit_8, fit_9,
-          se = starprep(diff_1, diff_2, diff_3, diff_4, diff_5, diff_6, diff_7, diff_8, diff_9),
+stargazer(fit_1, fit_1b, fit_2, fit_3, fit_4, fit_5, fit_6, fit_7, fit_8,
+          se = starprep(diff_1, diff_1b, diff_2, diff_3, diff_4, diff_5, diff_6, diff_7, diff_8),
           type = "html", header = FALSE, style = "ajps", out = "tables/table_0.html",
           title = "Effect of Poverty on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
-          omit = c("Country", "cumulative_cases", "cumulative_deaths"),
+          omit = c("Country", "sub_region_1", "cumulative_cases", "cumulative_deaths"),
           add.lines = list(c("Post-t", "WHO", "Lockdown", "NPIs", "NPIs", "NPIs", "NPIs", "NPIs", "NPIs", "NPIs"),
                            c("Lagged cases", "No", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Lagged deaths", "No", "No", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Day FE", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
+                           c("Region FE", "No", "No", "No", "No", "No", "Yes", "Yes", "Yes", "Yes"),
                            c("Country FE", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "No", "No", "No"),
-                           c("VIF", format(round(vif_1, digits = 3), nsmall = 3), format(round(vif_2, digits = 3), nsmall = 3),
-                             format(round(vif_3, digits = 3), nsmall = 3), format(round(vif_4, digits = 3), nsmall = 3),
-                             format(round(vif_5, digits = 3), nsmall = 3), format(round(vif_6, digits = 3), nsmall = 3),
-                             format(round(vif_7, digits = 3), nsmall = 3), format(round(vif_8, digits = 3), nsmall = 3),
-                             format(round(vif_9, digits = 3), nsmall = 3))),
+                           c("VIF", format(round(vif_1, digits = 3), nsmall = 3), format(round(vif_1b, digits = 3), nsmall = 3),
+                             format(round(vif_2, digits = 3), nsmall = 3), format(round(vif_3, digits = 3), nsmall = 3),
+                             format(round(vif_4, digits = 3), nsmall = 3), format(round(vif_5, digits = 3), nsmall = 3),
+                             format(round(vif_6, digits = 3), nsmall = 3), format(round(vif_7, digits = 3), nsmall = 3),
+                             format(round(vif_8, digits = 3), nsmall = 3)),
+                           c("Exclusion", "No", "No", "No", "No", "No", "No", "No", "No", "No")),
           covariate.labels = c("Poverty", "Post", "Poverty x Post"),
-          column.labels = c("All", "ARG-PER", "All", "All", "All", "ARG", "CHL", "COL", "PER"))
+          column.labels = c("All", "ARG-PER", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"))
 
 ## Models Table
-stargazer(fit_1, fit_3, fit_4, fit_5, fit_6, fit_7, fit_8, fit_9,
-          se = starprep(diff_1, diff_3, diff_4, diff_5, diff_6, diff_7, diff_8, diff_9),
+stargazer(fit_1, fit_2, fit_3, fit_4, fit_5, fit_6, fit_7, fit_8,
+          se = starprep(diff_1, diff_2, diff_3, diff_4, diff_5, diff_6, diff_7, diff_8),
           type = "html", header = FALSE, style = "ajps", out = "tables/table_1.html",
-          title = "Effect of Poverty on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
-          notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
-          omit = c("Country", "cumulative_cases", "cumulative_deaths"),
-          add.lines = list(c("Post-t", "WHO", "NPIs", "NPIs", "NPIs", "NPIs", "NPIs", "NPIs", "NPIs"),
-                           c("Lagged cases", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
-                           c("Lagged deaths", "No", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes"),
-                           c("Day FE", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
-                           c("Region FE", "No", "No", "No", "No", "No", "No", "No", "No"),
-                           c("Country FE", "Yes", "Yes", "Yes", "Yes", "No", "No", "No", "No"),
-                           c("VIF", format(round(vif_1, digits = 3), nsmall = 3),
-                                    format(round(vif_3, digits = 3), nsmall = 3), format(round(vif_4, digits = 3), nsmall = 3),
-                                    format(round(vif_5, digits = 3), nsmall = 3), format(round(vif_6, digits = 3), nsmall = 3),
-                                    format(round(vif_7, digits = 3), nsmall = 3), format(round(vif_8, digits = 3), nsmall = 3),
-                                    format(round(vif_9, digits = 3), nsmall = 3)),
-                           c("Exclusion", "No", "No", "No", "No", "No", "No", "No", "No")),
-          covariate.labels = c("Poverty", "Post", "Poverty x Post"),
-          column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"))
-
-## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-#### RC FE by Region ####
-
-## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-## Diff-in-Diff WHO Announcement
-diff_10 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(sub_region_1),
-                     data = cs.baseline, cluster = date)
-fit_10 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(sub_region_1), data = cs.baseline)
-vif_10 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(sub_region_1), data = cs.baseline))
-
-## Diff-in-Diff First Interventions
-diff_11 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(sub_region_1),
-                     data = cross.national, cluster = date)
-fit_11 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(sub_region_1), data = cross.national)
-vif_11 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(sub_region_1), data = cross.national))
-
-## Diff-in-Diff Controlling for Cumulative Cases
-diff_12 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country) + I(sub_region_1),
-                     data = cross.national, cluster = date)
-fit_12 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country) + I(sub_region_1),
-             data = cross.national)
-vif_12 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country) + I(sub_region_1),
-                 data = cross.national))
-
-## Diff-in-Diff Controlling for Cumulative Deaths
-diff_13 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                     + I(Country) + I(sub_region_1), data = cross.national, cluster = date)
-fit_13 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-             + I(Country) + I(sub_region_1), data = cross.national)
-vif_13 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths
-                 + I(Country) + I(sub_region_1), data = cross.national))
-
-## Diff-in-Diff Argentina
-diff_14 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                     + I(sub_region_1), data = subset(cross.national, Country == "Argentina"), cluster = date)
-fit_14 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
-             data = subset(cross.national, Country == "Argentina"))
-vif_14 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                 + I(sub_region_1), data = subset(cross.national, Country == "Argentina")))
-
-## Diff-in-Diff Chile
-diff_15 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                     + I(sub_region_1), data = subset(cross.national, Country == "Chile"), cluster = date)
-fit_15 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
-             data = subset(cross.national, Country == "Chile"))
-vif_15 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                 + I(sub_region_1), data = subset(cross.national, Country == "Chile")))
-
-## Diff-in-Diff Colombia
-diff_16 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                     + I(sub_region_1), data = subset(cross.national, Country == "Colombia"), cluster = date)
-fit_16 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
-             data = subset(cross.national, Country == "Colombia"))
-vif_16 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                 + I(sub_region_1), data = subset(cross.national, Country == "Colombia")))
-
-## Diff-in-Diff Peru
-diff_17 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                     + I(sub_region_1), data = subset(cross.national, Country == "Peru"), cluster = date)
-fit_17 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
-             data = subset(cross.national, Country == "Peru"))
-vif_17 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                 + I(sub_region_1), data = subset(cross.national, Country == "Peru")))
-
-## Models Table
-stargazer(fit_10, fit_11, fit_12, fit_13, fit_14, fit_15, fit_16, fit_17,
-          se = starprep(diff_10, diff_11, diff_12, diff_13, diff_14, diff_15, diff_16, diff_17),
-          type = "html", header = FALSE, style = "ajps", out = "tables/table_2.html",
           title = "Effect of Poverty on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
           omit = c("Country", "sub_region_1", "cumulative_cases", "cumulative_deaths"),
@@ -1388,109 +1308,199 @@ stargazer(fit_10, fit_11, fit_12, fit_13, fit_14, fit_15, fit_16, fit_17,
                            c("Lagged cases", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Lagged deaths", "No", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Day FE", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
-                           c("Region FE", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
-                           c("Country FE", "No", "No", "Yes", "Yes", "No", "No", "No", "No"),
-                           c("VIF", format(round(vif_10, digits = 3), nsmall = 3),
-                             format(round(vif_11, digits = 3), nsmall = 3), format(round(vif_12, digits = 3), nsmall = 3),
-                             format(round(vif_13, digits = 3), nsmall = 3), format(round(vif_14, digits = 3), nsmall = 3),
-                             format(round(vif_15, digits = 3), nsmall = 3), format(round(vif_16, digits = 3), nsmall = 3),
-                             format(round(vif_17, digits = 3), nsmall = 3)),
-                           c("Exclusion", "No", "No", "No", "No", "No", "No", "No", "No")),
+                           c("Region FE", "No", "No", "No", "No", "Yes", "Yes", "Yes", "Yes"),
+                           c("Country FE", "Yes", "Yes", "Yes", "Yes", "No", "No", "No", "No"),
+                           c("VIF", format(round(vif_1, digits = 3), nsmall = 3),
+                             format(round(vif_2, digits = 3), nsmall = 3), format(round(vif_3, digits = 3), nsmall = 3),
+                             format(round(vif_4, digits = 3), nsmall = 3), format(round(vif_5, digits = 3), nsmall = 3),
+                             format(round(vif_6, digits = 3), nsmall = 3), format(round(vif_7, digits = 3), nsmall = 3),
+                             format(round(vif_8, digits = 3), nsmall = 3)),
+                           c("Exclusion", "No", "No", "No", "No", "No", "No", "No", "No", "No")),
           covariate.labels = c("Poverty", "Post", "Poverty x Post"),
           column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"))
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-#### RC FE by Region (excluding capitals) ####
+#### Diff-in-Diff Other Mobility ####
+
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+## Diff-in-Diff Transit Stations
+diff_9 <- lm_robust(transit_stations_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                    + I(Country), data = cross.national, cluster = date)
+fit_9 <- lm(transit_stations_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+            + I(Country), data = cross.national)
+vif_9 <- VIF(lm(transit_stations_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths
+                + I(Country), data = cross.national))
+
+## Diff-in-Diff Groceries
+diff_10 <- lm_robust(grocery_and_pharmacy_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                    + I(Country), data = cross.national, cluster = date)
+fit_10 <- lm(grocery_and_pharmacy_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+            + I(Country), data = cross.national)
+vif_10 <- VIF(lm(grocery_and_pharmacy_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths
+                + I(Country), data = cross.national))
+
+## Diff-in-Diff Recreation
+diff_11 <- lm_robust(retail_and_recreation_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                    + I(Country), data = cross.national, cluster = date)
+fit_11 <- lm(retail_and_recreation_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+            + I(Country), data = cross.national)
+vif_11 <- VIF(lm(retail_and_recreation_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths
+                + I(Country), data = cross.national))
+
+## Models Table
+stargazer(fit_9, fit_10, fit_11, se = starprep(diff_9, diff_10, diff_11),
+          type = "html", header = FALSE, style = "ajps", out = "tables/table_2.html",
+          title = "Effect of Poverty on Types of Mobility", dep.var.labels = c("Transit", "Groceries", "Recreation"),
+          notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
+          omit = c("Country", "cumulative_cases", "cumulative_deaths"),
+          add.lines = list(c("Post-t", "NPIs", "NPIs", "NPIs"),
+                           c("Lagged cases", "Yes", "Yes", "Yes"),
+                           c("Lagged deaths", "Yes", "Yes", "Yes"),
+                           c("Day FE", "Yes", "Yes", "Yes"),
+                           c("Region FE", "No", "No", "No"),
+                           c("Country FE", "Yes", "Yes", "Yes"),
+                           c("VIF", format(round(vif_9, digits = 3), nsmall = 3),
+                             format(round(vif_10, digits = 3), nsmall = 3), format(round(vif_11, digits = 3), nsmall = 3)),
+                           c("Exclusion", "No", "No", "No")),
+          covariate.labels = c("Poverty", "Post", "Poverty x Post"),
+          column.labels = c("All", "All", "All"))
+
+## Diff-in-Diff Transit Stations in Chile
+diff_6b <- lm_robust(transit_stations_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(sub_region_1), data = subset(cross.national, Country == "Chile"), cluster = date)
+fit_6b <- lm(transit_stations_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
+             data = subset(cross.national, Country == "Chile"))
+vif_6b <- VIF(lm(transit_stations_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + I(sub_region_1), data = subset(cross.national, Country == "Chile")))
+
+## Diff-in-Diff Groceries in Chile
+diff_6c <- lm_robust(grocery_and_pharmacy_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(sub_region_1), data = subset(cross.national, Country == "Chile"), cluster = date)
+fit_6c <- lm(grocery_and_pharmacy_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
+             data = subset(cross.national, Country == "Chile"))
+vif_6c <- VIF(lm(grocery_and_pharmacy_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + I(sub_region_1), data = subset(cross.national, Country == "Chile")))
+
+## Diff-in-Diff Recreation in Chile
+diff_6d <- lm_robust(retail_and_recreation_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(sub_region_1), data = subset(cross.national, Country == "Chile"), cluster = date)
+fit_6d <- lm(retail_and_recreation_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
+             data = subset(cross.national, Country == "Chile"))
+vif_6d <- VIF(lm(retail_and_recreation_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + I(sub_region_1), data = subset(cross.national, Country == "Chile")))
+
+## Models Table
+stargazer(fit_6, fit_6b, fit_6c, fit_6d,
+          se = starprep(diff_6, diff_6b, diff_6c, diff_6d),
+          type = "html", header = FALSE, style = "ajps", out = "tables/table_2b.html",
+          title = "Effect of Poverty on Types of Mobility",
+          dep.var.labels = c("Workplaces", "Transit", "Groceries", "Recreation"),
+          notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
+          omit = c("Country", "sub_region_1", "cumulative_cases", "cumulative_deaths"),
+          add.lines = list(c("Post-t", "NPIs", "NPIs", "NPIs", "NPIs"),
+                           c("Lagged cases", "Yes", "Yes", "Yes", "Yes"),
+                           c("Lagged deaths", "Yes", "Yes", "Yes", "Yes"),
+                           c("Day FE", "Yes", "Yes", "Yes", "Yes"),
+                           c("Region FE", "Yes", "Yes", "Yes", "Yes"),
+                           c("Country FE", "No", "No", "No", "No"),
+                           c("VIF", format(round(vif_6, digits = 3), nsmall = 3),
+                             format(round(vif_6b, digits = 3), nsmall = 3), format(round(vif_6c, digits = 3), nsmall = 3),
+                             format(round(vif_6d, digits = 3), nsmall = 3)),
+                           c("Exclusion", "No", "No", "No", "No")),
+          covariate.labels = c("Poverty", "Post", "Poverty x Post"),
+          column.labels = c("Chile", "Chile", "Chile", "Chile"))
+
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+#### Robustness Cheks - Capitals ####
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ## Diff-in-Diff WHO Announcement
-diff_18 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(sub_region_1),
+diff_12 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country),
                      data = subset(cs.baseline, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
                                    & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"), cluster = date)
-fit_18 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(sub_region_1),
+fit_12 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country),
              data = subset(cs.baseline), sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
              & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima")
-vif_18 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(sub_region_1),
+vif_12 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country),
                  data = subset(cs.baseline, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
                          & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima")))
 
 ## Diff-in-Diff First Interventions
-diff_19 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(sub_region_1),
+diff_13 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country),
                      data = subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
                                    & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"), cluster = date)
-fit_19 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(sub_region_1),
+fit_13 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country),
              data = subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
                            & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"))
-vif_19 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(sub_region_1),
+vif_13 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country),
                  data = subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
                                & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima")))
 
 ## Diff-in-Diff Controlling for Cumulative Cases
-diff_20 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country) + I(sub_region_1),
+diff_14 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country),
                      data = subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
                                    & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"), cluster = date)
-fit_20 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country) + I(sub_region_1),
+fit_14 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country),
              data = subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
                            & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"))
-vif_20 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country) + I(sub_region_1),
+vif_14 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country),
                  data = subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
                                & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima")))
 
 ## Diff-in-Diff Controlling for Cumulative Deaths
-diff_21 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                     + I(Country) + I(sub_region_1),
-                     data = subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
-                                   & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"), cluster = date)
-fit_21 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-             + I(Country) + I(sub_region_1),
-             data = subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
-                           & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"))
-vif_21 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths
-                 + I(Country) + I(sub_region_1),
-                 data = subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
-                         & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima")))
+diff_15 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(Country), data = subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
+                                                 & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"), cluster = date)
+fit_15 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+             + I(Country), data = subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
+                                         & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"))
+vif_15 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths
+                 + I(Country), data = subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
+                                             & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima")))
 
 ## Diff-in-Diff Argentina
-diff_22 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+diff_16 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
                      + I(sub_region_1), data = subset(cross.national, Country == "Argentina" & sub_region_1 != "Buenos Aires"),
                      cluster = date)
-fit_22 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
+fit_16 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
              data = subset(cross.national, Country == "Argentina" & sub_region_1 != "Buenos Aires"))
-vif_22 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+vif_16 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
                  + I(sub_region_1), data = subset(cross.national, Country == "Argentina" & sub_region_1 != "Buenos Aires")))
 
 ## Diff-in-Diff Chile
-diff_23 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+diff_17 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
                      + I(sub_region_1), data = subset(cross.national, Country == "Chile" & sub_region_1 != "Santiago Metropolitan Region"),
                      cluster = date)
-fit_23 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
+fit_17 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
              data = subset(cross.national, Country == "Chile" & sub_region_1 != "Santiago Metropolitan Region"))
-vif_23 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+vif_17 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
                  + I(sub_region_1), data = subset(cross.national, Country == "Chile" & sub_region_1 != "Santiago Metropolitan Region")))
 
 ## Diff-in-Diff Colombia
-diff_24 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+diff_18 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
                      + I(sub_region_1), data = subset(cross.national, Country == "Colombia" & sub_region_1 != "Bogota"),
                      cluster = date)
-fit_24 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths+ I(sub_region_1),
+fit_18 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths+ I(sub_region_1),
              data = subset(cross.national, Country == "Colombia" & sub_region_1 != "Bogota"))
-vif_24 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+vif_18 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
                  + I(sub_region_1), data = subset(cross.national, Country == "Colombia" & sub_region_1 != "Bogota")))
 
 ## Diff-in-Diff Peru
-diff_25 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+diff_19 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
                      + I(sub_region_1), data = subset(cross.national, Country == "Peru" & sub_region_1 != "Metropolitan Municipality of Lima"),
                      cluster = date)
-fit_25 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
+fit_19 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
              data = subset(cross.national, Country == "Peru" & sub_region_1 != "Metropolitan Municipality of Lima"))
-vif_25 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+vif_19 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
                  + I(sub_region_1), data = subset(cross.national, Country == "Peru" & sub_region_1 != "Metropolitan Municipality of Lima")))
 
 ## Models Table
-stargazer(fit_18, fit_19, fit_20, fit_21, fit_22, fit_23, fit_24, fit_25,
-          se = starprep(diff_18, diff_19, diff_20, diff_21, diff_22, diff_23, diff_24, diff_25),
+stargazer(fit_12, fit_13, fit_14, fit_15, fit_16, fit_17, fit_18, fit_19,
+          se = starprep(diff_12, diff_13, diff_14, diff_15, diff_16, diff_17, diff_18, diff_19),
           type = "html", header = FALSE, style = "ajps", out = "tables/table_3.html",
           title = "Effect of Poverty on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
@@ -1499,103 +1509,103 @@ stargazer(fit_18, fit_19, fit_20, fit_21, fit_22, fit_23, fit_24, fit_25,
                            c("Lagged cases", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Lagged deaths", "No", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Day FE", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
-                           c("Region FE", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
-                           c("Country FE", "No", "No", "Yes", "Yes", "No", "No", "No", "No"),
-                           c("VIF", format(round(vif_18, digits = 3), nsmall = 3),
-                             format(round(vif_19, digits = 3), nsmall = 3), format(round(vif_20, digits = 3), nsmall = 3),
-                             format(round(vif_21, digits = 3), nsmall = 3), format(round(vif_22, digits = 3), nsmall = 3),
-                             format(round(vif_23, digits = 3), nsmall = 3), format(round(vif_24, digits = 3), nsmall = 3),
-                             format(round(vif_25, digits = 3), nsmall = 3)),
+                           c("Region FE", "No", "No", "No", "No", "Yes", "Yes", "Yes", "Yes"),
+                           c("Country FE", "Yes", "Yes", "Yes", "Yes", "No", "No", "No", "No"),
+                           c("VIF", format(round(vif_12, digits = 3), nsmall = 3),
+                             format(round(vif_13, digits = 3), nsmall = 3), format(round(vif_14, digits = 3), nsmall = 3),
+                             format(round(vif_15, digits = 3), nsmall = 3), format(round(vif_16, digits = 3), nsmall = 3),
+                             format(round(vif_17, digits = 3), nsmall = 3), format(round(vif_18, digits = 3), nsmall = 3),
+                             format(round(vif_19, digits = 3), nsmall = 3)),
                            c("Exclusion", "Capital", "Capital", "Capital", "Capital", "Capital", "Capital", "Capital", "Capital")),
           covariate.labels = c("Poverty", "Post", "Poverty x Post"),
           column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"))
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-#### RC Controlling for Economic Measures ####
+#### Robustness Checks - Economic Measures ####
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ## Diff-in-Diff WHO Announcement
-diff_26 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + income + debt + I(Country),
+diff_20 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + income + debt + I(Country),
                      data = cs.baseline, cluster = date)
-fit_26 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + income + debt + I(Country), data = cs.baseline)
-vif_26 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + income + debt + I(Country), data = cs.baseline))
+fit_20 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + income + debt + I(Country), data = cs.baseline)
+vif_20 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + income + debt + I(Country), data = cs.baseline))
 
 ## Diff-in-Diff First Interventions
-diff_27 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + income + debt + I(Country),
+diff_21 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + income + debt + I(Country),
                      data = cross.national, cluster = date)
-fit_27 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + income + debt + I(Country), data = cross.national)
-vif_27 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + income + debt + I(Country), data = cross.national))
+fit_21 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + income + debt + I(Country), data = cross.national)
+vif_21 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + income + debt + I(Country), data = cross.national))
 
 ## Diff-in-Diff Controlling for Cumulative Cases
-diff_28 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + income + debt + I(Country),
+diff_22 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + income + debt + I(Country),
                     data = cross.national, cluster = date)
-fit_28 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + income + debt + I(Country),
+fit_22 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + income + debt + I(Country),
              data = cross.national)
-vif_28 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + income + debt + I(Country),
+vif_22 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + income + debt + I(Country),
                  data = cross.national))
 
 ## Diff-in-Diff Controlling for Cumulative Deaths
-diff_29 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+diff_23 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
                     + income + debt + I(Country), data = cross.national, cluster = date)
-fit_29 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+fit_23 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
             + income + debt + I(Country), data = cross.national)
-vif_29 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths
+vif_23 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths
                 + income + debt + I(Country), data = cross.national))
 
 ## Diff-in-Diff Argentina
-diff_30 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                     + income + debt, data = subset(cross.national, Country == "Argentina"), cluster = date)
-fit_30 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-             + income + debt, data = subset(cross.national, Country == "Argentina"))
-vif_30 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                 + income + debt, data = subset(cross.national, Country == "Argentina")))
+diff_24 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + income + debt + I(sub_region_1), data = subset(cross.national, Country == "Argentina"), cluster = date)
+fit_24 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+             + income + debt + I(sub_region_1), data = subset(cross.national, Country == "Argentina"))
+vif_24 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + income + debt + I(sub_region_1), data = subset(cross.national, Country == "Argentina")))
 
 ## Diff-in-Diff Chile
-diff_31 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                     + income + debt, data = subset(cross.national, Country == "Chile"), cluster = date)
-fit_31 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-             + income + debt, data = subset(cross.national, Country == "Chile"))
-vif_31 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                 + income + debt, data = subset(cross.national, Country == "Chile")))
+diff_25 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + income + debt + I(sub_region_1), data = subset(cross.national, Country == "Chile"), cluster = date)
+fit_25 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+             + income + debt + I(sub_region_1), data = subset(cross.national, Country == "Chile"))
+vif_25 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + income + debt + I(sub_region_1), data = subset(cross.national, Country == "Chile")))
 
 ## Diff-in-Diff Colombia
-diff_32 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                     + income + debt, data = subset(cross.national, Country == "Colombia"), cluster = date)
-fit_32 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-             + income + debt, data = subset(cross.national, Country == "Colombia"))
-vif_32 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                 + income + debt, data = subset(cross.national, Country == "Colombia")))
+diff_26 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + income + debt + I(sub_region_1), data = subset(cross.national, Country == "Colombia"), cluster = date)
+fit_26 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+             + income + debt + I(sub_region_1), data = subset(cross.national, Country == "Colombia"))
+vif_26 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + income + debt + I(sub_region_1), data = subset(cross.national, Country == "Colombia")))
 
 ## Diff-in-Diff Peru
-diff_33 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                     + income + debt, data = subset(cross.national, Country == "Peru"), cluster = date)
-fit_33 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-             + income + debt, data = subset(cross.national, Country == "Peru"))
-vif_33 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                 + income + debt, data = subset(cross.national, Country == "Peru")))
+diff_27 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + income + debt + I(sub_region_1), data = subset(cross.national, Country == "Peru"), cluster = date)
+fit_27 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+             + income + debt + I(sub_region_1), data = subset(cross.national, Country == "Peru"))
+vif_27 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + income + debt + I(sub_region_1), data = subset(cross.national, Country == "Peru")))
 
 ## Models Table
-stargazer(fit_26, fit_27, fit_28, fit_29, fit_30, fit_31, fit_32, fit_33,
-          se = starprep(diff_26, diff_27, diff_28, diff_29, diff_30, diff_31, diff_32, diff_33),
+stargazer(fit_20, fit_21, fit_22, fit_23, fit_24, fit_25, fit_26, fit_27,
+          se = starprep(diff_20, diff_21, diff_22, diff_23, diff_24, diff_25, diff_26, diff_27),
           type = "html", header = FALSE, style = "ajps", out = "tables/table_4.html",
           title = "Effect of Poverty on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
-          omit = c("Country", "cumulative_cases", "cumulative_deaths", "income", "debt"),
+          omit = c("Country", "sub_region_1", "cumulative_cases", "cumulative_deaths", "income", "debt"),
           add.lines = list(c("Post-t", "WHO", "NPIs", "NPIs", "NPIs", "NPIs", "NPIs", "NPIs", "NPIs"),
                            c("Lagged cases", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Lagged deaths", "No", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Income support", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Debt relief", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Day FE", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
-                           c("Region FE", "No", "No", "No", "No", "No", "No", "No", "No"),
+                           c("Region FE", "No", "No", "No", "No", "Yes", "Yes", "Yes", "Yes"),
                            c("Country FE", "Yes", "Yes", "Yes", "Yes", "No", "No", "No", "No"),
-                           c("VIF", format(round(vif_26, digits = 3), nsmall = 3),
-                             format(round(vif_27, digits = 3), nsmall = 3), format(round(vif_28, digits = 3), nsmall = 3),
-                             format(round(vif_29, digits = 3), nsmall = 3), format(round(vif_30, digits = 3), nsmall = 3),
-                             format(round(vif_31, digits = 3), nsmall = 3), format(round(vif_32, digits = 3), nsmall = 3),
-                             format(round(vif_33, digits = 3), nsmall = 3)),
+                           c("VIF", format(round(vif_20, digits = 3), nsmall = 3),
+                             format(round(vif_21, digits = 3), nsmall = 3), format(round(vif_22, digits = 3), nsmall = 3),
+                             format(round(vif_23, digits = 3), nsmall = 3), format(round(vif_24, digits = 3), nsmall = 3),
+                             format(round(vif_25, digits = 3), nsmall = 3), format(round(vif_26, digits = 3), nsmall = 3),
+                             format(round(vif_27, digits = 3), nsmall = 3)),
                            c("Exclusion", "No", "No", "No", "No", "No", "No", "No", "No")),
           covariate.labels = c("Poverty", "Post", "Poverty x Post"),
           column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"))
@@ -1619,80 +1629,110 @@ placebo.data <- left_join(placebo.data, cross.national_deaths,
                           by = c("Country" = "Country.Region", "date" = "lagged_date"))
 
 ## Diff-in-Diff WHO Announcement
-diff_34 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = placebo.data, cluster = date)
-fit_34 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = placebo.data)
-vif_34 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = placebo.data))
+diff_28 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = placebo.data, cluster = date)
+fit_28 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = placebo.data)
+vif_28 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = placebo.data))
 
 ## Diff-in-Diff First Interventions
-diff_35 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = placebo.data, cluster = date)
-fit_35 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = placebo.data)
-vif_35 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = placebo.data))
+diff_29 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = placebo.data, cluster = date)
+fit_29 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = placebo.data)
+vif_29 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(Country), data = placebo.data))
 
 ## Diff-in-Diff Controlling for Cumulative Cases
-diff_36 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country),
-                    data = placebo.data, cluster = date)
-fit_36 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country), data = placebo.data)
-vif_36 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country), data = placebo.data))
+diff_30 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country),
+                     data = placebo.data, cluster = date)
+fit_30 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country), data = placebo.data)
+vif_30 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + I(Country), data = placebo.data))
 
 ## Diff-in-Diff Controlling for Cumulative Deaths
-diff_37 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+diff_31 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
                     + I(Country), data = placebo.data, cluster = date)
-fit_37 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-            + I(Country), data = placebo.data)
-vif_37 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths
-                + I(Country), data = placebo.data))
+fit_31 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(Country),
+             data = placebo.data)
+vif_31 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths + I(Country),
+                 data = placebo.data))
 
 ## Diff-in-Diff Argentina
-diff_38 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                    data = subset(placebo.data, Country == "Argentina"), cluster = date)
-fit_38 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
+diff_32 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(sub_region_1), data = subset(placebo.data, Country == "Argentina"), cluster = date)
+fit_32 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
             data = subset(placebo.data, Country == "Argentina"))
-vif_38 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                data = subset(placebo.data, Country == "Argentina")))
+vif_32 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + I(sub_region_1), data = subset(placebo.data, Country == "Argentina")))
 
 ## Diff-in-Diff Chile
-diff_39 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                     data = subset(placebo.data, Country == "Chile" & sub_region_1 != "Valparaíso"), cluster = date)
-fit_39 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-             data = subset(placebo.data, Country == "Chile" & sub_region_1 != "Valparaíso"))
-vif_39 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                 data = subset(placebo.data, Country == "Chile" & sub_region_1 != "Valparaíso")))
+diff_33 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(sub_region_1), data = subset(placebo.data, Country == "Chile"), cluster = date)
+fit_33 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+             + I(sub_region_1), data = subset(placebo.data, Country == "Chile"))
+vif_33 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + I(sub_region_1), data = subset(placebo.data, Country == "Chile")))
+
+## Diff-in-Diff Chile Alternative
+diff_33b <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(sub_region_1), data = subset(placebo.data, Country == "Chile" & sub_region_1 != "Valparaíso"), cluster = date)
+fit_33b <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+             + I(sub_region_1), data = subset(placebo.data, Country == "Chile" & sub_region_1 != "Valparaíso"))
+vif_33b <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + I(sub_region_1), data = subset(placebo.data, Country == "Chile" & sub_region_1 != "Valparaíso")))
 
 ## Diff-in-Diff Colombia
-diff_40 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                    data = subset(placebo.data, Country == "Colombia"), cluster = date)
-fit_40 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
+diff_34 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(sub_region_1), data = subset(placebo.data, Country == "Colombia"), cluster = date)
+fit_34 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
             data = subset(placebo.data, Country == "Colombia"))
-vif_40 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                data = subset(placebo.data, Country == "Colombia")))
+vif_34 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + I(sub_region_1), data = subset(placebo.data, Country == "Colombia")))
 
 ## Diff-in-Diff Peru
-diff_41 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                    data = subset(placebo.data, Country == "Peru"), cluster = date)
-fit_41 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-            data = subset(placebo.data, Country == "Peru"))
-vif_41 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths,
-                data = subset(placebo.data, Country == "Peru")))
+diff_35 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                     + I(sub_region_1), data = subset(placebo.data, Country == "Peru"), cluster = date)
+fit_35 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+             + I(sub_region_1), data = subset(placebo.data, Country == "Peru"))
+vif_35 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
+                 + I(sub_region_1), data = subset(placebo.data, Country == "Peru")))
 
 ## Models Table
-stargazer(fit_34, fit_35, fit_36, fit_37, fit_38, fit_39, fit_40, fit_41,
-          se = starprep(diff_34, diff_35, diff_36, diff_37, diff_38, diff_39, diff_40, diff_41),
+stargazer(fit_28, fit_29, fit_30, fit_31, fit_32, fit_33b, fit_34, fit_35,
+          se = starprep(diff_28, diff_29, diff_30, diff_31, diff_32, diff_33b, diff_34, diff_35),
           type = "html", header = FALSE, style = "ajps", out = "tables/table_5.html",
           title = "Placebo on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
-          omit = c("Country", "cumulative_cases", "cumulative_deaths"),
+          omit = c("Country", "sub_region_1","cumulative_cases", "cumulative_deaths"),
           add.lines = list(c("Post-t", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo"),
                            c("Lagged cases", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Lagged deaths", "No", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Day FE", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
-                           c("Region FE", "No", "No", "No", "No", "No", "No", "No", "No"),
+                           c("Region FE", "No", "No", "No", "No", "Yes", "Yes", "Yes", "Yes"),
                            c("Country FE", "Yes", "Yes", "Yes", "Yes", "No", "No", "No", "No"),
-                           c("VIF", format(round(vif_34, digits = 3), nsmall = 3),
-                             format(round(vif_35, digits = 3), nsmall = 3), format(round(vif_36, digits = 3), nsmall = 3),
-                             format(round(vif_37, digits = 3), nsmall = 3), format(round(vif_38, digits = 3), nsmall = 3),
-                             format(round(vif_39, digits = 3), nsmall = 3), format(round(vif_40, digits = 3), nsmall = 3),
-                             format(round(vif_41, digits = 3), nsmall = 3)),
+                           c("VIF", format(round(vif_28, digits = 3), nsmall = 3),
+                             format(round(vif_29, digits = 3), nsmall = 3), format(round(vif_30, digits = 3), nsmall = 3),
+                             format(round(vif_31, digits = 3), nsmall = 3), format(round(vif_32, digits = 3), nsmall = 3),
+                             format(round(vif_33b, digits = 3), nsmall = 3), format(round(vif_34, digits = 3), nsmall = 3),
+                             format(round(vif_35, digits = 3), nsmall = 3)),
                            c("Exclusion", "No", "No", "No", "No", "No", "Tourism", "No", "No")),
+          covariate.labels = c("Poverty", "Post", "Poverty x Post"),
+          column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"))
+
+## Models Table
+stargazer(fit_28, fit_29, fit_30, fit_31, fit_32, fit_33, fit_34, fit_35,
+          se = starprep(diff_28, diff_29, diff_30, diff_31, diff_32, diff_33, diff_34, diff_35),
+          type = "html", header = FALSE, style = "ajps", out = "tables/table_5b.html",
+          title = "Placebo on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
+          notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
+          omit = c("Country", "sub_region_1","cumulative_cases", "cumulative_deaths"),
+          add.lines = list(c("Post-t", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo"),
+                           c("Lagged cases", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
+                           c("Lagged deaths", "No", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes"),
+                           c("Day FE", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
+                           c("Region FE", "No", "No", "No", "No", "Yes", "Yes", "Yes", "Yes"),
+                           c("Country FE", "Yes", "Yes", "Yes", "Yes", "No", "No", "No", "No"),
+                           c("VIF", format(round(vif_28, digits = 3), nsmall = 3),
+                             format(round(vif_29, digits = 3), nsmall = 3), format(round(vif_30, digits = 3), nsmall = 3),
+                             format(round(vif_31, digits = 3), nsmall = 3), format(round(vif_32, digits = 3), nsmall = 3),
+                             format(round(vif_33, digits = 3), nsmall = 3), format(round(vif_34, digits = 3), nsmall = 3),
+                             format(round(vif_35, digits = 3), nsmall = 3)),
+                           c("Exclusion", "No", "No", "No", "No", "No", "No", "No", "No")),
           covariate.labels = c("Poverty", "Post", "Poverty x Post"),
           column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"))
 
