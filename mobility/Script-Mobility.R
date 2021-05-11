@@ -28,6 +28,9 @@ rm(list = ls())
 ## Packages
 library(tidyverse)
 library(ggplot2)
+library(estimatr)
+library(fmsb)
+library(stargazer)
 
 ## Functions
 source("R/functions.R", encoding = "UTF-8")
@@ -1161,11 +1164,6 @@ deaths_per$dates_JHU <- NULL
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-## Packages
-library(estimatr)
-library(fmsb)
-library(stargazer)
-
 ## Economic Measures
 ecc_ARG <- as.Date(arg_resp$dates[which(arg_resp$e1_incomesupport == 1 & arg_resp$e1_flag == 1, arr.ind = TRUE)])[1]
 ecc_CHL <- as.Date(chl_resp$dates[which(chl_resp$e1_incomesupport == 1 & chl_resp$e1_flag == 1, arr.ind = TRUE)])[1]
@@ -1315,7 +1313,7 @@ stargazer(fit_1, fit_3, fit_4, fit_5, fit_6, fit_7, fit_8, fit_9,
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-#### Robustness Checks FE by Region ####
+#### RC FE by Region ####
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -1366,7 +1364,7 @@ vif_15 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post +
 ## Diff-in-Diff Colombia
 diff_16 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
                      + I(sub_region_1), data = subset(cross.national, Country == "Colombia"), cluster = date)
-fit_16 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths+ I(sub_region_1),
+fit_16 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(sub_region_1),
              data = subset(cross.national, Country == "Colombia"))
 vif_16 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
                  + I(sub_region_1), data = subset(cross.national, Country == "Colombia")))
@@ -1403,7 +1401,7 @@ stargazer(fit_10, fit_11, fit_12, fit_13, fit_14, fit_15, fit_16, fit_17,
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-#### Robustness Checks FE by Region (excluding capitals) ####
+#### RC FE by Region (excluding capitals) ####
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -1514,7 +1512,7 @@ stargazer(fit_18, fit_19, fit_20, fit_21, fit_22, fit_23, fit_24, fit_25,
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-#### Robustness Checks Controlling for Economic Measures ####
+#### RC Controlling for Economic Measures ####
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
