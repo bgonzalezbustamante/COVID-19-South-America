@@ -14,11 +14,11 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
-## [3.12.10] - 2021-05-11
+## [3.12.10] - 2021-05-13
 ### Changed
-- Mobility robustness checks (WIP).
-- Mobilit placebo test (WIP).
-- Regional mobility diff-in-diff code (WIP).
+- Mobility robustness checks.
+- Mobilit placebo test.
+- Regional mobility diff-in-diff code.
 
 ## [3.12.9] - 2021-05-10
 ### Added
