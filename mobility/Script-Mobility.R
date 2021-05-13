@@ -55,7 +55,6 @@ placebo_ARG <- filter(mobility, country_region == "Argentina" & date < "2020-03-
                       & sub_region_1 != "")
 
 ## Subsample Chile
-## CHL <- filter(mobility, country_region == "Chile" & date < "2020-05-16" & date > "2020-02-14"
 CHL <- filter(mobility, country_region == "Chile" & date < "2020-05-01" & date > "2020-02-29"
               & sub_region_1 != "")
 
@@ -64,7 +63,6 @@ placebo_CHL <- filter(mobility, country_region == "Chile" & date < "2020-03-10" 
                       & sub_region_1 != "")
 
 ## Subsample Colombia
-## COL <- filter(mobility, country_region == "Colombia" & date < "2020-05-16" & date > "2020-02-14"
 COL <- filter(mobility, country_region == "Colombia" & date < "2020-05-01" & date > "2020-02-29"
               & sub_region_1 != "")
 
@@ -73,7 +71,6 @@ placebo_COL <- filter(mobility, country_region == "Colombia" & date < "2020-03-1
                       & sub_region_1 != "")
 
 ## Subsample Peru
-## PER <- filter(mobility, country_region == "Peru" & date < "2020-05-16" & date > "2020-02-14"
 PER <- filter(mobility, country_region == "Peru" & date < "2020-05-01" & date > "2020-02-29"
               & sub_region_1 != "")
 
