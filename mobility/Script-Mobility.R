@@ -48,35 +48,36 @@ mobility <- read.csv("../data/Google/Global_Mobility_Report.csv", encoding = "UT
 
 ## Subsample Argentina
 ARG <- filter(mobility, country_region == "Argentina" & date < "2020-05-01" & date > "2020-02-29"
-              & sub_region_1 != "")
+              & sub_region_1 != "" & sub_region_2 != "")
 
 ## Placebo Argentina
-placebo_ARG <- filter(mobility, country_region == "Argentina" & date < "2020-03-10" & date > "2020-02-14"
-                      & sub_region_1 != "")
+placebo_ARG <- filter(mobility, country_region == "Argentina" & date < "2020-03-11" & date > "2020-02-14"
+                      & sub_region_1 != "" & sub_region_2 != "")
 
 ## Subsample Chile
 CHL <- filter(mobility, country_region == "Chile" & date < "2020-05-01" & date > "2020-02-29"
-              & sub_region_1 != "")
+              & sub_region_1 != "" & sub_region_2 != "")
 
 ## Placebo Chile
-placebo_CHL <- filter(mobility, country_region == "Chile" & date < "2020-03-10" & date > "2020-02-14"
-                      & sub_region_1 != "")
+placebo_CHL <- filter(mobility, country_region == "Chile" & date < "2020-03-11" & date > "2020-02-14"
+                      & sub_region_1 != "" & sub_region_2 != "")
 
 ## Subsample Colombia
+mobility$sub_region_2[which(mobility$sub_region_1 == "Bogota")] <- "Bogota"
 COL <- filter(mobility, country_region == "Colombia" & date < "2020-05-01" & date > "2020-02-29"
-              & sub_region_1 != "")
+              & sub_region_1 != ""  & sub_region_2 != "")
 
 ## Placebo Colombia
-placebo_COL <- filter(mobility, country_region == "Colombia" & date < "2020-03-10" & date > "2020-02-14"
-                      & sub_region_1 != "")
+placebo_COL <- filter(mobility, country_region == "Colombia" & date < "2020-03-11" & date > "2020-02-14"
+                      & sub_region_1 != "" & sub_region_2 != "")
 
 ## Subsample Peru
 PER <- filter(mobility, country_region == "Peru" & date < "2020-05-01" & date > "2020-02-29"
-              & sub_region_1 != "")
+              & sub_region_1 != "" & sub_region_2 != "")
 
 ## Placebo Peru
-placebo_PER <- filter(mobility, country_region == "Peru" & date < "2020-03-10" & date > "2020-02-14"
-                      & sub_region_1 != "")
+placebo_PER <- filter(mobility, country_region == "Peru" & date < "2020-03-11" & date > "2020-02-14"
+                      & sub_region_1 != "" & sub_region_2 != "")
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -154,37 +155,21 @@ placebo_PER$binary_poverty <- ifelse(placebo_PER$poverty > mean_poverty_PER, 1, 
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-#### Mobility Changes ####
+#### Cross-National Mobility Changes ####
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ## Cross National Data Frame
+baseline.cross <- bind_rows(ARG, CHL, COL, PER)
+names(baseline.cross)[2] = "Country"
 cross.national <- bind_rows(ARG.vor, CHL, COL.vor, PER)
 names(cross.national)[2] = "Country"
 
 ## Plot Workplaces
 ## pdf("plots-300dpi/figure_1a.pdf", width = 6.826666666666667, height = 5.12)
 ## png("plots-300dpi/figure_1a.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
-ggplot(cross.national, aes(x = as.Date(date), y = workplaces_percent_change_from_baseline,
+ggplot(baseline.cross, aes(x = as.Date(date), y = workplaces_percent_change_from_baseline,
                            col = Country)) + geom_smooth(aes(linetype = Country, fill = Country)) +
-  theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
-  theme(panel.grid.minor = element_blank()) +
-  theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
-  labs(x = "Date", y = "Workplaces", title = NULL, subtitle = NULL) +
-  theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
-  scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
-  scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
-  scale_fill_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c"))
-## dev.off()
-
-## Plot Workplaces
-## pdf("plots-300dpi/appendices/appendix_1a.pdf", width = 6.826666666666667, height = 5.12)
-## png("plots-300dpi/appendices/appendix_1a.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
-ggplot(subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
-              & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"),
-       aes(x = as.Date(date), y = workplaces_percent_change_from_baseline, col = Country)) +
-  geom_smooth(aes(linetype = Country, fill = Country)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
   theme(panel.grid.minor = element_blank()) +
   theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
@@ -199,26 +184,8 @@ ggplot(subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "
 ## Plot Transit Stations
 ## pdf("plots-300dpi/figure_1b.pdf", width = 6.826666666666667, height = 5.12)
 ## png("plots-300dpi/figure_1b.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
-ggplot(cross.national, aes(x = as.Date(date), y = transit_stations_percent_change_from_baseline,
+ggplot(baseline.cross, aes(x = as.Date(date), y = transit_stations_percent_change_from_baseline,
                            col = Country)) + geom_smooth(aes(linetype = Country, fill = Country)) +
-  theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
-  theme(panel.grid.minor = element_blank()) +
-  theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
-  labs(x = "Date", y = "Transit Stations", title = NULL, subtitle = NULL) +
-  theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
-  scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
-  scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
-  scale_fill_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c"))
-## dev.off()
-
-## Plot Transit Stations
-## pdf("plots-300dpi/appendices/appendix_1b.pdf", width = 6.826666666666667, height = 5.12)
-## png("plots-300dpi/appendices/appendix_1b.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
-ggplot(subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
-              & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"),
-       aes(x = as.Date(date), y = transit_stations_percent_change_from_baseline, col = Country)) +
-  geom_smooth(aes(linetype = Country, fill = Country)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
   theme(panel.grid.minor = element_blank()) +
   theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
@@ -233,26 +200,8 @@ ggplot(subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "
 ## Plot Groceries
 ## pdf("plots-300dpi/figure_1c.pdf", width = 6.826666666666667, height = 5.12)
 ## png("plots-300dpi/figure_1c.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
-ggplot(cross.national, aes(x = as.Date(date), y = grocery_and_pharmacy_percent_change_from_baseline,
+ggplot(baseline.cross, aes(x = as.Date(date), y = grocery_and_pharmacy_percent_change_from_baseline,
                            col = Country)) + geom_smooth(aes(linetype = Country, fill = Country)) +
-  theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
-  theme(panel.grid.minor = element_blank()) +
-  theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
-  labs(x = "Date", y = "Groceries", title = NULL, subtitle = NULL) +
-  theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
-  scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
-  scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
-  scale_fill_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c"))
-## dev.off()
-
-## Plot Groceries
-## pdf("plots-300dpi/appendices/appendix_1c.pdf", width = 6.826666666666667, height = 5.12)
-## png("plots-300dpi/appendices/appendix_1c.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
-ggplot(subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
-              & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"),
-       aes(x = as.Date(date), y = grocery_and_pharmacy_percent_change_from_baseline, col = Country)) +
-  geom_smooth(aes(linetype = Country, fill = Country)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
   theme(panel.grid.minor = element_blank()) +
   theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
@@ -267,26 +216,8 @@ ggplot(subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "
 ## Plot Recreation
 ## pdf("plots-300dpi/figure_1d.pdf", width = 6.826666666666667, height = 5.12)
 ## png("plots-300dpi/figure_1d.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
-ggplot(cross.national, aes(x = as.Date(date), y = retail_and_recreation_percent_change_from_baseline,
+ggplot(baseline.cross, aes(x = as.Date(date), y = retail_and_recreation_percent_change_from_baseline,
                            col = Country)) + geom_smooth(aes(linetype = Country, fill = Country)) +
-  theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
-  theme(panel.grid.minor = element_blank()) +
-  theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
-  labs(x = "Date", y = "Retail and Recreation", title = NULL, subtitle = NULL) +
-  theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
-  scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
-  scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
-  scale_fill_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c"))
-## dev.off()
-
-## Plot Recreation
-## pdf("plots-300dpi/appendices/appendix_1d.pdf", width = 6.826666666666667, height = 5.12)
-## png("plots-300dpi/appendices/appendix_1d.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
-ggplot(subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
-              & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"),
-       aes(x = as.Date(date), y = retail_and_recreation_percent_change_from_baseline, col = Country)) +
-  geom_smooth(aes(linetype = Country, fill = Country)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
   theme(panel.grid.minor = element_blank()) +
   theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
@@ -810,7 +741,7 @@ names(per_resp)[11] = "e2_debtrelief"
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-#### National Trends ####
+#### Cross-National and National Trends ####
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -853,29 +784,6 @@ ggplot(ARG.vor, aes(x = as.Date(date), y = workplaces_percent_change_from_baseli
                                                        & arg_resp$c1_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2) +
   geom_vline(xintercept = as.Date(arg_resp$dates[which(arg_resp$c6_stayathomerequirements == 3
                                                        & arg_resp$c6_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2)
-
-## dev.off()
-
-## Plot Argentina
-## pdf("plots-300dpi/appendices/appendix_2a.pdf", width = 6.826666666666667, height = 5.12)
-## png("plots-300dpi/appendices/appendix_2a.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
-ggplot(subset(ARG.vor, sub_region_1 != "Buenos Aires"),
-       aes(x = as.Date(date), y = workplaces_percent_change_from_baseline, col = Poverty)) +
-  geom_smooth(aes(linetype = Poverty, fill = Poverty)) +
-  theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
-  theme(panel.grid.minor = element_blank()) +
-  theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
-  labs(x = "Date", y = "Workplaces", title = NULL, subtitle = NULL) +
-  theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
-  scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
-  scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#1f78b4","gray30")) +
-  scale_fill_manual(values=c("#1f78b4","gray30")) +
-  scale_linetype_manual(values=c(2,3)) +
-  geom_vline(xintercept = as.Date(arg_resp$dates[which(arg_resp$c1_schoolclosing == 3
-                                                       & arg_resp$c1_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2) +
-  geom_vline(xintercept = as.Date(arg_resp$dates[which(arg_resp$c6_stayathomerequirements == 3
-                                                       & arg_resp$c6_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2)
 ## dev.off()
 
 ## Plot Chile
@@ -899,55 +807,11 @@ ggplot(CHL, aes(x = as.Date(date), y = workplaces_percent_change_from_baseline,
                                                        & chl_resp$c2_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2)
 ## dev.off()
 
-## Plot Chile
-## pdf("plots-300dpi/appendices/appendix_2b.pdf", width = 6.826666666666667, height = 5.12)
-## png("plots-300dpi/appendices/appendix_2b.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
-ggplot(subset(CHL, sub_region_1 != "Santiago Metropolitan Region"),
-       aes(x = as.Date(date), y = workplaces_percent_change_from_baseline, col = Poverty)) +
-  geom_smooth(aes(linetype = Poverty, fill = Poverty)) +
-  theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
-  theme(panel.grid.minor = element_blank()) +
-  theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
-  labs(x = "Date", y = "Workplaces", title = NULL, subtitle = NULL) +
-  theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
-  scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
-  scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#e31a1c","gray30")) +
-  scale_fill_manual(values=c("#e31a1c","gray30")) +
-  scale_linetype_manual(values=c(2,3)) +
-  geom_vline(xintercept = as.Date(arg_resp$dates[which(chl_resp$c1_schoolclosing == 3
-                                                       & chl_resp$c1_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2) +
-  geom_vline(xintercept = as.Date(arg_resp$dates[which(chl_resp$c2_workplaceclosing == 3
-                                                       & chl_resp$c2_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2)
-## dev.off()
-
 ## Plot Colombia
 ## pdf("plots-300dpi/figure_2c.pdf", width = 6.826666666666667, height = 5.12)
 ## png("plots-300dpi/figure_2c.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
 ggplot(COL.vor, aes(x = as.Date(date), y = workplaces_percent_change_from_baseline,
                 col = Poverty)) + geom_smooth(aes(linetype = Poverty, fill = Poverty)) +
-  theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
-  theme(panel.grid.minor = element_blank()) +
-  theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
-  labs(x = "Date", y = "Workplaces", title = NULL, subtitle = NULL) +
-  theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
-  scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
-  scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#ff7f00","gray30")) +
-  scale_fill_manual(values=c("#ff7f00","gray30")) +
-  scale_linetype_manual(values=c(2,3)) +
-  geom_vline(xintercept = as.Date(arg_resp$dates[which(col_resp$c1_schoolclosing == 3
-                                                       & col_resp$c1_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2) +
-  geom_vline(xintercept = as.Date(arg_resp$dates[which(col_resp$c2_workplaceclosing == 3
-                                                       & col_resp$c2_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2)
-## dev.off()
-
-## Plot Colombia
-## pdf("plots-300dpi/appendices/appendix_2c.pdf", width = 6.826666666666667, height = 5.12)
-## png("plots-300dpi/appendices/appendix_2c.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
-ggplot(subset(COL.vor, sub_region_1 != "Bogota"),
-       aes(x = as.Date(date), y = workplaces_percent_change_from_baseline, col = Poverty)) +
-  geom_smooth(aes(linetype = Poverty, fill = Poverty)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
   theme(panel.grid.minor = element_blank()) +
   theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
@@ -987,10 +851,29 @@ ggplot(PER, aes(x = as.Date(date), y = workplaces_percent_change_from_baseline,
                                                        & per_resp$c6_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2)
 ## dev.off()
 
-## Plot Peru
-## pdf("plots-300dpi/appendices/appendix_2d.pdf", width = 6.826666666666667, height = 5.12)
-## png("plots-300dpi/appendices/appendix_2d.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
-ggplot(subset(PER, sub_region_1 != "Metropolitan Municipality of Lima"),
+## Cross-National Plot
+## pdf("plots-300dpi/appendices/figure_3a.pdf", width = 6.826666666666667, height = 5.12)
+## png("plots-300dpi/appendices/figure_3a.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
+ggplot(cross.national, aes(x = as.Date(date), y = workplaces_percent_change_from_baseline,
+                           col = Poverty)) + geom_smooth(aes(linetype = Poverty, fill = Poverty)) +
+  theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
+  theme(panel.grid.minor = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
+  labs(x = "Date", y = "Workplaces", title = NULL, subtitle = NULL) +
+  theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
+  scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
+  scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
+  scale_colour_manual(values=c("gray20","gray60")) +
+  scale_fill_manual(values=c("gray20","gray60")) +
+  scale_linetype_manual(values=c(2,3)) +
+  geom_vline(xintercept = as.Date("2020-03-11"), col = "tomato2", lty = 2)
+## dev.off()
+
+## Cross-National Plot
+## pdf("plots-300dpi/appendices/figure_3b.pdf", width = 6.826666666666667, height = 5.12)
+## png("plots-300dpi/appendices/figure_3b.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
+ggplot(subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
+              & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"),
        aes(x = as.Date(date), y = workplaces_percent_change_from_baseline, col = Poverty)) +
   geom_smooth(aes(linetype = Poverty, fill = Poverty)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
@@ -998,17 +881,12 @@ ggplot(subset(PER, sub_region_1 != "Metropolitan Municipality of Lima"),
   theme(axis.text.x = element_text(angle = 35, hjust = 1, color = "black",  size = 9)) +
   labs(x = "Date", y = "Workplaces", title = NULL, subtitle = NULL) +
   theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
-  scale_x_date(date_breaks = "1 weeks", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
+  scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
   scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#33a02c","gray30")) +
-  scale_fill_manual(values=c("#33a02c","gray30")) +
+  scale_colour_manual(values=c("gray20","gray60")) +
+  scale_fill_manual(values=c("gray20","gray60")) +
   scale_linetype_manual(values=c(2,3)) +
-  geom_vline(xintercept = as.Date(arg_resp$dates[which(per_resp$c1_schoolclosing == 3
-                                                       & per_resp$c1_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2) +
-  geom_vline(xintercept = as.Date(arg_resp$dates[which(per_resp$c2_workplaceclosing == 3
-                                                       & per_resp$c2_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2) +
-  geom_vline(xintercept = as.Date(arg_resp$dates[which(per_resp$c6_stayathomerequirements == 3
-                                                       & per_resp$c6_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2)
+  geom_vline(xintercept = as.Date("2020-03-11"), col = "tomato2", lty = 2)
 ## dev.off()
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1192,12 +1070,12 @@ cross.national$debt <- ifelse((cross.national$date > debt_ARG) & cross.national$
                               ifelse((cross.national$date > debt_COL) & cross.national$Country == "Colombia", 1,
                                      ifelse((cross.national$date > debt_PER) & cross.national$Country == "Peru", 1, 0)))
 cs.baseline <- cross.national
-cs.lockdown <- cross.national
+## cs.lockdown <- cross.national
 
 ## Codification Post Period
 cs.baseline$post <- ifelse(cs.baseline$date > as.Date("2020-03-11"), 1, 0)
-cs.lockdown$post <- ifelse((cs.lockdown$date > lock_ARG) & cs.lockdown$Country == "Argentina", 1,
-                           ifelse((cs.lockdown$date > lock_PER) & cs.lockdown$Country == "Peru", 1, 0))
+## cs.lockdown$post <- ifelse((cs.lockdown$date > lock_ARG) & cs.lockdown$Country == "Argentina", 1,
+                           ## ifelse((cs.lockdown$date > lock_PER) & cs.lockdown$Country == "Peru", 1, 0))
 cross.national$post <- ifelse((cross.national$date > first_ARG) & cross.national$Country == "Argentina", 1,
                                ifelse((cross.national$date > first_CHL) & cross.national$Country == "Chile", 1,
                                       ifelse((cross.national$date > first_COL) & cross.national$Country == "Colombia", 1,
@@ -1277,6 +1155,7 @@ fit_8 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumu
             + I(sub_region_1), data = subset(cross.national, Country == "Peru"))
 vif_8 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
                 + I(date) + I(sub_region_1), data = subset(cross.national, Country == "Peru")))
+robust_8 <- as.vector(summary(fit_8, robust = T)$coefficients[,"Std. Error"])
 
 ## Robust Standard Errors
 robust_se <- data.frame(Model = c("Model 1", "Model 2", "Model 3", "Model 4", "Model 5", "Model 6", "Model 7", "Model 8"),
@@ -1300,7 +1179,7 @@ robust_se <- data.frame(Model = c("Model 1", "Model 2", "Model 3", "Model 4", "M
 
 ## Models Table
 stargazer(fit_1, fit_2, fit_3, fit_4, fit_5, fit_6, fit_7, fit_8,
-          type = "html", header = FALSE, style = "ajps", out = "models/table_0.html",
+          type = "html", header = FALSE, style = "ajps", out = "did-models/table_0.html",
           title = "Effect of Poverty on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
           omit = c("Constant", "date", "sub_region_1", "cumulative_cases", "cumulative_deaths"),
@@ -1322,15 +1201,16 @@ stargazer(fit_1, fit_2, fit_3, fit_4, fit_5, fit_6, fit_7, fit_8,
                              format(round(vif_4, digits = 3), nsmall = 3), format(round(vif_5, digits = 3), nsmall = 3),
                              format(round(vif_6, digits = 3), nsmall = 3), format(round(vif_7, digits = 3), nsmall = 3),
                              format(round(vif_8, digits = 3), nsmall = 3)),
+                           c("Subsample", "No", "No", "No", "No", "ARG", "CHL", "COL", "PER"),
                            c("Exclusion", "No", "No", "No", "No", "No", "No", "No", "No", "No")),
           covariate.labels = c("Poverty", "Post", "Poverty x Post"),
-          column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"),
+          ## column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"),
           notes = "Standard errors in parentheses")
 
 ## Models Table
 stargazer(fit_1, fit_2, fit_3, fit_4, fit_5, fit_6, fit_7, fit_8,
           se = starprep(diff_1, diff_2, diff_3, diff_4, diff_5, diff_6, diff_7, diff_8),
-          type = "html", header = FALSE, style = "ajps", out = "models/table_1.html",
+          type = "html", header = FALSE, style = "ajps", out = "did-models/table_1.html",
           title = "Effect of Poverty on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
           omit = c("Constant", "date", "sub_region_1", "cumulative_cases", "cumulative_deaths"),
@@ -1344,9 +1224,10 @@ stargazer(fit_1, fit_2, fit_3, fit_4, fit_5, fit_6, fit_7, fit_8,
                              format(round(vif_4, digits = 3), nsmall = 3), format(round(vif_5, digits = 3), nsmall = 3),
                              format(round(vif_6, digits = 3), nsmall = 3), format(round(vif_7, digits = 3), nsmall = 3),
                              format(round(vif_8, digits = 3), nsmall = 3)),
+                           c("Subsample", "No", "No", "No", "No", "ARG", "CHL", "COL", "PER"),
                            c("Exclusion", "No", "No", "No", "No", "No", "No", "No", "No", "No")),
           covariate.labels = c("Poverty", "Post", "Poverty x Post"),
-          column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"),
+          ## column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"),
           notes = "Clustered standard errors by sub-national level in parentheses")
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1389,7 +1270,7 @@ vif_12 <- VIF(lm(parks_percent_change_from_baseline ~ binary_poverty*post + cumu
 
 ## Models Table
 stargazer(fit_9, fit_10, fit_11, fit_12, se = starprep(diff_9, diff_10, diff_11, diff_12),
-          type = "html", header = FALSE, style = "ajps", out = "models/table_2.html",
+          type = "html", header = FALSE, style = "ajps", out = "did-models/table_2.html",
           title = "Effect of Poverty on Types of Mobility", dep.var.labels = c("Transit", "Groceries", "Recreation", "Parks"),
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
           omit = c("Constant", "date", "sub_region_1", "cumulative_cases", "cumulative_deaths"),
@@ -1401,9 +1282,10 @@ stargazer(fit_9, fit_10, fit_11, fit_12, se = starprep(diff_9, diff_10, diff_11,
                            c("VIF", format(round(vif_9, digits = 3), nsmall = 3),
                              format(round(vif_10, digits = 3), nsmall = 3), format(round(vif_11, digits = 3), nsmall = 3),
                              format(round(vif_12, digits = 3), nsmall = 3)),
+                           c("Subsample", "No", "No", "No", "No"),
                            c("Exclusion", "No", "No", "No", "No")),
           covariate.labels = c("Poverty", "Post", "Poverty x Post"),
-          column.labels = c("All", "All", "All", "All"),
+          ## column.labels = c("All", "All", "All", "All"),
           notes = "Clustered standard errors by sub-national level in parentheses")
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1422,7 +1304,7 @@ fit_13 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(d
              & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima")
 vif_13 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(date) + I(sub_region_1),
                  data = subset(cs.baseline, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
-                         & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima")))
+                               & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima")))
 
 ## Diff-in-Diff First Interventions
 diff_14 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(date) + I(sub_region_1),
@@ -1507,7 +1389,7 @@ vif_20 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post +
 ## Models Table
 stargazer(fit_13, fit_14, fit_15, fit_16, fit_17, fit_18, fit_19, fit_20,
           se = starprep(diff_13, diff_14, diff_15, diff_16, diff_17, diff_18, diff_19, diff_20),
-          type = "html", header = FALSE, style = "ajps", out = "models/table_3.html",
+          type = "html", header = FALSE, style = "ajps", out = "did-models/table_3.html",
           title = "Effect of Poverty on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
           omit = c("Constant", "date", "sub_region_1", "cumulative_cases", "cumulative_deaths"),
@@ -1521,9 +1403,10 @@ stargazer(fit_13, fit_14, fit_15, fit_16, fit_17, fit_18, fit_19, fit_20,
                              format(round(vif_16, digits = 3), nsmall = 3), format(round(vif_17, digits = 3), nsmall = 3),
                              format(round(vif_18, digits = 3), nsmall = 3), format(round(vif_19, digits = 3), nsmall = 3),
                              format(round(vif_20, digits = 3), nsmall = 3)),
+                           c("Subsample", "No", "No", "No", "No", "ARG", "CHL", "COL", "PER"),
                            c("Exclusion", "Capital", "Capital", "Capital", "Capital", "Capital", "Capital", "Capital", "Capital")),
           covariate.labels = c("Poverty", "Post", "Poverty x Post"),
-          column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"),
+          ## column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"),
           notes = "Clustered standard errors by sub-national level in parentheses")
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1558,7 +1441,7 @@ vif_23 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post +
 
 ## Diff-in-Diff Controlling for Cumulative Deaths
 diff_24 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                     + income + debt + I(date) + I(sub_region_1), data = cross.national, cluster = sub_region_1)
+                     + income + debt + I(date) + I(sub_region_1), data = cross.national, cluster = sub_region_2)
 fit_24 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
              + income + debt + I(date) + I(sub_region_1), data = cross.national)
 vif_24 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths
@@ -1603,7 +1486,7 @@ vif_28 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post +
 ## Models Table
 stargazer(fit_21, fit_22, fit_23, fit_24, fit_25, fit_26, fit_27, fit_28,
           se = starprep(diff_21, diff_22, diff_23, diff_24, diff_25, diff_26, diff_27, diff_28),
-          type = "html", header = FALSE, style = "ajps", out = "models/table_4.html",
+          type = "html", header = FALSE, style = "ajps", out = "did-models/table_4.html",
           title = "Effect of Poverty on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
           omit = c("Constant", "date", "sub_region_1", "cumulative_cases", "cumulative_deaths", "income", "debt"),
@@ -1619,9 +1502,10 @@ stargazer(fit_21, fit_22, fit_23, fit_24, fit_25, fit_26, fit_27, fit_28,
                              format(round(vif_24, digits = 3), nsmall = 3), format(round(vif_25, digits = 3), nsmall = 3),
                              format(round(vif_26, digits = 3), nsmall = 3), format(round(vif_27, digits = 3), nsmall = 3),
                              format(round(vif_28, digits = 3), nsmall = 3)),
+                           c("Subsample", "No", "No", "No", "No", "ARG", "CHL", "COL", "PER"),
                            c("Exclusion", "No", "No", "No", "No", "No", "No", "No", "No")),
           covariate.labels = c("Poverty", "Post", "Poverty x Post"),
-          column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"),
+          ## column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"),
           notes = "Clustered standard errors by sub-national level in parentheses")
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1635,7 +1519,7 @@ placebo.data <- bind_rows(placebo_ARG, placebo_CHL, placebo_COL, placebo_PER)
 names(placebo.data)[2] = "Country"
 
 ## Codification Post Period
-placebo.data$post <- ifelse(placebo.data$date > as.Date("2020-02-17"), 1, 0)
+placebo.data$post <- ifelse(placebo.data$date > as.Date("2020-02-18"), 1, 0)
 placebo.data$date <- as.Date(placebo.data$date)
 placebo.data <- left_join(placebo.data, cross.national_cases,
                           by = c("Country" = "Country.Region", "date" = "lagged_date"))
@@ -1664,7 +1548,7 @@ vif_31 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post +
 
 ## Diff-in-Diff Controlling for Cumulative Deaths
 diff_32 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths
-                     + I(date) + I(sub_region_1), data = placebo.data, cluster = sub_region_1)
+                     + I(date) + I(sub_region_1), data = placebo.data, cluster = sub_region_2)
 fit_32 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(date)
              + I(sub_region_1), data = placebo.data)
 vif_32 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases  + cumulative_deaths + I(date)
@@ -1686,15 +1570,6 @@ fit_34 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cum
 vif_34 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(date)
                  + I(sub_region_1), data = subset(placebo.data, Country == "Chile")))
 
-## Diff-in-Diff Chile Alternative
-diff_34b <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(date)
-                      + I(sub_region_1), data = subset(placebo.data, Country == "Chile" & sub_region_1 != "Valparaíso"),
-                      cluster = sub_region_2)
-fit_34b <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(date)
-              + I(sub_region_1), data = subset(placebo.data, Country == "Chile" & sub_region_1 != "Valparaíso"))
-vif_34b <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(date)
-                  + I(sub_region_1), data = subset(placebo.data, Country == "Chile" & sub_region_1 != "Valparaíso")))
-
 ## Diff-in-Diff Colombia
 diff_35 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(date)
                      + I(sub_region_1), data = subset(placebo.data, Country == "Colombia"), cluster = sub_region_2)
@@ -1702,15 +1577,6 @@ fit_35 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cum
              + I(sub_region_1), data = subset(placebo.data, Country == "Colombia"))
 vif_35 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(date)
                  + I(sub_region_1), data = subset(placebo.data, Country == "Colombia")))
-
-## Diff-in-Diff Colombia Alternative
-diff_35b <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(date)
-                      + I(sub_region_1), data = subset(placebo.data, Country == "Colombia"
-                                                       & sub_region_1 != "Bolivar"), cluster = sub_region_2)
-fit_35b <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(date)
-              + I(sub_region_1), data = subset(placebo.data, Country == "Colombia" & sub_region_1 != "Bolivar"))
-vif_35b <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(date)
-                  + I(sub_region_1), data = subset(placebo.data, Country == "Colombia" & sub_region_1 != "Bolivar")))
 
 ## Diff-in-Diff Peru
 diff_36 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + cumulative_cases + cumulative_deaths + I(date)
@@ -1722,33 +1588,12 @@ vif_36 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post +
 
 ## Models Table
 stargazer(fit_29, fit_30, fit_31, fit_32, fit_33, fit_34, fit_35, fit_36,
-          type = "html", header = FALSE, style = "ajps", out = "models/table_5.html",
-          title = "Placebo on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
-          notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
-          omit = c("Constant", "date", "sub_region_1", "cumulative_cases", "cumulative_deaths"),
-          add.lines = list(c("Post-t", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo"),
-                           c("Lagged cases", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
-                           c("Lagged deaths", "No", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes"),
-                           c("Day FE", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
-                           c("Region FE", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
-                           c("VIF", format(round(vif_29, digits = 3), nsmall = 3),
-                             format(round(vif_30, digits = 3), nsmall = 3), format(round(vif_31, digits = 3), nsmall = 3),
-                             format(round(vif_32, digits = 3), nsmall = 3), format(round(vif_33, digits = 3), nsmall = 3),
-                             format(round(vif_34, digits = 3), nsmall = 3), format(round(vif_35, digits = 3), nsmall = 3),
-                             format(round(vif_36, digits = 3), nsmall = 3)),
-                           c("Exclusion", "No", "No", "No", "No", "No", "Tourism", "Tourism", "No")),
-          covariate.labels = c("Poverty", "Post", "Poverty x Post"),
-          column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"),
-          notes = "Robust standard errors in parentheses")
-
-## Models Table
-stargazer(fit_29, fit_30, fit_31, fit_32, fit_33, fit_34, fit_35, fit_36,
           se = starprep(diff_29, diff_30, diff_31, diff_32, diff_33, diff_34, diff_35, diff_36),
-          type = "html", header = FALSE, style = "ajps", out = "models/table_5b.html",
+          type = "html", header = FALSE, style = "ajps", out = "did-models/table_5.html",
           title = "Placebo on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
           omit = c("Constant", "date", "sub_region_1", "cumulative_cases", "cumulative_deaths"),
-          add.lines = list(c("Post-t", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo"),
+          add.lines = list(c("Post-t-1", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo", "Placebo"),
                            c("Lagged cases", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Lagged deaths", "No", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes"),
                            c("Day FE", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"),
@@ -1758,7 +1603,8 @@ stargazer(fit_29, fit_30, fit_31, fit_32, fit_33, fit_34, fit_35, fit_36,
                              format(round(vif_32, digits = 3), nsmall = 3), format(round(vif_33, digits = 3), nsmall = 3),
                              format(round(vif_34, digits = 3), nsmall = 3), format(round(vif_35, digits = 3), nsmall = 3),
                              format(round(vif_36, digits = 3), nsmall = 3)),
+                           c("Subsample", "No", "No", "No", "No", "ARG", "CHL", "COL", "PER"),
                            c("Exclusion", "No", "No", "No", "No", "No", "No", "No", "No")),
           covariate.labels = c("Poverty", "Post", "Poverty x Post"),
-          column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"),
+          ## column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"),
           notes = "Clustered standard errors by sub-national level in parentheses")
