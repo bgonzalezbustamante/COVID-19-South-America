@@ -32,7 +32,7 @@ library(estimatr)
 library(fmsb)
 library(stargazer)
 library(lmtest)
-## library(sandwich)
+library(sandwich)
 
 ## Functions
 source("R/functions.R", encoding = "UTF-8")
@@ -1177,8 +1177,8 @@ debt_COL <-as.Date(col_resp$dates[which(col_resp$e2_debtrelief == 2, arr.ind = T
 debt_PER <- as.Date(per_resp$dates[which(per_resp$e2_debtrelief == 2, arr.ind = TRUE)])[1]
 
 ## Cross National Data Frame
-cross.national <- bind_rows(ARG.vor, CHL, COL.vor, PER) ## Comment
-names(cross.national)[2] = "Country" ## Comment
+## cross.national <- bind_rows(ARG.vor, CHL, COL.vor, PER)
+## names(cross.national)[2] = "Country"
 cross.national_cases <- bind_rows(cases_arg, cases_chl, cases_col, cases_per)
 cross.national_deaths <- bind_rows(deaths_arg, deaths_chl, deaths_col, deaths_per)
 names(cross.national_deaths)[2] = "cumulative_deaths"
@@ -1765,4 +1765,3 @@ stargazer(fit_29, fit_30, fit_31, fit_32, fit_33, fit_34, fit_35, fit_36,
           covariate.labels = c("Poverty", "Post", "Poverty x Post"),
           column.labels = c("All", "All", "All", "All", "Argentina", "Chile", "Colombia", "Peru"),
           notes = "Clustered standard errors by sub-national level in parentheses")
-
