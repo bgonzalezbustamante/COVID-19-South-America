@@ -167,7 +167,7 @@ names(cross.national)[2] = "Country"
 
 ## Plot Workplaces
 ## pdf("plots-300dpi/figure_1a.pdf", width = 6.826666666666667, height = 5.12)
-png("plots-300dpi/figure_1a.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
+## png("plots-300dpi/figure_1a.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
 ggplot(baseline.cross, aes(x = as.Date(date), y = workplaces_percent_change_from_baseline,
                            col = Country)) + geom_smooth(aes(linetype = Country, fill = Country)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
@@ -180,11 +180,11 @@ ggplot(baseline.cross, aes(x = as.Date(date), y = workplaces_percent_change_from
   scale_colour_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
   scale_fill_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
   geom_vline(xintercept = as.Date("2020-03-11"), col = "tomato2", lty = 2)
-dev.off()
+## dev.off()
 
 ## Plot Transit Stations
 ## pdf("plots-300dpi/figure_1b.pdf", width = 6.826666666666667, height = 5.12)
-png("plots-300dpi/figure_1b.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
+## png("plots-300dpi/figure_1b.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
 ggplot(baseline.cross, aes(x = as.Date(date), y = transit_stations_percent_change_from_baseline,
                            col = Country)) + geom_smooth(aes(linetype = Country, fill = Country)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
@@ -197,11 +197,11 @@ ggplot(baseline.cross, aes(x = as.Date(date), y = transit_stations_percent_chang
   scale_colour_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
   scale_fill_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
   geom_vline(xintercept = as.Date("2020-03-11"), col = "tomato2", lty = 2)
-dev.off()
+## dev.off()
 
 ## Plot Groceries
 ## pdf("plots-300dpi/figure_1c.pdf", width = 6.826666666666667, height = 5.12)
-png("plots-300dpi/figure_1c.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
+## png("plots-300dpi/figure_1c.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
 ggplot(baseline.cross, aes(x = as.Date(date), y = grocery_and_pharmacy_percent_change_from_baseline,
                            col = Country)) + geom_smooth(aes(linetype = Country, fill = Country)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
@@ -214,11 +214,11 @@ ggplot(baseline.cross, aes(x = as.Date(date), y = grocery_and_pharmacy_percent_c
   scale_colour_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
   scale_fill_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
   geom_vline(xintercept = as.Date("2020-03-11"), col = "tomato2", lty = 2)
-dev.off()
+## dev.off()
 
 ## Plot Recreation
 ## pdf("plots-300dpi/figure_1d.pdf", width = 6.826666666666667, height = 5.12)
-png("plots-300dpi/figure_1d.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
+## png("plots-300dpi/figure_1d.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
 ggplot(baseline.cross, aes(x = as.Date(date), y = retail_and_recreation_percent_change_from_baseline,
                            col = Country)) + geom_smooth(aes(linetype = Country, fill = Country)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
@@ -231,7 +231,7 @@ ggplot(baseline.cross, aes(x = as.Date(date), y = retail_and_recreation_percent_
   scale_colour_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
   scale_fill_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
   geom_vline(xintercept = as.Date("2020-03-11"), col = "tomato2", lty = 2)
-dev.off()
+## dev.off()
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
