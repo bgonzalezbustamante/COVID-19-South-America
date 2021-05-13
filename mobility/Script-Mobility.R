@@ -167,7 +167,7 @@ names(cross.national)[2] = "Country"
 
 ## Plot Workplaces
 ## pdf("plots-300dpi/figure_1a.pdf", width = 6.826666666666667, height = 5.12)
-## png("plots-300dpi/figure_1a.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
+png("plots-300dpi/figure_1a.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
 ggplot(baseline.cross, aes(x = as.Date(date), y = workplaces_percent_change_from_baseline,
                            col = Country)) + geom_smooth(aes(linetype = Country, fill = Country)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
@@ -177,13 +177,14 @@ ggplot(baseline.cross, aes(x = as.Date(date), y = workplaces_percent_change_from
   theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
   scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
   scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
-  scale_fill_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c"))
-## dev.off()
+  scale_colour_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
+  scale_fill_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
+  geom_vline(xintercept = as.Date("2020-03-11"), col = "tomato2", lty = 2)
+dev.off()
 
 ## Plot Transit Stations
 ## pdf("plots-300dpi/figure_1b.pdf", width = 6.826666666666667, height = 5.12)
-## png("plots-300dpi/figure_1b.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
+png("plots-300dpi/figure_1b.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
 ggplot(baseline.cross, aes(x = as.Date(date), y = transit_stations_percent_change_from_baseline,
                            col = Country)) + geom_smooth(aes(linetype = Country, fill = Country)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
@@ -193,13 +194,14 @@ ggplot(baseline.cross, aes(x = as.Date(date), y = transit_stations_percent_chang
   theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
   scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
   scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
-  scale_fill_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c"))
-## dev.off()
+  scale_colour_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
+  scale_fill_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
+  geom_vline(xintercept = as.Date("2020-03-11"), col = "tomato2", lty = 2)
+dev.off()
 
 ## Plot Groceries
 ## pdf("plots-300dpi/figure_1c.pdf", width = 6.826666666666667, height = 5.12)
-## png("plots-300dpi/figure_1c.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
+png("plots-300dpi/figure_1c.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
 ggplot(baseline.cross, aes(x = as.Date(date), y = grocery_and_pharmacy_percent_change_from_baseline,
                            col = Country)) + geom_smooth(aes(linetype = Country, fill = Country)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
@@ -209,13 +211,14 @@ ggplot(baseline.cross, aes(x = as.Date(date), y = grocery_and_pharmacy_percent_c
   theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
   scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
   scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
-  scale_fill_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c"))
-## dev.off()
+  scale_colour_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
+  scale_fill_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
+  geom_vline(xintercept = as.Date("2020-03-11"), col = "tomato2", lty = 2)
+dev.off()
 
 ## Plot Recreation
 ## pdf("plots-300dpi/figure_1d.pdf", width = 6.826666666666667, height = 5.12)
-## png("plots-300dpi/figure_1d.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
+png("plots-300dpi/figure_1d.png", width = (1024*2), height = (768*2), units = 'px', res = 300)
 ggplot(baseline.cross, aes(x = as.Date(date), y = retail_and_recreation_percent_change_from_baseline,
                            col = Country)) + geom_smooth(aes(linetype = Country, fill = Country)) +
   theme_minimal(base_size = 12) + theme(legend.position = "bottom") +
@@ -225,9 +228,10 @@ ggplot(baseline.cross, aes(x = as.Date(date), y = retail_and_recreation_percent_
   theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
   scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
   scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
-  scale_fill_manual(values=c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c"))
-## dev.off()
+  scale_colour_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
+  scale_fill_manual(values = c("#1f78b4", "#e31a1c", "#ff7f00", "#33a02c")) +
+  geom_vline(xintercept = as.Date("2020-03-11"), col = "tomato2", lty = 2)
+dev.off()
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -777,9 +781,9 @@ ggplot(ARG.vor, aes(x = as.Date(date), y = workplaces_percent_change_from_baseli
   theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
   scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
   scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#1f78b4","gray30")) +
-  scale_fill_manual(values=c("#1f78b4","gray30")) +
-  scale_linetype_manual(values=c(2,3)) +
+  scale_colour_manual(values = c("#1f78b4","gray30")) +
+  scale_fill_manual(values = c("#1f78b4","gray30")) +
+  scale_linetype_manual(values = c(2,3)) +
   geom_vline(xintercept = as.Date(arg_resp$dates[which(arg_resp$c1_schoolclosing == 3
                                                        & arg_resp$c1_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2) +
   geom_vline(xintercept = as.Date(arg_resp$dates[which(arg_resp$c6_stayathomerequirements == 3
@@ -798,9 +802,9 @@ ggplot(CHL, aes(x = as.Date(date), y = workplaces_percent_change_from_baseline,
   theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
   scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
   scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#e31a1c","gray30")) +
-  scale_fill_manual(values=c("#e31a1c","gray30")) +
-  scale_linetype_manual(values=c(2,3)) +
+  scale_colour_manual(values = c("#e31a1c","gray30")) +
+  scale_fill_manual(values = c("#e31a1c","gray30")) +
+  scale_linetype_manual(values = c(2,3)) +
   geom_vline(xintercept = as.Date(arg_resp$dates[which(chl_resp$c1_schoolclosing == 3
                                                        & chl_resp$c1_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2) +
   geom_vline(xintercept = as.Date(arg_resp$dates[which(chl_resp$c2_workplaceclosing == 3
@@ -819,9 +823,9 @@ ggplot(COL.vor, aes(x = as.Date(date), y = workplaces_percent_change_from_baseli
   theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
   scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
   scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#ff7f00","gray30")) +
-  scale_fill_manual(values=c("#ff7f00","gray30")) +
-  scale_linetype_manual(values=c(2,3)) +
+  scale_colour_manual(values = c("#ff7f00","gray30")) +
+  scale_fill_manual(values = c("#ff7f00","gray30")) +
+  scale_linetype_manual(values = c(2,3)) +
   geom_vline(xintercept = as.Date(arg_resp$dates[which(col_resp$c1_schoolclosing == 3
                                                        & col_resp$c1_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2) +
   geom_vline(xintercept = as.Date(arg_resp$dates[which(col_resp$c2_workplaceclosing == 3
@@ -840,9 +844,9 @@ ggplot(PER, aes(x = as.Date(date), y = workplaces_percent_change_from_baseline,
   theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
   scale_x_date(date_breaks = "1 weeks", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
   scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("#33a02c","gray30")) +
-  scale_fill_manual(values=c("#33a02c","gray30")) +
-  scale_linetype_manual(values=c(2,3)) +
+  scale_colour_manual(values = c("#33a02c","gray30")) +
+  scale_fill_manual(values = c("#33a02c","gray30")) +
+  scale_linetype_manual(values = c(2,3)) +
   geom_vline(xintercept = as.Date(arg_resp$dates[which(per_resp$c1_schoolclosing == 3
                                                        & per_resp$c1_flag == 1, arr.ind = TRUE)[1]]), col = "tomato2", lty = 2) +
   geom_vline(xintercept = as.Date(arg_resp$dates[which(per_resp$c2_workplaceclosing == 3
@@ -863,9 +867,9 @@ ggplot(cross.national, aes(x = as.Date(date), y = workplaces_percent_change_from
   theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
   scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
   scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("gray20","gray60")) +
-  scale_fill_manual(values=c("gray20","gray60")) +
-  scale_linetype_manual(values=c(2,3)) +
+  scale_colour_manual(values = c("gray20","gray60")) +
+  scale_fill_manual(values = c("gray20","gray60")) +
+  scale_linetype_manual(values = c(2,3)) +
   geom_vline(xintercept = as.Date("2020-03-11"), col = "tomato2", lty = 2)
 ## dev.off()
 
@@ -883,9 +887,9 @@ ggplot(subset(cross.national, sub_region_1 != "Buenos Aires" & sub_region_1 != "
   theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "cm")) +
   scale_x_date(date_breaks = "1 week", date_minor_breaks = "1 week", date_labels = "%Y-%m-%d") +
   scale_y_continuous(limits = c(-100, 20), breaks = c(-100, -80, -60, -40, -20, 0, 20)) +
-  scale_colour_manual(values=c("gray20","gray60")) +
-  scale_fill_manual(values=c("gray20","gray60")) +
-  scale_linetype_manual(values=c(2,3)) +
+  scale_colour_manual(values = c("gray20","gray60")) +
+  scale_fill_manual(values = c("gray20","gray60")) +
+  scale_linetype_manual(values = c(2,3)) +
   geom_vline(xintercept = as.Date("2020-03-11"), col = "tomato2", lty = 2)
 ## dev.off()
 
