@@ -1183,7 +1183,7 @@ robust_se <- data.frame(Model = c("Model 1", "Model 2", "Model 3", "Model 4", "M
 
 ## Models Table
 stargazer(fit_1, fit_2, fit_3, fit_4, fit_5, fit_6, fit_7, fit_8,
-          type = "html", header = FALSE, style = "ajps", out = "did-models/table_1b.html",
+          type = "html", header = FALSE, style = "ajps", out = "did-models/table_0.html",
           title = "Effect of Poverty on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
           omit = c("Constant", "date", "sub_region_1", "cumulative_cases", "cumulative_deaths"),
@@ -1393,7 +1393,7 @@ vif_20 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post +
 ## Models Table
 stargazer(fit_13, fit_14, fit_15, fit_16, fit_17, fit_18, fit_19, fit_20,
           se = starprep(diff_13, diff_14, diff_15, diff_16, diff_17, diff_18, diff_19, diff_20),
-          type = "html", header = FALSE, style = "ajps", out = "did-models/table_3b.html",
+          type = "html", header = FALSE, style = "ajps", out = "did-models/table_3.html",
           title = "Effect of Poverty on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
           omit = c("Constant", "date", "sub_region_1", "cumulative_cases", "cumulative_deaths"),
@@ -1490,7 +1490,7 @@ vif_28 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post +
 ## Models Table
 stargazer(fit_21, fit_22, fit_23, fit_24, fit_25, fit_26, fit_27, fit_28,
           se = starprep(diff_21, diff_22, diff_23, diff_24, diff_25, diff_26, diff_27, diff_28),
-          type = "html", header = FALSE, style = "ajps", out = "did-models/table_3.html",
+          type = "html", header = FALSE, style = "ajps", out = "did-models/table_4.html",
           title = "Effect of Poverty on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
           omit = c("Constant", "date", "sub_region_1", "cumulative_cases", "cumulative_deaths", "income", "debt"),
@@ -1593,7 +1593,7 @@ vif_36 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post +
 ## Models Table
 stargazer(fit_29, fit_30, fit_31, fit_32, fit_33, fit_34, fit_35, fit_36,
           se = starprep(diff_29, diff_30, diff_31, diff_32, diff_33, diff_34, diff_35, diff_36),
-          type = "html", header = FALSE, style = "ajps", out = "did-models/table_4.html",
+          type = "html", header = FALSE, style = "ajps", out = "did-models/table_5.html",
           title = "Placebo on Workplaces Mobility", dep.var.labels = "Mobility Change from Baseline",
           notes.align = "c", model.numbers = TRUE, omit.stat = c("f", "ser"),
           omit = c("Constant", "date", "sub_region_1", "cumulative_cases", "cumulative_deaths"),
