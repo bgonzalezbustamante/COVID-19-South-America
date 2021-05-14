@@ -10,20 +10,25 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Changed
 - Regional mobility diff-in-diff code.
 - Mobility robustness checks.
-- Mobilit placebo test.
+- Mobility placebo test.
 
 ## [Released]
+
+## [3.12.11] - 2021-05-14
+### Changed
+- Mobility robustness checks.
+- Mobility placebo test.
 
 ## [3.12.10] - 2021-05-13
 ### Changed
 - Mobility robustness checks.
-- Mobilit placebo test.
+- Mobility placebo test.
 - Regional mobility diff-in-diff code.
 
 ## [3.12.9] - 2021-05-10
 ### Added
 - Mobility robustness checks.
-- Mobilit placebo test.
+- Mobility placebo test.
 ### Changed
 - Regional mobility diff-in-diff code.
 
