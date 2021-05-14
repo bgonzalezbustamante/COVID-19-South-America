@@ -14,7 +14,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
-## [3.12.11] - 2021-05-14
+## [3.13.10] - 2021-05-14
+### Added
+- ITU mobile-broadband subscriptions​​ indicators backup on GitHub.
+- ITU Mobile-cellular subscriptions​ indicators backup on GitHub.
 ### Changed
 - Mobility robustness checks.
 - Mobility placebo test.
