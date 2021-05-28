@@ -17,7 +17,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ## [3.14.10] - 2021-05-28
 ### Added
 - Mobility and poverty preprint on private OSF component.
-- Replication File: Demonstration for R on private OSF component.
+- Replication File: Demonstration for R on private OSF component and GitHub.
 ### Changed
 - Mobility robustness checks.
 - Mobility placebo test.
