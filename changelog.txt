@@ -14,6 +14,16 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
+## [3.14.10] - 2021-05-28
+### Added
+- Mobility and poverty preprint on private OSF component.
+- Replication File: Demonstration for R on private OSF component.
+### Changed
+- Mobility robustness checks.
+- Mobility placebo test.
+- Regional mobility diff-in-diff code.
+- Minor typesetting corrections in the changelog.
+
 ## [3.13.10] - 2021-05-14
 ### Added
 - ITU mobile-broadband subscriptions​​ indicators backup on GitHub.
@@ -179,7 +189,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.11.13] - 2020-06-02
 ### Added
-- Preprint on private OSF component.
+- Early responses preprint on private OSF component.
 - Replication File: Demonstration for R on private OSF component.
 ### Changed
 - Minor typesetting corrections in the changelog.
