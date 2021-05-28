@@ -1094,7 +1094,7 @@ cross.national$post <- ifelse((cross.national$date > first_ARG) & cross.national
 ## Diff-in-Diff WHO Announcement
 diff_1 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(date) + I(sub_region_1),
                     data = cs.baseline, cluster = sub_region_2)
-fit_1 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + + I(date) + I(sub_region_1), data = cs.baseline)
+fit_1 <- lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(date) + I(sub_region_1), data = cs.baseline)
 vif_1 <- VIF(lm(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(date) + I(sub_region_1), data = cs.baseline))
 robust_1 <- as.vector(summary(fit_1, robust = T)$coefficients[,"Std. Error"])
 
@@ -1299,7 +1299,7 @@ stargazer(fit_9, fit_10, fit_11, fit_12, se = starprep(diff_9, diff_10, diff_11,
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ## Diff-in-Diff WHO Announcement
-diff_13 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post+ I(date) + I(sub_region_1),
+diff_13 <- lm_robust(workplaces_percent_change_from_baseline ~ binary_poverty*post + I(date) + I(sub_region_1),
                      data = subset(cs.baseline, sub_region_1 != "Buenos Aires" & sub_region_1 != "Santiago Metropolitan Region"
                                    & sub_region_1 != "Bogota" & sub_region_1 != "Metropolitan Municipality of Lima"),
                      cluster = sub_region_2)
