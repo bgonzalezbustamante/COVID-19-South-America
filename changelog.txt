@@ -14,6 +14,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
+## [3.14.11] - 2021-08-18
+### Changed
+- Minor corrections.
+
 ## [3.14.10] - 2021-05-28
 ### Added
 - Mobility and poverty preprint on private OSF component.
