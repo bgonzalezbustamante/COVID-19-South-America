@@ -35,7 +35,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Mobility robustness checks.
 - Mobility placebo test.
 - Regional mobility diff-in-diff code.
-- Minor typesetting corrections in the changelog.
+- Minor corrections.
 
 ## [3.13.10] - 2021-05-14
 ### Added
@@ -181,7 +181,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.12.17] - 2020-07-28
 ### Changed
-- Minor typesetting corrections in the changelog.
+- Minor corrections.
 
 ## [2.12.16] - 2020-07-20
 ### Changed
@@ -205,7 +205,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Early responses preprint on private OSF component.
 - Replication File: Demonstration for R on private OSF component.
 ### Changed
-- Minor typesetting corrections in the changelog.
+- Minor corrections.
 
 ## [2.10.13] - 2020-05-31
 ### Added
@@ -252,7 +252,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Logarithmic scale in projections.
 - Projections subtitles.
 ### Changed
-- Minor typesetting corrections in the changelog.
+- Minor corrections.
 
 ## [2.5.9] - 2020-04-19
 ### Changed
