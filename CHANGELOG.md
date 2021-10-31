@@ -348,7 +348,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Added
 - Data scraping.
 - GitHub repository.
-- README on GitHub repository.
+- README in MD format on GitHub repository.
 - GitHub page powered by Jekyll.
 - OSF project (DOI: 10.17605/OSF.IO/6FM7X).
 - OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
