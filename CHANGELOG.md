@@ -12,11 +12,15 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Mobility robustness checks.
 - Mobility placebo test.
 
-## [3.14.13] - TBC
+## [3.14.14] - TBC
 ### Changed
 - Scripts and folders names standardisation.
 
 ## [Released]
+
+## [3.14.13] - 2021-10-31
+### Changed
+- Minor corrections.
 
 ## [3.14.12] - 2021-10-22
 ### Changed
@@ -344,6 +348,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Added
 - Data scraping.
 - GitHub repository.
+- README on GitHub repository.
 - GitHub page powered by Jekyll.
 - OSF project (DOI: 10.17605/OSF.IO/6FM7X).
 - OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
