@@ -21,6 +21,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ## [3.14.12] - 2021-10-22
 ### Changed
 - Revision of upgrade versioning.
+- Changelog in MD format on GitHub repository.
 
 ## [3.14.11] - 2021-08-18
 ### Changed
