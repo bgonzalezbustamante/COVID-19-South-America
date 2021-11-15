@@ -8,15 +8,17 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Proportional Hazards models code.
 - Descriptives per people code.
 ### Changed
+- Scripts and folders names standardisation.
 - Regional mobility diff-in-diff code.
 - Mobility robustness checks.
 - Mobility placebo test.
 
-## [3.14.14] - TBC
-### Changed
-- Scripts and folders names standardisation.
-
 ## [Released]
+
+## [3.14.14] - 2021-11-15
+### Changed
+- License in MD format on GitHub repository.
+- Minor corrections.
 
 ## [3.14.13] - 2021-10-31
 ### Changed
