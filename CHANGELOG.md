@@ -18,6 +18,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ## [3.14.14] - 2021-11-15
 ### Changed
 - License in MD format on GitHub repository.
+- Revision of upgrade versioning.
 - Minor corrections.
 
 ## [3.14.13] - 2021-10-31
@@ -97,7 +98,6 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [3.8.6] - 2021-03-27
 ### Changed
-- Update of badges.
 - Minor corrections.
 
 ## [3.8.5] - 2021-03-25
@@ -148,7 +148,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [3.3.1] - 2020-09-09
 ### Changed
-- Update of badges.
+- Minor corrections.
 
 ## [3.3.0] - 2020-09-01
 ### Added
@@ -179,7 +179,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.12.19] - 2020-08-26
 ### Changed
-- Update of badges.
+- Minor corrections.
 
 ## [2.12.18] - 2020-08-05
 ### Changed
@@ -262,7 +262,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.5.9] - 2020-04-19
 ### Changed
-- Update of badges.
+- Minor corrections.
 
 ## [2.5.8] - 2020-04-15
 ### Changed
@@ -282,7 +282,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.3.7] - 2020-04-03
 ### Changed
-- Update of badges.
+- Minor corrections.
 
 ## [2.3.6] - 2020-04-01
 ### Added
@@ -312,7 +312,6 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ### Added
 - Connection to the Johns Hopkins University CSSE COVID-19 Dataset.
 ### Changed
-- Update of badges.
 - Minor corrections.
 ### Removed
 - OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
