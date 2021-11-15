@@ -1,4 +1,4 @@
-## Coronavirus Pandemic in South America
+# Coronavirus Pandemic in South America
 
 [![Version](https://img.shields.io/badge/version-v3.14.13-blue.svg)](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/CHANGELOG.md) [![GitHub issues](https://img.shields.io/github/issues/bgonzalezbustamante/COVID-19-South-America.svg)](https://github.com/bgonzalezbustamante/COVID-19-South-America/issues/) [![GitHub issues-closed](https://img.shields.io/github/issues-closed/bgonzalezbustamante/COVID-19-South-America.svg)](https://github.com/bgonzalezbustamante/COVID-19-South-America/issues?q=is%3Aissue+is%3Aclosed) [![License](https://img.shields.io/badge/license-CC--BY--4.0-black)](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/LICENSE.txt) [![Jekyll](https://img.shields.io/badge/made%20with-Jekyll-1f425f.svg)](https://jekyllrb.com/) [![CRediT](https://img.shields.io/badge/contributions-CRediT-purple.svg)](https://bgonzalezbustamante.com/project/covid-19-south-america/)
 
@@ -6,7 +6,7 @@
 
 - [COVID-19 in South America Tracker.](Tracker.md) This was an online tracker of COVID-19 coronavirus outbreak in South America deployed on GitHub between March 2020 and mid-May 2020, which presented epidemic curves, estimated R, explored serial interval distribution, and future incidence simulations by each country during that period. This data and some of these analyses were the basis for the abovementioned paper.
 
-### About Me
+## About Me
 
 I am completing my DPhil (PhD) dissertation in the [Department of Politics and International Relations](https://www.politics.ox.ac.uk/) and [St Hilda's College](https://www.sthildas.ox.ac.uk/) at the [University of Oxford](http://www.ox.ac.uk/), United Kingdom. I am currently based in Oxford, working on my research. Furthermore, I am an Instructor Professor in the Management and Public Policies Department at the [Faculty of Administration and Economics](https://fae.usach.cl/) at the Universidad de Santiago de Chile.
 
