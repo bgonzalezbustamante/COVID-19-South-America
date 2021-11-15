@@ -1,4 +1,4 @@
-## Early Government Responses to COVID-19 in South America
+# Early Government Responses to COVID-19 in South America
 
 [![DOI](https://img.shields.io/badge/DOI-10.1016/j.worlddev.2020.105180-blue)](https://doi.org/10.1016/j.worlddev.2020.105180) [![R](https://img.shields.io/badge/made%20with-R%20v3.6.1-1f425f.svg)](https://cran.r-project.org/) [![Latex](https://img.shields.io/badge/made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/) [![Jekyll](https://img.shields.io/badge/made%20with-Jekyll-1f425f.svg)](https://jekyllrb.com/)
 
@@ -29,7 +29,7 @@ The chunks of the code are presented below. It is also possible to revise the fu
 - Proportional Hazards Models Code (forthcoming)
 - Descriptives per People Code (forthcoming)
 
-### About Me
+## About Me
 
 I am completing my DPhil (PhD) dissertation in the [Department of Politics and International Relations](https://www.politics.ox.ac.uk/) and [St Hilda's College](https://www.sthildas.ox.ac.uk/) at the [University of Oxford](http://www.ox.ac.uk/), United Kingdom. I am currently based in Oxford, working on my research. Furthermore, I am an Instructor Professor in the Management and Public Policies Department at the [Faculty of Administration and Economics](https://fae.usach.cl/) at the Universidad de Santiago de Chile.
 
