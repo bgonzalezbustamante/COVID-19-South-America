@@ -15,6 +15,12 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
+## [3.15.14] - 2021-11-17
+### Added
+- Repository status badge.
+### Changed
+- Minor corrections.
+
 ## [3.14.14] - 2021-11-15
 ### Changed
 - License in MD format on GitHub repository.
