@@ -12,6 +12,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Regional mobility diff-in-diff code.
 - Mobility robustness checks.
 - Mobility placebo test.
+- Revision of upgrade versioning (formats of data sets).
 
 ## [Released]
 
@@ -43,7 +44,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 ## [3.14.10] - 2021-05-28
 ### Added
 - Mobility and poverty preprint on private OSF component.
-- Replication File: Demonstration for R on private OSF component and GitHub.
+- Replication File: Demonstration for R on private OSF component and GitHub repository.
 ### Changed
 - Mobility robustness checks.
 - Mobility placebo test.
@@ -52,8 +53,8 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [3.13.10] - 2021-05-14
 ### Added
-- ITU mobile-broadband subscriptions​​ indicators backup on GitHub.
-- ITU Mobile-cellular subscriptions​ indicators backup on GitHub.
+- ITU mobile-broadband subscriptions​​ indicators backup on GitHub repository.
+- ITU Mobile-cellular subscriptions​ indicators backup on GitHub repository.
 ### Changed
 - Mobility robustness checks.
 - Mobility placebo test.
@@ -121,7 +122,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [3.7.3] - 2021-03-01
 ### Added
-- Google COVID-19 Mobility Data backup on GitHub.
+- Google COVID-19 Mobility Data backup on GitHub repository.
 - Regional mobility estimations code.
 
 ## [3.6.3] - 2021-01-12
@@ -221,7 +222,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.10.13] - 2020-05-31
 ### Added
-- Our World in Data Dataset backup on GitHub.
+- Our World in Data Dataset backup on GitHub repository.
 - V-Dem Core v10 Dataset backup on OSF.
 
 ## [2.9.13] - 2020-05-24
@@ -237,8 +238,8 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.8.12] - 2020-05-20
 ### Added
-- Oxford COVID-19 Government Response Tracker Dataset backup on GitHub.
-- Johns Hopkins University CSSE COVID-19 Dataset backup on GitHub.
+- Oxford COVID-19 Government Response Tracker Dataset backup on GitHub repository.
+- Johns Hopkins University CSSE COVID-19 Dataset backup on GitHub repository.
 
 ## [2.7.12] - 2020-05-17
 ### Removed
