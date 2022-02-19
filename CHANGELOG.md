@@ -12,7 +12,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Regional mobility diff-in-diff code.
 - Mobility robustness checks.
 - Mobility placebo test.
-- Revision of upgrade versioning (formats of data sets).
+- Revision of upgrade versioning (formats of data sets and preprints).
 
 ## [Released]
 
