@@ -14,6 +14,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Mobility placebo test.
 - Revision of upgrade versioning (formats of data sets and preprints).
 
+## [3.15.15] - 2022-03-12
+### Changed
+- Minor corrections.
+
 ## [Released]
 
 ## [3.15.14] - 2021-11-17
@@ -179,7 +183,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [3.0.0] - 2020-08-29
 ### Added
-- Early responeses and demonstration for R section.
+- Early responses and demonstration for R section.
 - Johns Hopkins CSSE COVID-19 Dataset scraper.
 ### Changed
 - Reorganisation between old online monitor and paper analysis.
@@ -256,7 +260,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [2.6.10] - 2020-04-21
 ### Added
-- Early projections vs. observed data.
+- Early projections vs observed data.
 - Oxford COVID-19 Government Response Tracker.
 - Burden Index.
 
