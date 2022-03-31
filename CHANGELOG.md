@@ -14,11 +14,18 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - Mobility placebo test.
 - Revision of upgrade versioning (formats of data sets and preprints).
 
-## [3.15.15] - 2022-03-12
+## [Released]
+
+## [3.16.15] - 2022-03-31
+### Added
+- MIT license on GitHub repository.
+- Code of conduct in MD format.
 ### Changed
 - Minor corrections.
 
-## [Released]
+## [3.15.15] - 2022-03-12
+### Changed
+- Minor corrections.
 
 ## [3.15.14] - 2021-11-17
 ### Added
@@ -365,7 +372,7 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 - OSF project (DOI: 10.17605/OSF.IO/6FM7X).
 - OSF data component (DOI: 10.17605/OSF.IO/3QRMZ).
 - OSF visualisation component (DOI: 10.17605/OSF.IO/Y6C7Z).
-- License CC-BY Attribution 4.0 International on GitHub repository.
+- License CC BY 4.0 on GitHub repository.
 - Changelog in TXT format on GitHub repository.
 ### Changed
 - Minor corrections.
