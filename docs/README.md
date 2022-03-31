@@ -12,6 +12,8 @@
 
 The content of this project itself is licensed under a [Creative Commons Attribution 4.0 International license (CC BY 4.0)](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/CCBY40.md), and the underlying code used to format and display that content is licensed under an [MIT license](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/LICENSE.md).
 
+The above implies that both material and underlying code may be shared, reused, adapted as long as appropriate acknowledgement is given.
+
 ## Contribute
 
 Contributions are entirely welcome. You just need to [open an issue](https://github.com/bgonzalezbustamante/COVID-19-South-America/issues/new) with your comment or idea.
