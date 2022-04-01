@@ -16,6 +16,10 @@ All notable changes to "COVID-19 Epidemic in South America" will be documented i
 
 ## [Released]
 
+## [3.16.16] - 2022-04-01
+### Changed
+- Minor corrections.
+
 ## [3.16.15] - 2022-03-31
 ### Added
 - MIT license on GitHub repository.
