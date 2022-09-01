@@ -4,9 +4,9 @@
 
 > This online tracker was deprecated in mid-May 2020 to focus on a paper which evaluates early projections and governmental responses to COVID-19 epidemic in South America. This paper was published in *World Development* journal (DOI: [10.1016/j.worlddev.2020.105180](https://doi.org/10.1016/j.worlddev.2020.105180)). See its [demonstration for R](Early-Responses.md).
 
-This was an online tracker of COVID-19 coronavirus outbreak -a pandemic- in South America deployed on GitHub between March 2020 and mid-May 2020, which presented the epidemic curves based on the incidence in the region [(see epicurve stratified by country)](Incidence-South-America.md). Furthermore, estimated R, explored serial interval (SI) distribution, and future incidence simulations are fitted by case.<sup id="a1">[1](#f1)</sup> The countries reviewed are as follows: 
+This was an online tracker of COVID-19 coronavirus outbreak -a pandemic- in South America deployed on GitHub between March 2020 and mid-May 2020, which presented the epidemic curves based on the incidence in the region [(see epicurve stratified by country)](Incidence-South-America.md). Furthermore, estimated R, explored serial interval (SI) distribution, and future incidence simulations are fitted by case.<sup id="a1">[1](#f1)</sup> The countries reviewed are as follows:
 
-- [Argentina](Argentina.md) (ARG), 
+- [Argentina](Argentina.md) (ARG),
 - [Bolivia](Bolivia.md) (BOL),
 - [Brazil](Brazil.md) (BRA),
 - [Chile](Chile.md) (CHL),
@@ -14,18 +14,18 @@ This was an online tracker of COVID-19 coronavirus outbreak -a pandemic- in Sout
 - [Ecuador](Ecuador.md) (ECU),
 - [Paraguay](Paraguay.md) (PRY),
 - [Peru](Peru.md) (PER),
-- [Uruguay](Uruguay.md) (URY), and 
+- [Uruguay](Uruguay.md) (URY), and
 - [Venezuela](Venezuela.md) (VEN).
 
 Moreover, [Spain](Spain.md) (ESP), the [United Kingdom](United-Kingdom.md) (GBR), and [Italy](Italy.md) (ITA) are computed for comparative purposes [(see epicurve stratified by country)](Incidence-Europe.md).<sup id="a2">[2](#f2)</sup>
 
-The charts and estimations are updated after the close of the day in Greenwich Mean Time based on the **Johns Hopkins University CSSE COVID-19 Dataset** [(see repository)](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series). 
+The charts and estimations are updated after the close of the day in Greenwich Mean Time based on the **Johns Hopkins University CSSE COVID-19 Dataset** [(see repository)](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series).
 
 The materials can be downloaded from the **OSF-Project** (DOI: [10.17605/OSF.IO/6FM7X](http://doi.org/10.17605/OSF.IO/6FM7X)). This site will be updated on a regular basis, see the [changelog](https://github.com/bgonzalezbustamante/COVID-19-South-America/blob/master/CHANGELOG.md).
 
 ## About Me
 
-I am completing my DPhil (PhD) dissertation in the [Department of Politics and International Relations](https://www.politics.ox.ac.uk/) and [St Hilda's College](https://www.sthildas.ox.ac.uk/) at the [University of Oxford](http://www.ox.ac.uk/), United Kingdom. I am currently based in Oxford, working on my research. Furthermore, I am an Instructor Professor in the Management and Public Policies Department at the [Faculty of Administration and Economics](https://fae.usach.cl/) at the Universidad de Santiago de Chile.
+I am completing my DPhil (PhD) dissertation in the [Department of Politics and International Relations](https://www.politics.ox.ac.uk/) and [St Hilda's College](https://www.sthildas.ox.ac.uk/) at the [University of Oxford](http://www.ox.ac.uk/), United Kingdom. 
 
 Further details on my website [bgonzalezbustamante.com](https://bgonzalezbustamante.com/).
 
